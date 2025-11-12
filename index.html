@@ -98,11 +98,11 @@
     }
 
     .hero {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(232, 239, 255, 0.9));
-      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(232, 239, 255, 0.92));
+      border-radius: 32px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      padding: 2.8rem 3rem;
+      padding: 3rem;
       display: grid;
       gap: 2rem;
     }
@@ -150,6 +150,42 @@
       max-width: 60ch;
     }
 
+    .hero__cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+
+    .hero__button {
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .hero__button--primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 16px 30px rgba(37, 99, 235, 0.25);
+    }
+
+    .hero__button--ghost {
+      background: transparent;
+      color: var(--accent);
+      border-color: rgba(37, 99, 235, 0.4);
+    }
+
+    .hero__button:hover,
+    .hero__button:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(37, 99, 235, 0.35);
+    }
+
     .hero__tags {
       display: flex;
       flex-wrap: wrap;
@@ -166,6 +202,33 @@
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+
+    .hero__stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .hero__stat {
+      padding: 1rem 1.2rem;
+      border-radius: 18px;
+      border: 1px solid rgba(37, 99, 235, 0.16);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .hero__stat strong {
+      display: block;
+      font-size: 1.5rem;
+      font-family: "Spectral", serif;
+    }
+
+    .hero__stat span {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
     .content {
@@ -192,6 +255,29 @@
       border-radius: 22px;
       padding: 1.8rem 2rem;
       box-shadow: var(--shadow);
+    }
+
+    .focus-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .focus-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+
+    .focus-card {
+      padding: 1rem;
+      border-radius: 18px;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      background: rgba(37, 99, 235, 0.06);
+    }
+
+    .focus-card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1rem;
     }
 
     .sidebar h3 {
@@ -393,10 +479,28 @@
         <span class="hero__role">Postdoctoral Research Fellow — DV3M</span>
         <h1>Rami Alshembari</h1>
         <p class="hero__intro">Geophysical volcanologist investigating how magma systems deform the Earth’s surface. I build physics-based models that ingest multidisciplinary datasets to interpret volcanic unrest and sharpen eruption forecasts.</p>
+        <div class="hero__cta">
+          <a class="hero__button hero__button--primary" href="mailto:R.Alshembari@exeter.ac.uk">Get in touch</a>
+          <a class="hero__button hero__button--ghost" href="fieldtrip.html">Explore field work</a>
+        </div>
         <div class="hero__tags">
           <span>Volcano Deformation</span>
           <span>Numerical Modelling</span>
           <span>Hazard Forecasting</span>
+        </div>
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <strong>10+</strong>
+            <span>years in volcanology</span>
+          </div>
+          <div class="hero__stat">
+            <strong>3</strong>
+            <span>major field campaigns</span>
+          </div>
+          <div class="hero__stat">
+            <strong>20+</strong>
+            <span>peer-reviewed works</span>
+          </div>
         </div>
       </div>
     </header>
@@ -449,7 +553,25 @@
           <p>The DV3M project adopts a mush-dominated transcrustal magmatic system concept. My goal is to develop dynamic magma mush models that recover robust estimates of magma system parameters from observations, strengthening hazard mitigation for volcanoes such as Soufrière Hills (Montserrat) and Sakurajima (Japan).</p>
         </section>
 
-        <section class="card" id="research">
+                <section class="card" id="focus">
+          <h2>Focus Areas</h2>
+          <div class="focus-grid">
+            <div class="focus-card">
+              <h3>Transcrustal Magma Systems</h3>
+              <p>Constraining the rheology and state of hybrid mush reservoirs by coupling deformation data with thermo-poroelastic models.</p>
+            </div>
+            <div class="focus-card">
+              <h3>Multi-sensor Data Fusion</h3>
+              <p>Blending InSAR, GNSS, petrology, and gas observations to produce physically consistent eruption forecasts.</p>
+            </div>
+            <div class="focus-card">
+              <h3>Field-informed Modelling</h3>
+              <p>Using campaign results from sites like Soufrière Hills to validate next-generation DV3M simulations.</p>
+            </div>
+          </div>
+        </section>
+
+<section class="card" id="research">
           <h2>Research Outputs</h2>
           <div class="resource-grid">
             <div class="resource-card">
