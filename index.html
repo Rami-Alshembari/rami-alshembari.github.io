@@ -10,15 +10,14 @@
   <style>
     :root {
       color-scheme: light;
-      --bg: #f5f7fb;
-      --bg-accent: #ecf0ff;
+      --bg: #f7f8fb;
       --card: #ffffff;
-      --ink: #0f172a;
-      --muted: #5d6474;
-      --accent: #2563eb;
-      --accent-soft: rgba(37, 99, 235, 0.12);
-      --border: #e1e7f5;
-      --shadow: 0 30px 80px rgba(15, 23, 42, 0.12);
+      --ink: #111827;
+      --muted: #666f83;
+      --accent: #1f5ad7;
+      --accent-soft: rgba(31, 90, 215, 0.12);
+      --border: #e2e6ef;
+      --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
     }
 
     * {
@@ -28,13 +27,11 @@
     body {
       margin: 0;
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at 0% 0%, rgba(37, 99, 235, 0.14), transparent 45%),
-                  radial-gradient(circle at 100% 0%, rgba(45, 212, 191, 0.12), transparent 46%),
-                  var(--bg);
+      background: var(--bg);
       color: var(--ink);
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
-      padding: 0 1.5rem 3rem;
+      padding: 0 1.25rem 3rem;
     }
 
     a {
@@ -51,17 +48,15 @@
     }
 
     .site-nav {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      padding: 1.2rem 1.8rem;
+      border-radius: 18px;
+      padding: 1rem 1.4rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 0.8rem;
     }
 
     .site-nav__title {
@@ -80,10 +75,10 @@
     }
 
     .site-nav__links a {
-      padding: 0.45rem 0.9rem;
+      padding: 0.4rem 0.85rem;
       border-radius: 999px;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
       border: 1px solid transparent;
@@ -98,13 +93,13 @@
     }
 
     .hero {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(232, 239, 255, 0.92));
-      border-radius: 32px;
+      background: var(--card);
+      border-radius: 28px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      padding: 3rem;
+      padding: 2.6rem;
       display: grid;
-      gap: 2rem;
+      gap: 1.8rem;
     }
 
     @media (min-width: 960px) {
@@ -153,17 +148,17 @@
     .hero__cta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-top: 1.5rem;
+      gap: 0.75rem;
+      margin-top: 1.3rem;
     }
 
     .hero__button {
-      padding: 0.65rem 1.4rem;
+      padding: 0.55rem 1.2rem;
       border-radius: 999px;
       font-weight: 600;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       border: 1px solid transparent;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
@@ -171,19 +166,13 @@
     .hero__button--primary {
       background: var(--accent);
       color: #fff;
-      box-shadow: 0 16px 30px rgba(37, 99, 235, 0.25);
+      box-shadow: 0 14px 24px rgba(37, 99, 235, 0.2);
     }
 
     .hero__button--ghost {
       background: transparent;
       color: var(--accent);
-      border-color: rgba(37, 99, 235, 0.4);
-    }
-
-    .hero__button:hover,
-    .hero__button:focus {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 34px rgba(37, 99, 235, 0.35);
+      border-color: rgba(37, 99, 235, 0.35);
     }
 
     .hero__tags {
@@ -209,26 +198,6 @@
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 1rem;
       margin-top: 1rem;
-    }
-
-    .hero__stat {
-      padding: 1rem 1.2rem;
-      border-radius: 18px;
-      border: 1px solid rgba(37, 99, 235, 0.16);
-      background: rgba(255, 255, 255, 0.6);
-    }
-
-    .hero__stat strong {
-      display: block;
-      font-size: 1.5rem;
-      font-family: "Spectral", serif;
-    }
-
-    .hero__stat span {
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
     }
 
     .content {
@@ -487,20 +456,6 @@
           <span>Volcano Deformation</span>
           <span>Numerical Modelling</span>
           <span>Hazard Forecasting</span>
-        </div>
-        <div class="hero__stats">
-          <div class="hero__stat">
-            <strong>10+</strong>
-            <span>years in volcanology</span>
-          </div>
-          <div class="hero__stat">
-            <strong>3</strong>
-            <span>major field campaigns</span>
-          </div>
-          <div class="hero__stat">
-            <strong>20+</strong>
-            <span>peer-reviewed works</span>
-          </div>
         </div>
       </div>
     </header>
