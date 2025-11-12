@@ -6,18 +6,18 @@
   <title>Rami Alshembari | Geophysical Volcanologist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Spectral:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
-      --bg: #f7f8fb;
-      --card: #ffffff;
-      --ink: #111827;
-      --muted: #666f83;
-      --accent: #1f5ad7;
-      --accent-soft: rgba(31, 90, 215, 0.12);
-      --border: #e2e6ef;
-      --shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+      --bg: #f4f6fb;
+      --panel: #ffffff;
+      --ink: #0a1224;
+      --muted: #5c6374;
+      --accent: #2547d0;
+      --accent-soft: rgba(37, 71, 208, 0.12);
+      --border: #e2e8f0;
+      --shadow: 0 30px 60px rgba(15, 23, 42, 0.1);
     }
 
     * {
@@ -26,12 +26,19 @@
 
     body {
       margin: 0;
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(160deg, #eef2fb 0%, #f9fbff 40%, #f4f6fb 100%);
       color: var(--ink);
-      line-height: 1.65;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-      padding: 0 1.25rem 3rem;
+      padding: 0 1.5rem 4rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
+      letter-spacing: -0.01em;
     }
 
     a {
@@ -40,45 +47,46 @@
     }
 
     .page {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
       display: grid;
-      gap: 2.8rem;
-      padding-top: 3.2rem;
+      gap: 2.5rem;
+      padding-top: 3rem;
     }
 
     .site-nav {
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.88);
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 1rem 1.4rem;
+      padding: 0.9rem 1.4rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 0.8rem;
+      gap: 1rem;
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0.6rem;
+      z-index: 10;
     }
 
     .site-nav__title {
-      font-family: "Spectral", "Times New Roman", serif;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 600;
-      color: var(--ink);
-      letter-spacing: -0.01em;
     }
 
     .site-nav__links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
+      gap: 0.45rem;
       align-items: center;
     }
 
     .site-nav__links a {
-      padding: 0.4rem 0.85rem;
+      padding: 0.45rem 0.85rem;
       border-radius: 999px;
-      font-size: 0.76rem;
-      letter-spacing: 0.1em;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
       border: 1px solid transparent;
@@ -88,77 +96,76 @@
     .site-nav__links a:hover,
     .site-nav__links a:focus {
       color: var(--accent);
+      border-color: rgba(37, 71, 208, 0.2);
       background: var(--accent-soft);
-      border-color: rgba(37, 99, 235, 0.25);
     }
 
     .hero {
-      background: var(--card);
+      background: var(--panel);
       border-radius: 28px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      padding: 2.6rem;
+      padding: 2.8rem;
       display: grid;
-      gap: 1.8rem;
+      gap: 2rem;
     }
 
     @media (min-width: 960px) {
       .hero {
-        grid-template-columns: 280px minmax(0, 1fr);
+        grid-template-columns: 290px minmax(0, 1fr);
         align-items: center;
       }
     }
 
     .hero__photo {
       width: 100%;
-      border-radius: 22px;
-      box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
-      border: 6px solid #ffffff;
+      border-radius: 24px;
+      border: 6px solid #fff;
+      box-shadow: 0 35px 55px rgba(15, 23, 42, 0.2);
+      object-fit: cover;
     }
 
     .hero__text h1 {
-      margin: 0;
-      font-size: clamp(2.5rem, 5vw, 3.4rem);
-      font-family: "Spectral", "Times New Roman", serif;
-      letter-spacing: -0.02em;
+      margin: 0 0 0.35rem;
+      font-size: clamp(2.7rem, 4.6vw, 3.6rem);
     }
 
     .hero__role {
       display: inline-flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.4rem;
       padding: 0.45rem 1rem;
       border-radius: 999px;
       background: var(--accent-soft);
-      border: 1px solid rgba(37, 99, 235, 0.25);
+      border: 1px solid rgba(37, 71, 208, 0.25);
       font-size: 0.76rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 1.1rem;
+      margin-bottom: 1rem;
     }
 
     .hero__intro {
-      font-size: 1.04rem;
+      font-size: 1.08rem;
       color: var(--muted);
-      margin: 1.4rem 0 0;
-      max-width: 60ch;
+      margin: 1.3rem 0 0;
+      max-width: 65ch;
     }
 
     .hero__cta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.3rem;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
     }
 
     .hero__button {
-      padding: 0.55rem 1.2rem;
+      padding: 0.65rem 1.4rem;
       border-radius: 999px;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       border: 1px solid transparent;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
@@ -166,48 +173,45 @@
     .hero__button--primary {
       background: var(--accent);
       color: #fff;
-      box-shadow: 0 14px 24px rgba(37, 99, 235, 0.2);
+      box-shadow: 0 18px 30px rgba(37, 71, 208, 0.3);
     }
 
     .hero__button--ghost {
       background: transparent;
       color: var(--accent);
-      border-color: rgba(37, 99, 235, 0.35);
+      border-color: rgba(37, 71, 208, 0.35);
+    }
+
+    .hero__button:hover {
+      transform: translateY(-2px);
     }
 
     .hero__tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1.6rem;
+      gap: 0.5rem;
+      margin-top: 1.8rem;
     }
 
     .hero__tags span {
-      padding: 0.4rem 0.8rem;
+      padding: 0.35rem 0.85rem;
       border-radius: 999px;
-      background: rgba(37, 99, 235, 0.08);
-      border: 1px solid rgba(37, 99, 235, 0.18);
+      background: rgba(37, 71, 208, 0.08);
+      border: 1px solid rgba(37, 71, 208, 0.18);
       font-size: 0.78rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .hero__stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
     .content {
       display: grid;
-      gap: 2.4rem;
+      gap: 2.5rem;
     }
 
-    @media (min-width: 960px) {
+    @media (min-width: 980px) {
       .content {
-        grid-template-columns: 300px minmax(0, 1fr);
+        grid-template-columns: 320px minmax(0, 1fr);
         gap: 3rem;
       }
     }
@@ -219,39 +223,16 @@
 
     .sidebar section,
     .card {
-      background: var(--card);
+      background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 1.8rem 2rem;
+      border-radius: 24px;
+      padding: 1.9rem 2.1rem;
       box-shadow: var(--shadow);
     }
 
-    .focus-grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    @media (min-width: 640px) {
-      .focus-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      }
-    }
-
-    .focus-card {
-      padding: 1rem;
-      border-radius: 18px;
-      border: 1px solid rgba(37, 99, 235, 0.2);
-      background: rgba(37, 99, 235, 0.06);
-    }
-
-    .focus-card h3 {
-      margin: 0 0 0.6rem;
-      font-size: 1rem;
-    }
-
     .sidebar h3 {
-      margin: 0 0 1rem;
-      font-size: 0.88rem;
+      margin: 0 0 1.1rem;
+      font-size: 0.9rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--muted);
@@ -267,11 +248,11 @@
 
     .contact-list li {
       display: grid;
-      gap: 0.3rem;
+      gap: 0.25rem;
     }
 
     .contact-label {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
@@ -287,11 +268,11 @@
     }
 
     .badge-list li {
-      padding: 0.4rem 0.75rem;
+      padding: 0.45rem 0.8rem;
       border-radius: 999px;
       background: var(--accent-soft);
-      border: 1px solid rgba(37, 99, 235, 0.25);
-      font-size: 0.8rem;
+      border: 1px solid rgba(37, 71, 208, 0.25);
+      font-size: 0.82rem;
       color: var(--accent);
       font-weight: 600;
     }
@@ -302,15 +283,37 @@
     }
 
     .card h2 {
-      margin: 0 0 1.2rem;
-      font-size: 1.4rem;
-      font-family: "Spectral", serif;
+      margin: 0 0 1rem;
+      font-size: 1.55rem;
     }
 
     .card p {
-      margin: 0 0 1.1rem;
+      margin: 0 0 1.2rem;
       color: var(--muted);
       font-size: 1.02rem;
+    }
+
+    .focus-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    @media (min-width: 620px) {
+      .focus-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      }
+    }
+
+    .focus-card {
+      padding: 1.25rem;
+      border-radius: 18px;
+      border: 1px solid rgba(37, 71, 208, 0.2);
+      background: rgba(37, 71, 208, 0.05);
+    }
+
+    .focus-card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.08rem;
     }
 
     .resource-grid {
@@ -318,37 +321,32 @@
       gap: 1.2rem;
     }
 
-    @media (min-width: 620px) {
+    @media (min-width: 680px) {
       .resource-grid {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       }
     }
 
     .resource-card {
-      background: rgba(37, 99, 235, 0.08);
-      border: 1px solid rgba(37, 99, 235, 0.18);
+      padding: 1.4rem;
       border-radius: 18px;
-      padding: 1.5rem;
+      border: 1px solid rgba(37, 71, 208, 0.15);
+      background: rgba(37, 71, 208, 0.06);
       display: grid;
       gap: 0.8rem;
     }
 
-    .resource-card h3 {
-      margin: 0;
-      font-size: 1.05rem;
+    .resource-card a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: underline;
     }
 
-    .resource-card a {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 0.85rem;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #fff;
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .scholar-frame {
+      width: 100%;
+      height: 360px;
+      border: 1px solid rgba(37, 71, 208, 0.25);
+      border-radius: 18px;
     }
 
     .timeline {
@@ -364,7 +362,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: rgba(37, 99, 235, 0.25);
+      background: rgba(37, 71, 208, 0.25);
     }
 
     .timeline-item {
@@ -376,18 +374,12 @@
       content: "";
       position: absolute;
       left: 7px;
-      top: 0.5rem;
+      top: 0.45rem;
       width: 18px;
       height: 18px;
       border-radius: 50%;
       border: 3px solid var(--accent);
-      background: var(--card);
-    }
-
-    .timeline-item h3 {
-      margin: 0;
-      font-size: 1.05rem;
-      font-family: "Spectral", serif;
+      background: var(--panel);
     }
 
     .timeline-item span {
@@ -397,14 +389,14 @@
 
     .publication-list {
       display: grid;
-      gap: 1.2rem;
+      gap: 1.3rem;
     }
 
     .publication-item {
       border-left: 3px solid var(--accent);
       padding-left: 1.2rem;
       display: grid;
-      gap: 0.35rem;
+      gap: 0.4rem;
     }
 
     .publication-item span {
@@ -422,9 +414,21 @@
 
     footer {
       text-align: center;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       letter-spacing: 0.08em;
       color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 0 1rem 3rem;
+      }
+
+      .hero,
+      .sidebar section,
+      .card {
+        padding: 1.6rem;
+      }
     }
   </style>
 </head>
@@ -433,7 +437,7 @@
     <nav class="site-nav">
       <div class="site-nav__title">Rami Alshembari</div>
       <div class="site-nav__links">
-        <a href="index_.html">Home</a>
+        <a href="index.html">Home</a>
         <a href="#about">About</a>
         <a href="#research">Research</a>
         <a href="fieldtrip.html">Field Work</a>
@@ -447,7 +451,7 @@
       <div class="hero__text">
         <span class="hero__role">Postdoctoral Research Fellow — DV3M</span>
         <h1>Rami Alshembari</h1>
-        <p class="hero__intro">Geophysical volcanologist investigating how magma systems deform the Earth’s surface. I build physics-based models that ingest multidisciplinary datasets to interpret volcanic unrest and sharpen eruption forecasts.</p>
+        <p class="hero__intro">Geophysical volcanologist applying physics-based, multidisciplinary modelling to understand how magma systems deform the Earth’s surface and to deliver sharper, operational eruption forecasts.</p>
         <div class="hero__cta">
           <a class="hero__button hero__button--primary" href="mailto:R.Alshembari@exeter.ac.uk">Get in touch</a>
           <a class="hero__button hero__button--ghost" href="fieldtrip.html">Explore field work</a>
@@ -508,7 +512,7 @@
           <p>The DV3M project adopts a mush-dominated transcrustal magmatic system concept. My goal is to develop dynamic magma mush models that recover robust estimates of magma system parameters from observations, strengthening hazard mitigation for volcanoes such as Soufrière Hills (Montserrat) and Sakurajima (Japan).</p>
         </section>
 
-                <section class="card" id="focus">
+        <section class="card" id="focus">
           <h2>Focus Areas</h2>
           <div class="focus-grid">
             <div class="focus-card">
@@ -526,42 +530,27 @@
           </div>
         </section>
 
-<section class="card" id="research">
+        <section class="card" id="research">
           <h2>Research Outputs</h2>
+          <p>Explore publications, datasets, and media contributions related to ongoing work in volcanology, geophysics, and numerical modelling.</p>
+          <p>If the embedded profile does not load in your browser, <a href="https://scholar.google.com/citations?user=D3kNIOEAAAAJ&hl=en&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">open the Google Scholar profile in a new tab</a>.</p>
+          <iframe class="scholar-frame" src="https://scholar.google.com/citations?user=D3kNIOEAAAAJ&hl=en&view_op=list_works&sortby=pubdate" title="Google Scholar profile" loading="lazy"></iframe>
           <div class="resource-grid">
             <div class="resource-card">
-              <h3>Google Scholar</h3>
-              <p>Peer-reviewed articles, citation metrics, and collaborative outputs spanning volcano deformation, eruption forecasting, and numerical geophysics.</p>
-              <a href="https://scholar.google.com/citations?user=D3kNIOEAAAAJ&hl=en&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">View latest</a>
+              <h3>University Profile</h3>
+              <p>Appointments, media requests, and institutional collaborations at the University of Exeter.</p>
+              <a href="https://experts.exeter.ac.uk/36383-rami-alshembari/about" target="_blank" rel="noopener">experts.exeter.ac.uk</a>
             </div>
             <div class="resource-card">
-              <h3>University Profile</h3>
-              <p>Project summaries, outreach, and interdisciplinary collaborations within the Department of Earth and Environmental Science, University of Exeter.</p>
-              <a href="https://experts.exeter.ac.uk/36383-rami-alshembari/about" target="_blank" rel="noopener">Visit profile</a>
+              <h3>Field Work Dispatches</h3>
+              <p>Field notes and imagery from Montserrat and other volcano observatories, including logistics and preliminary deformation insights.</p>
+              <a href="fieldtrip.html">Read field notes</a>
             </div>
           </div>
         </section>
 
-        
-
-        
-
-                <section class="card" id="experience">
-          <h2>Professional Experience</h2>
-          <div class="timeline">
-            <div class="timeline-item">
-              <h3>Postdoctoral Research Fellow</h3>
-              <span>University of Exeter — Department of Earth and Environmental Sciences, Penryn, UK (Sep 2023 – present)</span>
-            </div>
-            <div class="timeline-item">
-              <h3>Research Grant Recipient</h3>
-              <span>International Centre for Theoretical Physics, Solid Earth Physics, Trieste, Italy (Sep 2018)</span>
-            </div>
-          </div>
-        </section>
-
-<section class="card" id="degrees">
-          <h2>Education</h2>
+        <section class="card" id="degrees">
+          <h2>Education Timeline</h2>
           <div class="timeline">
             <div class="timeline-item">
               <h3>PhD, Geology</h3>
