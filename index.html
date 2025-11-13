@@ -350,9 +350,9 @@
     }
 
     .timeline {
-      display: grid;
-      gap: 1.4rem;
       position: relative;
+      margin-top: 1.5rem;
+      padding-left: 1rem;
     }
 
     .timeline::before {
@@ -361,30 +361,65 @@
       left: 16px;
       top: 0;
       bottom: 0;
-      width: 2px;
-      background: rgba(37, 71, 208, 0.25);
+      width: 3px;
+      background: linear-gradient(180deg, rgba(59, 64, 249, 0.15), rgba(244, 124, 57, 0.15));
     }
 
     .timeline-item {
-      padding-left: 2.8rem;
+      display: grid;
+      grid-template-columns: 130px minmax(0, 1fr);
+      gap: 1.2rem;
+      padding: 0 0 1.6rem 0;
       position: relative;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
     }
 
     .timeline-item::before {
       content: "";
       position: absolute;
       left: 7px;
-      top: 0.45rem;
+      top: 0.6rem;
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      border: 3px solid var(--accent);
-      background: var(--panel);
+      background: linear-gradient(135deg, #5841ff, #f47c39);
+      box-shadow: 0 8px 14px rgba(88, 65, 255, 0.25);
     }
 
-    .timeline-item span {
-      font-size: 0.92rem;
+    .timeline-item__year {
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(59, 64, 249, 0.08);
+      border: 1px solid rgba(59, 64, 249, 0.2);
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      align-self: flex-start;
+      justify-self: flex-start;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.1rem;
+    }
+
+    .timeline-item__details {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.1rem 1.3rem;
+      box-shadow: 0 14px 28px rgba(17, 19, 32, 0.08);
+    }
+
+    .timeline-item p {
+      margin: 0;
       color: var(--muted);
+      font-size: 0.98rem;
     }
 
     .publication-list {
@@ -542,16 +577,25 @@
           <h2>Education Timeline</h2>
           <div class="timeline">
             <div class="timeline-item">
-              <h3>PhD, Geology</h3>
-              <span>University of Exeter, Penryn, United Kingdom (Oct 2019 – Sep 2023)</span>
+              <div class="timeline-item__year">2019 – 2023</div>
+              <div class="timeline-item__details">
+                <h3>PhD, Geology</h3>
+                <p>University of Exeter, Penryn, United Kingdom (Oct 2019 – Sep 2023)</p>
+              </div>
             </div>
             <div class="timeline-item">
-              <h3>Postgraduate Diploma, Solid Earth Physics</h3>
-              <span>International Centre for Theoretical Physics, Trieste, Italy (Sep 2017 – Sep 2018)</span>
+              <div class="timeline-item__year">2017 – 2018</div>
+              <div class="timeline-item__details">
+                <h3>Postgraduate Diploma, Solid Earth Physics</h3>
+                <p>International Centre for Theoretical Physics, Trieste, Italy (Sep 2017 – Sep 2018)</p>
+              </div>
             </div>
             <div class="timeline-item">
-              <h3>BSc, Physics</h3>
-              <span>Islamic University of Gaza, Gaza, Palestinian Territory (Jan 2013 – Jan 2016)</span>
+              <div class="timeline-item__year">2013 – 2016</div>
+              <div class="timeline-item__details">
+                <h3>BSc, Physics</h3>
+                <p>Islamic University of Gaza, Gaza, Palestinian Territory (Jan 2013 – Jan 2016)</p>
+              </div>
             </div>
           </div>
         </section>
