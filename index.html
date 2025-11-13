@@ -10,16 +10,17 @@
   <style>
     :root {
       color-scheme: light;
-      --bg: #f4f1ff;
-      --bg-secondary: #fdf9f4;
+      --bg: #edf0f8;
+      --bg-gradient: radial-gradient(circle at top left, rgba(69, 88, 255, 0.18), transparent 55%), radial-gradient(circle at bottom right, rgba(244, 124, 57, 0.15), transparent 45%), #edf0f8;
       --panel: #ffffff;
-      --ink: #1a1f2b;
-      --muted: #5f6478;
-      --accent: #8d3cff;
-      --accent-strong: #f47c39;
-      --accent-soft: rgba(141, 60, 255, 0.12);
-      --border: #e1dff0;
-      --shadow: 0 22px 45px rgba(20, 15, 45, 0.12);
+      --ink: #111320;
+      --muted: #5a6072;
+      --accent: #3b40f9;
+      --accent-soft: rgba(59, 64, 249, 0.12);
+      --accent-warm: #f47c39;
+      --accent-warm-soft: rgba(244, 124, 57, 0.12);
+      --border: #dfe4f2;
+      --shadow: 0 25px 55px rgba(15, 20, 40, 0.12);
     }
 
     * {
@@ -29,11 +30,11 @@
     body {
       margin: 0;
       font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(145deg, var(--bg), var(--bg-secondary));
+      background: var(--bg-gradient);
       color: var(--ink);
-      line-height: 1.7;
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
-      padding: 0 1.5rem 3.5rem;
+      padding: 0 1.5rem 4rem;
     }
 
     h1,
@@ -41,6 +42,7 @@
     h3 {
       font-family: "Space Grotesk", "IBM Plex Sans", sans-serif;
       letter-spacing: -0.01em;
+      color: var(--ink);
     }
 
     a {
@@ -49,10 +51,10 @@
     }
 
     .page {
-      max-width: 1080px;
+      max-width: 1160px;
       margin: 0 auto;
       display: grid;
-      gap: 2rem;
+      gap: 2.5rem;
       padding-top: 2.5rem;
     }
 
@@ -61,79 +63,81 @@
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 0.8rem;
-      padding: 0 0 1rem;
+      gap: 1rem;
+      padding-bottom: 1.2rem;
       border-bottom: 1px solid var(--border);
     }
 
     .site-nav__title {
-      font-size: 1.28rem;
+      font-size: 1.35rem;
       font-weight: 600;
     }
 
     .site-nav__links {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.45rem;
-      align-items: center;
+      gap: 0.6rem;
     }
 
     .site-nav__links a {
-      padding: 0.35rem 0.65rem;
-      border-radius: 8px;
+      padding: 0.4rem 0.75rem;
+      border-radius: 9px;
       font-size: 0.78rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
-      transition: color 0.2s ease, background 0.2s ease;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
     }
 
     .site-nav__links a:hover,
     .site-nav__links a:focus {
       color: var(--accent);
+      border-color: rgba(59, 64, 249, 0.35);
       background: var(--accent-soft);
     }
 
     .hero {
-      background: radial-gradient(circle at top right, rgba(141, 60, 255, 0.08), transparent 60%), var(--panel);
-      border-radius: 24px;
+      background: var(--panel);
+      border-radius: 28px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
-      padding: 2.6rem;
+      padding: 2.8rem;
       display: grid;
       gap: 1.8rem;
     }
 
-    @media (min-width: 960px) {
+    @media (min-width: 980px) {
       .hero {
-        grid-template-columns: 290px minmax(0, 1fr);
+        grid-template-columns: 300px minmax(0, 1fr);
         align-items: center;
       }
     }
 
     .hero__photo {
       width: 100%;
-      border-radius: 24px;
-      border: 4px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 28px 55px rgba(15, 23, 42, 0.2);
+      border-radius: 26px;
+      border: 6px solid #fff;
+      box-shadow: 0 30px 60px rgba(15, 23, 58, 0.2);
       object-fit: cover;
     }
 
     .hero__text h1 {
       margin: 0 0 0.35rem;
-      font-size: clamp(2.7rem, 4.6vw, 3.6rem);
+      font-size: clamp(2.8rem, 4.6vw, 3.7rem);
     }
 
     .hero__role {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.4rem 0.95rem;
+      padding: 0.45rem 1rem;
       border-radius: 999px;
       background: var(--accent-soft);
-      border: 1px solid rgba(141, 60, 255, 0.3);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
+      border: 1px solid rgba(59, 64, 249, 0.25);
+      font-size: 0.75rem;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       color: var(--accent);
       margin-bottom: 1rem;
@@ -142,42 +146,41 @@
     .hero__intro {
       font-size: 1.08rem;
       color: var(--muted);
-      margin: 1.3rem 0 0;
-      max-width: 65ch;
+      margin: 1.2rem 0 0;
     }
 
     .hero__cta {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-top: 1.4rem;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
     }
 
     .hero__button {
-      padding: 0.6rem 1.3rem;
+      padding: 0.65rem 1.4rem;
       border-radius: 999px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      font-size: 0.76rem;
+      font-size: 0.78rem;
       border: 1px solid transparent;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .hero__button--primary {
-      background: var(--accent);
+      background: linear-gradient(120deg, #5841ff, #8d3cff);
       color: #fff;
-      box-shadow: 0 16px 26px rgba(141, 60, 255, 0.28);
+      box-shadow: 0 22px 32px rgba(53, 42, 142, 0.35);
     }
 
     .hero__button--ghost {
       background: transparent;
-      color: var(--accent-strong);
-      border-color: rgba(244, 124, 57, 0.4);
+      color: var(--accent-warm);
+      border-color: rgba(244, 124, 57, 0.45);
     }
 
     .hero__button:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
     .hero__tags {
@@ -188,26 +191,26 @@
     }
 
     .hero__tags span {
-      padding: 0.35rem 0.85rem;
+      padding: 0.35rem 0.9rem;
       border-radius: 999px;
-      background: rgba(244, 124, 57, 0.1);
-      border: 1px solid rgba(244, 124, 57, 0.2);
+      background: var(--accent-warm-soft);
+      border: 1px solid rgba(244, 124, 57, 0.25);
       font-size: 0.78rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--accent-strong);
+      color: var(--accent-warm);
     }
 
     .content {
       display: grid;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
-    @media (min-width: 980px) {
+    @media (min-width: 1040px) {
       .content {
         grid-template-columns: 320px minmax(0, 1fr);
-        gap: 2.5rem;
+        gap: 3rem;
       }
     }
 
@@ -220,13 +223,13 @@
     .card {
       background: var(--panel);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1.8rem 2rem;
+      border-radius: 22px;
+      padding: 1.85rem 2rem;
       box-shadow: var(--shadow);
     }
 
     .sidebar h3 {
-      margin: 0 0 1.1rem;
+      margin: 0 0 1rem;
       font-size: 0.9rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -247,358 +250,8 @@
     }
 
     .contact-label {
-      font-size: 0.65rem;
+      font-size: 0.66rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--muted);
-    }
-
-    .badge-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-    }
-
-    .badge-list li {
-      padding: 0.4rem 0.75rem;
-      border-radius: 999px;
-      background: rgba(141, 60, 255, 0.08);
-      border: 1px solid rgba(141, 60, 255, 0.2);
-      font-size: 0.82rem;
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    .sections {
-      display: grid;
-      gap: 2rem;
-    }
-
-    .card h2 {
-      margin: 0 0 1rem;
-      font-size: 1.5rem;
-    }
-
-    .card p {
-      margin: 0 0 1.15rem;
-      color: var(--muted);
-      font-size: 1.02rem;
-    }
-
-    .resource-grid {
-      display: grid;
-      gap: 1.2rem;
-    }
-
-    @media (min-width: 680px) {
-      .resource-grid {
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      }
-    }
-
-    .resource-card {
-      padding: 1.4rem;
-      border-radius: 18px;
-      border: 1px solid rgba(37, 71, 208, 0.15);
-      background: rgba(37, 71, 208, 0.06);
-      display: grid;
-      gap: 0.8rem;
-    }
-
-    .resource-card a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: underline;
-    }
-
-    .scholar-card {
-      padding: 1.6rem;
-      border-radius: 18px;
-      border: 1px solid rgba(15, 76, 129, 0.2);
-      background: rgba(15, 76, 129, 0.05);
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .scholar-card__actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .scholar-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.55rem 1.1rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      box-shadow: 0 10px 18px rgba(15, 76, 129, 0.25);
-    }
-
-    .timeline {
-      display: grid;
-      gap: 1.4rem;
-      position: relative;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 16px;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: rgba(37, 71, 208, 0.25);
-    }
-
-    .timeline-item {
-      padding-left: 2.8rem;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: 7px;
-      top: 0.45rem;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      background: var(--panel);
-    }
-
-    .timeline-item span {
-      font-size: 0.92rem;
-      color: var(--muted);
-    }
-
-    .publication-list {
-      display: grid;
-      gap: 1.3rem;
-    }
-
-    .publication-item {
-      border-left: 3px solid var(--accent);
-      padding-left: 1.2rem;
-      display: grid;
-      gap: 0.4rem;
-    }
-
-    .publication-item span {
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-weight: 600;
-    }
-
-    .publication-item a {
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    footer {
-      text-align: center;
-      font-size: 0.82rem;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-    }
-
-    @media (max-width: 640px) {
-      body {
-        padding: 0 1rem 3rem;
-      }
-
-      .hero,
-      .sidebar section,
-      .card {
-        padding: 1.6rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <nav class="site-nav">
-      <div class="site-nav__title">Rami Alshembari</div>
-      <div class="site-nav__links">
-        <a href="index.html">Home</a>
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="fieldtrip.html">Field Work</a>
-        <a href="montserrat-2024.html">Montserrat 2024</a>
-        <a href="mailto:R.Alshembari@exeter.ac.uk">Contact</a>
-      </div>
-    </nav>
-
-    <header class="hero">
-      <img class="hero__photo" src="portrait.jpg" alt="Portrait of Rami Alshembari">
-      <div class="hero__text">
-        <span class="hero__role">Postdoctoral Research Fellow — DV3M</span>
-        <h1>Rami Alshembari</h1>
-        <p class="hero__intro">Geophysical volcanologist applying physics-based, multidisciplinary modelling to understand how magma systems deform the Earth’s surface and to deliver sharper, operational eruption forecasts.</p>
-        <div class="hero__cta">
-          <a class="hero__button hero__button--primary" href="mailto:R.Alshembari@exeter.ac.uk">Get in touch</a>
-          <a class="hero__button hero__button--ghost" href="fieldtrip.html">Explore field work</a>
-        </div>
-        <div class="hero__tags">
-          <span>Volcano Deformation</span>
-          <span>Numerical Modelling</span>
-          <span>Hazard Forecasting</span>
-        </div>
-      </div>
-    </header>
-
-    <div class="content">
-      <aside class="sidebar">
-        <section>
-          <h3>Contact</h3>
-          <ul class="contact-list">
-            <li>
-              <span class="contact-label">Email</span>
-              <a href="mailto:R.Alshembari@exeter.ac.uk">R.Alshembari@exeter.ac.uk</a>
-            </li>
-            <li>
-              <span class="contact-label">Media Enquiries</span>
-              <a href="mailto:R.Alshembari@exeter.ac.uk">Request briefing</a>
-            </li>
-            <li>
-              <span class="contact-label">University Profile</span>
-              <a href="https://experts.exeter.ac.uk/36383-rami-alshembari/about" target="_blank" rel="noopener">experts.exeter.ac.uk/36383-rami-alshembari</a>
-            </li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Languages</h3>
-          <ul class="badge-list">
-            <li>English — fluent</li>
-            <li>Arabic — fluent</li>
-          </ul>
-        </section>
-
-        <section>
-          <h3>Fields of Research</h3>
-          <ul class="badge-list">
-            <li>Geophysics</li>
-            <li>Volcanology</li>
-            <li>Seismology</li>
-            <li>Earth Sciences</li>
-            <li>Numerical Analysis</li>
-            <li>Geology</li>
-          </ul>
-        </section>
-      </aside>
-
-      <main class="sections">
-        <section class="card" id="about">
-          <h2>Overview</h2>
-          <p>My expertise lies in applying physics-based models to understand the dynamics of active volcanoes, aiming to significantly improve eruption forecasting capabilities. I integrate numerical modelling methods with geological and geophysical datasets to interpret volcano deformation during episodes of unrest and to reduce uncertainties in hazard assessment.</p>
-          <p>The DV3M project adopts a mush-dominated transcrustal magmatic system concept. My goal is to develop dynamic magma mush models that recover robust estimates of magma system parameters from observations, strengthening hazard mitigation for volcanoes such as Soufrière Hills (Montserrat) and Sakurajima (Japan).</p>
-        </section>
-
-        <section class="card" id="research">
-          <h2>Research Outputs</h2>
-          <p>Explore publications, datasets, and media contributions related to ongoing work in volcanology, geophysics, and numerical modelling.</p>
-          <div class="scholar-card">
-            <div>
-              <h3 style="margin: 0 0 0.4rem;">Google Scholar</h3>
-              <p style="margin: 0; color: var(--muted);">Live citation metrics and the complete list of peer-reviewed publications are available through Google Scholar.</p>
-            </div>
-            <div class="scholar-card__actions">
-              <a class="scholar-link" href="https://scholar.google.com/citations?user=D3kNIOEAAAAJ&hl=en&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Open profile</a>
-            </div>
-          </div>
-          <div class="resource-grid">
-            <div class="resource-card">
-              <h3>University Profile</h3>
-              <p>Appointments, media requests, and institutional collaborations at the University of Exeter.</p>
-              <a href="https://experts.exeter.ac.uk/36383-rami-alshembari/about" target="_blank" rel="noopener">experts.exeter.ac.uk</a>
-            </div>
-            <div class="resource-card">
-              <h3>Field Work Dispatches</h3>
-              <p>Field notes and imagery from Montserrat and other volcano observatories, including logistics and preliminary deformation insights.</p>
-              <a href="fieldtrip.html">Read field notes</a>
-            </div>
-          </div>
-        </section>
-
-        <section class="card" id="degrees">
-          <h2>Education Timeline</h2>
-          <div class="timeline">
-            <div class="timeline-item">
-              <h3>PhD, Geology</h3>
-              <span>University of Exeter, Penryn, United Kingdom (Oct 2019 – Sep 2023)</span>
-            </div>
-            <div class="timeline-item">
-              <h3>Postgraduate Diploma, Solid Earth Physics</h3>
-              <span>International Centre for Theoretical Physics, Trieste, Italy (Sep 2017 – Sep 2018)</span>
-            </div>
-            <div class="timeline-item">
-              <h3>BSc, Physics</h3>
-              <span>Islamic University of Gaza, Gaza, Palestinian Territory (Jan 2013 – Jan 2016)</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="card" id="publications">
-          <h2>Selected Publications</h2>
-          <div class="publication-list">
-            <div class="publication-item">
-              <span>2025</span>
-              <p><strong>Rami Alshembari</strong>, J. Hickey, L. Mantiloni. <a href="https://doi.org/10.1016/j.jvolgeores.2025.108468" target="_blank" rel="noopener">Benchmarking and testing poroelastic dynamic magma mush volcano deformation models.</a> <em>Journal of Volcanology and Geothermal Research</em>.</p>
-            </div>
-            <div class="publication-item">
-              <span>2025</span>
-              <p>L. Mantiloni, J. Hickey, <strong>Rami Alshembari</strong>. <a href="https://doi.org/10.1093/gji/ggaf169" target="_blank" rel="noopener">The role of gravity in the state of stress and pore pressure of poroelastic rocks.</a> <em>Geophysical Journal International</em>.</p>
-            </div>
-            <div class="publication-item">
-              <span>2024</span>
-              <p>J. Hickey, <strong>Rami Alshembari</strong>, et al. <a href="https://doi.org/10.1029/2024GL108812" target="_blank" rel="noopener">Topographical effects on volcano deformation signal intensity: Implications for GPS network configuration.</a> <em>Geophysical Research Letters</em>.</p>
-            </div>
-            <div class="publication-item">
-              <span>2024</span>
-              <p><strong>Rami Alshembari</strong>, J. Hickey, B. J. Williamson, K. Cashman. <a href="https://doi.org/10.1016/j.epsl.2024.118624" target="_blank" rel="noopener">Declining magma supply to a poroelastic magma mush explains long-term deformation at Soufrière Hills Volcano.</a> <em>Earth and Planetary Science Letters</em>.</p>
-            </div>
-            <div class="publication-item">
-              <span>2023</span>
-              <p><strong>Rami Alshembari</strong>, J. Hickey, K. Cashman, B. J. Williamson. <a href="https://doi.org/10.1029/2023JB026625" target="_blank" rel="noopener">Unveiling the rheological control of magmatic systems on volcano deformation.</a> <em>Journal of Geophysical Research: Solid Earth</em>.</p>
-            </div>
-            <div class="publication-item">
-              <span>2022</span>
-              <p><strong>Rami Alshembari</strong>, J. Hickey, B. J. Williamson, K. Cashman. <a href="https://doi.org/10.1029/2022JB024332" target="_blank" rel="noopener">Poroelastic mechanical behavior of crystal mush reservoirs.</a> <em>Journal of Geophysical Research: Solid Earth</em>.</p>
-            </div>
-            <div class="publication-item">
-              <span>2022</span>
-              <p><strong>Rami Alshembari</strong>, J. Hickey, B. J. Williamson, K. Cashman. <a href="https://doi.org/10.1016/j.jvolgeores.2022.107535" target="_blank" rel="noopener">Exploring the role of fluid–solid interactions for modelling volcano deformation.</a> <em>Journal of Volcanology and Geothermal Research</em>.</p>
-            </div>
-            <div class="publication-item">
-              <span>2020</span>
-              <p><strong>Rami Alshembari</strong>, S. Parolai, T. Boxberger, D. Sandron, M. Pilz, N. Sylacheva. <a href="https://doi.org/10.1785/0220190114" target="_blank" rel="noopener">Seasonality in site response: An example from two historical earthquakes in Kazakhstan.</a> <em>Seismological Research Letters</em>.</p>
-            </div>
-          </div>
-        </section>
-      </main>
-    </div>
-
-    <footer>
-      © <span id="year"></span> Rami Alshembari — Advancing volcano deformation modelling for hazard forecasting.
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+*** End Patch
