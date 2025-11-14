@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pulse Air | Responsive Landing</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rami Alshembari | Geophysical Volcanologist</title>
   <style>
     :root {
       --color-bg-light: #ffffff;
-      --color-bg-dark: #000000;
       --color-text-main: #1d1d1f;
       --color-text-secondary: #6e6e73;
       --color-link: #0066cc;
       --color-cta: #0071e3;
       --color-border-subtle: #d2d2d7;
-      --max-width: 1100px;
+      --container-width: 1080px;
       --radius-large: 32px;
+      --radius-card: 24px;
+      --shadow-soft: 0 30px 60px rgba(0, 0, 0, 0.08);
     }
 
     * {
@@ -33,11 +34,11 @@
         -system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--color-bg-light);
       color: var(--color-text-main);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     .page {
-      max-width: var(--max-width);
+      max-width: var(--container-width);
       margin: 0 auto;
       padding: 0 1.5rem;
     }
@@ -45,17 +46,17 @@
     header {
       position: sticky;
       top: 0;
+      z-index: 20;
       background: rgba(255, 255, 255, 0.95);
       border-bottom: 1px solid var(--color-border-subtle);
-      z-index: 20;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(18px);
     }
 
     nav {
-      min-height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      min-height: 64px;
     }
 
     .logo {
@@ -66,15 +67,15 @@
 
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.4rem;
       font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .nav-links a {
-      text-decoration: none;
       color: var(--color-text-main);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      text-decoration: none;
       transition: color 0.2s ease;
     }
 
@@ -84,7 +85,7 @@
 
     .menu-icon {
       display: none;
-      width: 26px;
+      width: 24px;
       height: 18px;
       position: relative;
     }
@@ -115,36 +116,32 @@
     }
 
     .hero {
-      min-height: 92vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 4rem 0 5rem;
+      display: grid;
       gap: 3rem;
-      padding: 4rem 0;
     }
 
-    .hero-content {
-      text-align: center;
-      max-width: 760px;
-      margin: 0 auto;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 3rem;
+      align-items: center;
     }
 
-    .hero h1 {
+    .hero-text h1 {
       font-size: 52px;
       font-weight: 600;
-      letter-spacing: -0.02em;
       margin-bottom: 1rem;
     }
 
-    .hero p {
+    .hero-text p {
       font-size: 20px;
       color: var(--color-text-secondary);
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero-cta {
       display: flex;
-      justify-content: center;
       gap: 1rem;
       flex-wrap: wrap;
     }
@@ -152,7 +149,7 @@
     .button-primary {
       background: var(--color-cta);
       color: #fff;
-      padding: 0.85rem 2.4rem;
+      padding: 0.85rem 2.2rem;
       border-radius: 999px;
       border: none;
       font-size: 16px;
@@ -179,18 +176,40 @@
       text-decoration: underline;
     }
 
-    .hero-image {
+    .hero-photo {
       width: 100%;
-      max-width: 900px;
-      height: 420px;
-      margin: 0 auto;
       border-radius: var(--radius-large);
-      background: linear-gradient(135deg, #f8f8fa, #dedee4);
+      border: 6px solid #fff;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+
+    .pill-list span {
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
       border: 1px solid var(--color-border-subtle);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
     }
 
     section {
-      padding: 5rem 0;
+      padding: 4rem 0;
       border-bottom: 1px solid var(--color-border-subtle);
     }
 
@@ -200,121 +219,151 @@
       margin-bottom: 1rem;
     }
 
-    .subhead {
+    .section-subhead {
       font-size: 20px;
       color: var(--color-text-secondary);
       margin-bottom: 2rem;
     }
 
-    .centered-section {
-      text-align: center;
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
     }
 
-    .centered-section .image-placeholder {
-      margin: 2rem auto 0;
+    .info-card {
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-card);
+      padding: 1.4rem;
+      background: #fff;
     }
 
-    .two-column {
+    .info-card h3 {
+      font-size: 20px;
+      margin-bottom: 0.6rem;
+    }
+
+    .info-card p {
+      color: var(--color-text-secondary);
+    }
+
+    .split {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 3rem;
       align-items: center;
     }
 
-    .text-column p {
+    .split p {
       color: var(--color-text-secondary);
     }
 
-    .image-placeholder {
-      width: 100%;
-      height: 420px;
-      border-radius: 24px;
-      background: radial-gradient(circle at 30% 30%, #fdfdfd, #dcdce3);
+    .scholar-card {
       border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-card);
+      padding: 1.6rem;
+      background: #f8f8fa;
     }
 
-    .lineup .grid {
+    .resource-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
     }
 
-    .product-card {
+    .resource-card {
       border: 1px solid var(--color-border-subtle);
       border-radius: 22px;
-      padding: 1.8rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
+      padding: 1.5rem;
       background: #fff;
     }
 
-    .product-card .image-placeholder {
-      height: 220px;
+    .timeline {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
     }
 
-    .product-card h3 {
-      font-size: 22px;
+    .timeline-item {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      align-items: flex-start;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-card);
+      padding: 1.4rem 1.8rem;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .timeline-year {
       font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      min-width: 140px;
     }
 
-    .product-card p {
+    .timeline-details {
+      flex: 1;
+    }
+
+    .timeline-details h3 {
+      margin: 0 0 0.35rem;
+      font-size: 1.1rem;
+    }
+
+    .timeline-details p {
+      margin: 0;
       color: var(--color-text-secondary);
-      font-size: 17px;
+    }
+
+    .publication-list {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .publication-item {
+      border-bottom: 1px solid var(--color-border-subtle);
+      padding-bottom: 1.1rem;
+    }
+
+    .publication-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .publication-item span {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
     }
 
     footer {
       background: #f5f5f7;
-      margin-top: 5rem;
+      margin-top: 4rem;
     }
 
     .footer-inner {
-      max-width: var(--max-width);
+      max-width: var(--container-width);
       margin: 0 auto;
-      padding: 3rem 1.5rem 2rem;
+      padding: 2.5rem 1.5rem 2rem;
       display: grid;
-      gap: 2.5rem;
-    }
-
-    .footer-columns {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 2rem;
-      font-size: 14px;
-    }
-
-    .footer-columns h4 {
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-columns a {
-      display: block;
-      margin-bottom: 0.4rem;
+      gap: 1rem;
+      font-size: 0.85rem;
       color: var(--color-text-secondary);
-      text-decoration: none;
-      font-size: 13px;
     }
 
-    .footer-columns a:hover {
-      text-decoration: underline;
-    }
-
-    .footer-legal {
-      border-top: 1px solid var(--color-border-subtle);
-      padding-top: 1.5rem;
-      font-size: 12px;
-      color: var(--color-text-secondary);
-      line-height: 1.4;
-    }
-
-    @media (max-width: 900px) {
-      .two-column {
+    @media (max-width: 980px) {
+      .hero-grid,
+      .split {
         grid-template-columns: 1fr;
       }
 
-      .lineup .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .timeline-item {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -327,17 +376,8 @@
         display: block;
       }
 
-      .hero h1 {
+      .hero-text h1 {
         font-size: 42px;
-      }
-
-      .hero p {
-        font-size: 18px;
-      }
-
-      .lineup .grid,
-      .footer-columns {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -346,12 +386,14 @@
   <header>
     <div class="page">
       <nav>
-        <div class="logo">Pulse.</div>
+        <div class="logo">RA.</div>
         <div class="nav-links">
-          <a href="#store">Store</a>
-          <a href="#product">Product</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#support">Support</a>
+          <a href="#overview">Overview</a>
+          <a href="#research">Research</a>
+          <a href="fieldtrip.html">Field Work</a>
+          <a href="montserrat-2024.html">Montserrat 2024</a>
+          <a href="#publications">Publications</a>
+          <a href="mailto:R.Alshembari@exeter.ac.uk">Contact</a>
         </div>
         <div class="menu-icon" aria-hidden="true"><span></span></div>
       </nav>
@@ -359,108 +401,148 @@
   </header>
 
   <main>
-    <section class="hero page" id="store">
-      <div class="hero-content">
-        <h1>Pulse Air</h1>
-        <p>The serene wearable that blends adaptive sensing, whisper-quiet haptics, and effortless design.</p>
-        <div class="hero-cta">
-          <button class="button-primary">Buy</button>
-          <a class="link-cta" href="#product">Learn more &gt;</a>
+    <section class="hero page" id="top">
+      <div class="hero-grid">
+        <div class="hero-photo">
+          <img src="portrait.jpg" alt="Portrait of Rami Alshembari" loading="lazy" />
         </div>
-      </div>
-      <div class="hero-image" role="img" aria-label="Pulse Air product rendering"></div>
-    </section>
-
-    <section class="centered-section page" id="product">
-      <div class="section-title">Breath-level Precision</div>
-      <p class="subhead">Pulse Air shadows every inhale with adaptive algorithms that translate motion into meaning.</p>
-      <div class="image-placeholder" role="img" aria-label="Feature illustration"></div>
-    </section>
-
-    <section class="page">
-      <div class="two-column">
-        <div class="text-column">
-          <div class="section-title">Silent Intelligence</div>
-          <p>Optical-grade materials house a responsive engine that anticipates and responds in milliseconds. Every surface is tuned for comfort, every gesture is pure intent.</p>
-        </div>
-        <div class="image-placeholder" role="img" aria-label="Product detail"></div>
-      </div>
-    </section>
-
-    <section class="page">
-      <div class="two-column">
-        <div class="image-placeholder" role="img" aria-label="Lifestyle shot"></div>
-        <div class="text-column">
-          <div class="section-title">Battery that Disappears</div>
-          <p>Up to four days on a single charge, intelligent fast-charge in ten minutes, and energy sharing with your daily devices when you need it most.</p>
+        <div class="hero-text">
+          <h1>Rami Alshembari</h1>
+          <p>Geophysical volcanologist interpreting volcano deformation with physics-based models, multidisciplinary datasets, and field-calibrated intuition.</p>
+          <div class="hero-cta">
+            <button class="button-primary" onclick="location.href='mailto:R.Alshembari@exeter.ac.uk'">Email</button>
+            <a class="link-cta" href="#publications">View work &gt;</a>
+          </div>
+          <div class="pill-list">
+            <span>Postdoctoral Research Fellow — DV3M</span>
+            <span>University of Exeter</span>
+            <span>Volcano Deformation</span>
+            <span>Numerical Modelling</span>
+            <span>Hazard Forecasting</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="centered-section page">
-      <div class="section-title">Connected Everywhere</div>
-      <p class="subhead">Pulse Air syncs across devices through the new Pulse Cloud mesh, securing data on-device before anything leaves your wrist.</p>
-      <div class="image-placeholder" role="img" aria-label="Pulse Cloud diagram"></div>
+    <section class="page" id="overview">
+      <div class="section-title">Overview</div>
+      <p class="section-subhead">I apply physics-based numerical models to interpret the dynamics of active volcanoes and reduce uncertainty in eruption forecasting.</p>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Research Focus</h3>
+          <p>Transcrustal magmatic systems, dynamic magma-mush rheology, and the interface between poroelastic reservoirs and deforming crust.</p>
+        </div>
+        <div class="info-card">
+          <h3>Approach</h3>
+          <p>Fuse InSAR, GNSS, petrology, gas, and field observations with thermo-poroelastic simulations to decode unrest signals in near-real time.</p>
+        </div>
+        <div class="info-card">
+          <h3>Field Campaigns</h3>
+          <p>Montserrat, Sakurajima, and interdisciplinary deployments across volcanic arcs to ground-truth model assumptions.</p>
+        </div>
+      </div>
     </section>
 
-    <section class="lineup page" id="pricing">
-      <div class="section-title">Pulse Lineup</div>
-      <p class="subhead">Three editions tailored for the way you move, focus, and recover.</p>
-      <div class="grid">
-        <article class="product-card">
-          <div class="image-placeholder" aria-label="Pulse Air Lite"></div>
-          <h3>Pulse Air Lite</h3>
-          <p>Featherweight aluminum, essential signals, all-day comfort.</p>
-          <a class="link-cta" href="#support">Learn more &gt;</a>
-        </article>
-        <article class="product-card">
-          <div class="image-placeholder" aria-label="Pulse Air Pro"></div>
-          <h3>Pulse Air Pro</h3>
-          <p>Titanium frame, pro-level biometrics, dual-driver haptic feedback.</p>
-          <a class="link-cta" href="#support">Learn more &gt;</a>
-        </article>
-        <article class="product-card">
-          <div class="image-placeholder" aria-label="Pulse Air Studio"></div>
-          <h3>Pulse Air Studio</h3>
-          <p>Curated for creators: gesture APIs, precision trackpad integration.</p>
-          <a class="link-cta" href="#support">Learn more &gt;</a>
-        </article>
+    <section class="page" id="research">
+      <div class="section-title">Research Outputs</div>
+      <div class="section-subhead">Explore publications, datasets, and institutional collaborations.</div>
+      <div class="split">
+        <div>
+          <div class="scholar-card">
+            <h3>Google Scholar</h3>
+            <p>Peer-reviewed articles and citation metrics spanning volcano deformation, eruption forecasting, and numerical geophysics.</p>
+            <a class="link-cta" href="https://scholar.google.com/citations?user=D3kNIOEAAAAJ&hl=en&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Open profile &gt;</a>
+          </div>
+        </div>
+        <div class="resource-grid">
+          <div class="resource-card">
+            <h3>University Profile</h3>
+            <p>Appointments, outreach, and cross-college collaborations at the University of Exeter.</p>
+            <a class="link-cta" href="https://experts.exeter.ac.uk/36383-rami-alshembari/about" target="_blank" rel="noopener">experts.exeter.ac.uk &gt;</a>
+          </div>
+          <div class="resource-card">
+            <h3>Field Dispatches</h3>
+            <p>Photo essays and instrumentation notes from Montserrat, Sakurajima, and rapid deployment exercises.</p>
+            <a class="link-cta" href="fieldtrip.html">Field work &gt;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="education">
+      <div class="section-title">Education Timeline</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">2019 – 2023</div>
+          <div class="timeline-details">
+            <h3>PhD, Geology</h3>
+            <p>University of Exeter, Penryn, United Kingdom (Oct 2019 – Sep 2023)</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2017 – 2018</div>
+          <div class="timeline-details">
+            <h3>Postgraduate Diploma, Solid Earth Physics</h3>
+            <p>International Centre for Theoretical Physics, Trieste, Italy (Sep 2017 – Sep 2018)</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2013 – 2016</div>
+          <div class="timeline-details">
+            <h3>BSc, Physics</h3>
+            <p>Islamic University of Gaza, Gaza, Palestinian Territory (Jan 2013 – Jan 2016)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="publications">
+      <div class="section-title">Selected Publications</div>
+      <div class="publication-list">
+        <div class="publication-item">
+          <span>2025</span>
+          <p><strong>Rami Alshembari</strong>, J. Hickey, L. Mantiloni. <a class="link-cta" href="https://doi.org/10.1016/j.jvolgeores.2025.108468" target="_blank" rel="noopener">Benchmarking and testing poroelastic dynamic magma mush volcano deformation models.</a> <em>Journal of Volcanology and Geothermal Research</em>.</p>
+        </div>
+        <div class="publication-item">
+          <span>2025</span>
+          <p>L. Mantiloni, J. Hickey, <strong>Rami Alshembari</strong>. <a class="link-cta" href="https://doi.org/10.1093/gji/ggaf169" target="_blank" rel="noopener">The role of gravity in the state of stress and pore pressure of poroelastic rocks.</a> <em>Geophysical Journal International</em>.</p>
+        </div>
+        <div class="publication-item">
+          <span>2024</span>
+          <p>J. Hickey, <strong>Rami Alshembari</strong>, et al. <a class="link-cta" href="https://doi.org/10.1029/2024GL108812" target="_blank" rel="noopener">Topographical effects on volcano deformation signal intensity: Implications for GPS network configuration.</a> <em>Geophysical Research Letters</em>.</p>
+        </div>
+        <div class="publication-item">
+          <span>2024</span>
+          <p><strong>Rami Alshembari</strong>, J. Hickey, B. J. Williamson, K. Cashman. <a class="link-cta" href="https://doi.org/10.1016/j.epsl.2024.118624" target="_blank" rel="noopener">Declining magma supply to a poroelastic magma mush explains long-term deformation at Soufrière Hills Volcano.</a> <em>Earth and Planetary Science Letters</em>.</p>
+        </div>
+        <div class="publication-item">
+          <span>2023</span>
+          <p><strong>Rami Alshembari</strong>, J. Hickey, K. Cashman, B. J. Williamson. <a class="link-cta" href="https://doi.org/10.1029/2023JB026625" target="_blank" rel="noopener">Unveiling the rheological control of magmatic systems on volcano deformation.</a> <em>Journal of Geophysical Research: Solid Earth</em>.</p>
+        </div>
+        <div class="publication-item">
+          <span>2022</span>
+          <p><strong>Rami Alshembari</strong>, J. Hickey, B. J. Williamson, K. Cashman. <a class="link-cta" href="https://doi.org/10.1029/2022JB024332" target="_blank" rel="noopener">Poroelastic mechanical behavior of crystal mush reservoirs.</a> <em>Journal of Geophysical Research: Solid Earth</em>.</p>
+        </div>
+        <div class="publication-item">
+          <span>2022</span>
+          <p><strong>Rami Alshembari</strong>, J. Hickey, B. J. Williamson, K. Cashman. <a class="link-cta" href="https://doi.org/10.1016/j.jvolgeores.2022.107535" target="_blank" rel="noopener">Exploring the role of fluid–solid interactions for modelling volcano deformation.</a> <em>Journal of Volcanology and Geothermal Research</em>.</p>
+        </div>
+        <div class="publication-item">
+          <span>2020</span>
+          <p><strong>Rami Alshembari</strong>, S. Parolai, T. Boxberger, D. Sandron, M. Pilz, N. Sylacheva. <a class="link-cta" href="https://doi.org/10.1785/0220190114" target="_blank" rel="noopener">Seasonality in site response: An example from two historical earthquakes in Kazakhstan.</a> <em>Seismological Research Letters</em>.</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer id="support">
+  <footer>
     <div class="footer-inner">
-      <div class="footer-columns">
-        <div>
-          <h4>Discover</h4>
-          <a href="#store">Pulse Air</a>
-          <a href="#product">Materials</a>
-          <a href="#pricing">Compare</a>
-        </div>
-        <div>
-          <h4>Support</h4>
-          <a href="#support">Help Center</a>
-          <a href="#support">Warranty</a>
-          <a href="#support">Accessibility</a>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <a href="#support">Careers</a>
-          <a href="#support">Press</a>
-          <a href="#support">Investors</a>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <a href="mailto:hello@pulseair.com">Email</a>
-          <a href="#support">Live Chat</a>
-          <a href="#support">Locations</a>
-        </div>
-      </div>
-      <div class="footer-legal">
-        © 2025 Pulse Labs. Features described are conceptual and subject to change. Designed for demonstration purposes.
-      </div>
+      <p>© <span id="year"></span> Rami Alshembari — Advancing volcano deformation modelling for hazard forecasting.</p>
     </div>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
