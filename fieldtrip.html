@@ -123,8 +123,28 @@
     footer { padding: 2.5rem 0; text-align: center; font-size: 14px; color: var(--color-text-secondary); }
 
     @media (max-width: 640px) {
+      .page {
+        padding: 0 1rem;
+      }
+
       .nav-links { display: none; }
       .menu-icon { display: block; }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 1.4rem;
+      }
+
+      .log-entry {
+        padding: 1.1rem 1.2rem;
+      }
     }
   </style>
 </head>

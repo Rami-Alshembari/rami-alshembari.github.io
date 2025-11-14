@@ -368,6 +368,10 @@
     }
 
     @media (max-width: 640px) {
+      .page {
+        padding: 0 1rem;
+      }
+
       .nav-links {
         display: none;
       }
@@ -378,6 +382,37 @@
 
       .hero-text h1 {
         font-size: 42px;
+      }
+
+      .hero-text p,
+      .section-subhead,
+      .section-body,
+      .hero p {
+        font-size: 18px;
+      }
+
+      .pill-list span {
+        font-size: 0.7rem;
+      }
+
+      .split,
+      .info-grid,
+      .lineup .grid,
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        gap: 1rem;
+      }
+
+      .timeline-item {
+        padding: 1rem 1.2rem;
+      }
+
+      .timeline-year {
+        width: 100%;
+        margin-bottom: 0.4rem;
       }
     }
   </style>
