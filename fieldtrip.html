@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Field Work | Rami Alshembari</title>
   <style>
     :root {
@@ -10,7 +10,6 @@
       --color-text-main: #1d1d1f;
       --color-text-secondary: #6e6e73;
       --color-link: #0066cc;
-      --color-cta: #0071e3;
       --color-border-subtle: #d2d2d7;
       --container-width: 1080px;
       --radius-card: 24px;
@@ -18,7 +17,6 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
     body {
@@ -57,12 +55,7 @@
       letter-spacing: 0.05em;
     }
 
-    .nav-links a {
-      color: var(--color-text-main);
-      text-decoration: none;
-      transition: color 0.2s ease;
-    }
-
+    .nav-links a { color: var(--color-text-main); text-decoration: none; transition: color 0.2s ease; }
     .nav-links a:hover { color: var(--color-link); }
 
     .menu-icon {
@@ -71,7 +64,6 @@
       height: 18px;
       position: relative;
     }
-
     .menu-icon span,
     .menu-icon::before,
     .menu-icon::after {
@@ -83,12 +75,11 @@
       background: var(--color-text-main);
       border-radius: 999px;
     }
-
     .menu-icon span { top: 50%; transform: translateY(-50%); }
     .menu-icon::before { top: 0; }
     .menu-icon::after { bottom: 0; }
 
-    .hero { padding: 4rem 0 2rem; text-align: center; }
+    .hero { padding: 4rem 0 2.5rem; text-align: center; }
     .hero h1 { font-size: 42px; font-weight: 600; margin-bottom: 1rem; }
     .hero p { font-size: 19px; color: var(--color-text-secondary); max-width: 760px; margin: 0 auto; }
 
@@ -126,15 +117,7 @@
       background: #fff;
       box-shadow: var(--shadow-soft);
     }
-
-    .log-entry h4 {
-      margin-bottom: 0.4rem;
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-text-secondary);
-    }
-
+    .log-entry h4 { margin-bottom: 0.4rem; font-size: 0.95rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-secondary); }
     .log-entry p { margin: 0; color: var(--color-text-main); }
 
     footer { padding: 2.5rem 0; text-align: center; font-size: 14px; color: var(--color-text-secondary); }
@@ -149,14 +132,15 @@
   <header>
     <div class="page">
       <nav>
-        <div class="logo">RA.</div>
+        <div class="logo">Rami Alshembari</div>
         <div class="nav-links">
           <a href="/">Home</a>
           <a href="/#overview">Overview</a>
           <a href="/#research">Research</a>
+          <a href="/#education">Education</a>
+          <a href="/#publications">Publications</a>
           <a href="fieldtrip.html" aria-current="page">Field Work</a>
           <a href="montserrat-2024.html">Montserrat 2024</a>
-          <a href="/#publications">Publications</a>
         </div>
         <div class="menu-icon" aria-hidden="true"><span></span></div>
       </nav>
@@ -165,61 +149,24 @@
 
   <main class="page">
     <section class="hero">
-      <h1>Field Work Dispatches</h1>
-      <p>Snapshots from expeditions, sensing campaigns, and quick-turn deployments that feed directly into DV3M model development.</p>
+      <h1>Field Work Highlights</h1>
+      <p>My field work focuses on active volcanoes, where I combine on site observations with high precision geodetic measurements. This includes GPS campaigns and deformation studies at Soufrière Hills Volcano in Montserrat and Sakurajima Volcano in Japan, as well as additional field campaigns focused on characterising ground deformation.</p>
     </section>
 
     <section>
       <div class="section-title">Campaign Highlights</div>
-      <p class="section-body">Recent programmes focused on Montserrat, Japanese arcs, and remote diagnostics.</p>
+      <p class="section-body">Recent programmes focused on Soufrière Hills Volcano and Sakurajima Volcano.</p>
       <div class="card-grid">
         <article class="card">
           <h3>Soufrière Hills 2024</h3>
           <span>Montserrat Volcano Observatory</span>
-          <p>Thermal flights, ridge GNSS nodes, and gas sampling supporting DV3M calibration.</p>
           <a href="montserrat-2024.html">Open gallery &gt;</a>
         </article>
         <article class="card">
-          <h3>Sakurajima Response</h3>
-          <span>Kyushu, Japan</span>
-          <p>Rapid tilt deployment and drone photogrammetry during the autumn swarm.</p>
+          <h3>Sakurajima Volcano 2025</h3>
+          <span>Sakurajima Volcano Research Center</span>
           <span style="color: var(--color-text-secondary);">Report in prep</span>
         </article>
-        <article class="card">
-          <h3>Andes Transect</h3>
-          <span>Chile · Argentina</span>
-          <p>High-altitude GNSS transects probing poroelastic rheology across crystal-rich reservoirs.</p>
-          <span style="color: var(--color-text-secondary);">Report in prep</span>
-        </article>
+      
       </div>
     </section>
-
-    <section>
-      <div class="section-title">Field Log</div>
-      <p class="section-body">Selected entries that informed data assimilation choices back at Exeter.</p>
-      <div class="logbook">
-        <div class="log-entry">
-          <h4>April 2024 · Soufrière Hills</h4>
-          <p>Belham Valley traverse instrumented with pulse beacons benchmarking poroelastic simulations against stress changes.</p>
-        </div>
-        <div class="log-entry">
-          <h4>December 2023 · Sakurajima</h4>
-          <p>Thermal transects and acoustic sensing captured plume transitions hours before the shallow swarm peaked.</p>
-        </div>
-        <div class="log-entry">
-          <h4>July 2023 · Penryn Bay</h4>
-          <p>Coastal trials validated salt-haze mitigation strategies for optical components ahead of Caribbean deployments.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="year"></span> Rami Alshembari — Field programmes informing DV3M research.
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
