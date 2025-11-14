@@ -121,9 +121,15 @@
 
     footer { padding: 2.5rem 0; text-align: center; font-size: 14px; color: var(--color-text-secondary); }
 
+    .menu-icon { display: none; }
+
     @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .menu-icon { display: block; }
+      .page { padding: 0 1rem; }
+      nav { flex-wrap: wrap; gap: 0.8rem; }
+      .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 0.8rem; }
+      .hero h1 { font-size: 34px; }
+      .gallery-grid { grid-template-columns: 1fr; gap: 1rem; }
+      figure figcaption { font-size: 0.7rem; }
     }
   </style>
 </head>
