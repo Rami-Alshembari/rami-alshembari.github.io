@@ -138,6 +138,51 @@
       width: 100%;
     }
 
+    /* Dropdown menu */
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown > a {
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      min-width: 200px;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 12px;
+      padding: 0.5rem 0;
+      margin-top: 0.5rem;
+      z-index: 1000;
+    }
+
+    .nav-dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.75rem 1.25rem;
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .dropdown-content a::after {
+      display: none;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--color-bg-section);
+      color: var(--color-cta);
+    }
+
     .menu-icon {
       display: none;
       width: 24px;
@@ -396,9 +441,13 @@
           <a href="index.html">Home</a>
           <a href="index.html#overview">Overview</a>
           <a href="index.html#research">Research</a>
-          <a href="fieldtrip.html">Field Work</a>
-          <a href="montserrat-2024.html" aria-current="page">Montserrat 2024</a>
-          <a href="sakurajima-2025.html">Sakurajima 2025</a>
+          <div class="nav-dropdown">
+            <a href="fieldtrip.html">Field Work</a>
+            <div class="dropdown-content">
+              <a href="montserrat-2024.html" aria-current="page">Montserrat 2024</a>
+              <a href="sakurajima-2025.html">Sakurajima 2025</a>
+            </div>
+          </div>
           <a href="index.html#publications">Publications</a>
           <a href="mailto:R.Alshembari@exeter.ac.uk">Contact</a>
         </div>

@@ -138,6 +138,51 @@
       width: 100%;
     }
 
+    /* Dropdown menu */
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown > a {
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      min-width: 200px;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 12px;
+      padding: 0.5rem 0;
+      margin-top: 0.5rem;
+      z-index: 1000;
+    }
+
+    .nav-dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.75rem 1.25rem;
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .dropdown-content a::after {
+      display: none;
+    }
+
+    .dropdown-content a:hover {
+      background: var(--color-bg-section);
+      color: var(--color-cta);
+    }
+
     .menu-icon {
       display: none;
       width: 24px;
@@ -396,9 +441,13 @@
           <a href="index.html">Home</a>
           <a href="index.html#overview">Overview</a>
           <a href="index.html#research">Research</a>
-          <a href="fieldtrip.html">Field Work</a>
-          <a href="montserrat-2024.html">Montserrat 2024</a>
-          <a href="sakurajima-2025.html" aria-current="page">Sakurajima 2025</a>
+          <div class="nav-dropdown">
+            <a href="fieldtrip.html">Field Work</a>
+            <div class="dropdown-content">
+              <a href="montserrat-2024.html">Montserrat 2024</a>
+              <a href="sakurajima-2025.html" aria-current="page">Sakurajima 2025</a>
+            </div>
+          </div>
           <a href="index.html#publications">Publications</a>
           <a href="mailto:R.Alshembari@exeter.ac.uk">Contact</a>
         </div>
@@ -457,16 +506,70 @@
           <figcaption>IMG 7054.jpg</figcaption>
         </figure>
         <figure>
+          <a href="Sakurajima/IMG_7078.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7078.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7078.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7079.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7079.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7079.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7081.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7081.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7081.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7085.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7085.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7085.jpg</figcaption>
+        </figure>
+        <figure>
           <a href="Sakurajima/IMG_7117_jpg.jpg" target="_blank" rel="noopener">
             <img src="Sakurajima/IMG_7117_jpg.jpg" alt="Sakurajima field photo" loading="lazy" />
           </a>
           <figcaption>IMG 7117.jpg</figcaption>
         </figure>
         <figure>
+          <a href="Sakurajima/IMG_7152.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7152.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7152.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7172.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7172.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7172.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7174.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7174.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7174.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7175.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7175.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7175.jpg</figcaption>
+        </figure>
+        <figure>
           <a href="Sakurajima/IMG_7178.jpg" target="_blank" rel="noopener">
             <img src="Sakurajima/IMG_7178.jpg" alt="Sakurajima field photo" loading="lazy" />
           </a>
           <figcaption>IMG 7178.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7181.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7181.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7181.jpg</figcaption>
         </figure>
         <figure>
           <a href="Sakurajima/IMG_7186.jpg" target="_blank" rel="noopener">
@@ -481,10 +584,52 @@
           <figcaption>IMG 7227.jpg</figcaption>
         </figure>
         <figure>
+          <a href="Sakurajima/IMG_7235.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7235.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7235.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7256.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7256.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7256.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7259.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7259.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7259.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7261.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7261.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7261.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7264.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7264.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7264.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7269.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7269.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7269.jpg</figcaption>
+        </figure>
+        <figure>
           <a href="Sakurajima/IMG_7275.jpg" target="_blank" rel="noopener">
             <img src="Sakurajima/IMG_7275.jpg" alt="Sakurajima field photo" loading="lazy" />
           </a>
           <figcaption>IMG 7275.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7277.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7277.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7277.jpg</figcaption>
         </figure>
         <figure>
           <a href="Sakurajima/IMG_7281_jpg.jpg" target="_blank" rel="noopener">
@@ -511,10 +656,28 @@
           <figcaption>IMG 7307.jpg</figcaption>
         </figure>
         <figure>
+          <a href="Sakurajima/IMG_7308.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7308.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7308.jpg</figcaption>
+        </figure>
+        <figure>
           <a href="Sakurajima/IMG_7338.jpg" target="_blank" rel="noopener">
             <img src="Sakurajima/IMG_7338.jpg" alt="Sakurajima field photo" loading="lazy" />
           </a>
           <figcaption>IMG 7338.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7340.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7340.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7340.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7343.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7343.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7343.jpg</figcaption>
         </figure>
         <figure>
           <a href="Sakurajima/IMG_7377.jpg" target="_blank" rel="noopener">
@@ -529,6 +692,24 @@
           <figcaption>IMG 7387.jpg</figcaption>
         </figure>
         <figure>
+          <a href="Sakurajima/IMG_7405.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7405.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7405.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7406.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7406.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7406.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7426.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7426.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7426.jpg</figcaption>
+        </figure>
+        <figure>
           <a href="Sakurajima/IMG_7428.jpg" target="_blank" rel="noopener">
             <img src="Sakurajima/IMG_7428.jpg" alt="Sakurajima field photo" loading="lazy" />
           </a>
@@ -539,6 +720,12 @@
             <img src="Sakurajima/IMG_7430.jpg" alt="Sakurajima field photo" loading="lazy" />
           </a>
           <figcaption>IMG 7430.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7433.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7433.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7433.jpg</figcaption>
         </figure>
         <figure>
           <a href="Sakurajima/IMG_7446.jpg" target="_blank" rel="noopener">
@@ -581,6 +768,12 @@
             <img src="Sakurajima/IMG_7512_jpg.jpg" alt="Sakurajima field photo" loading="lazy" />
           </a>
           <figcaption>IMG 7512.jpg</figcaption>
+        </figure>
+        <figure>
+          <a href="Sakurajima/IMG_7514.jpg" target="_blank" rel="noopener">
+            <img src="Sakurajima/IMG_7514.jpg" alt="Sakurajima field photo" loading="lazy" />
+          </a>
+          <figcaption>IMG 7514.jpg</figcaption>
         </figure>
       </div>
     </section>
