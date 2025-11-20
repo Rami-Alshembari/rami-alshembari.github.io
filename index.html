@@ -29,8 +29,8 @@
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      margin: 10;
+      padding: 0px;
     }
 
     html {
@@ -212,7 +212,7 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: clamp(2rem, 6vw, 4rem);
+      gap: clamp(3rem, 6vw, 5rem);
       align-items: center;
     }
 
@@ -299,12 +299,13 @@
     .hero-photo {
       position: relative;
       width: 100%;
-      max-width: 500px;
+      max-width: 380px;
       aspect-ratio: 1;
       border-radius: var(--radius-large);
       overflow: hidden;
       box-shadow: var(--shadow-medium);
       transition: var(--transition);
+      margin: 0 auto;
     }
 
     .hero-photo:hover {
@@ -347,11 +348,13 @@
     }
 
     section {
-      padding: clamp(3rem, 8vw, 5rem) 0;
+      padding: clamp(4rem, 10vw, 7rem) 0;
     }
 
     section:not(:last-of-type) {
       border-bottom: 1px solid var(--color-border-light);
+      margin-bottom: clamp(0rem, 0vw, 4rem);
+      padding-bottom: clamp(0em, 1vw, 1rem);
     }
 
     .section-title {
@@ -750,11 +753,11 @@
     <section class="hero page" id="top">
       <div class="hero-grid">
         <div class="hero-photo">
-          <img src="portrait.jpg" alt="Portrait of Rami Alshembari" loading="eager" width="400" height="400" />
+          <img src="portrait.jpg" alt="Portrait of Rami Alshembari" loading="eager" width="300" height="300" />
         </div>
         <div class="hero-text">
           <h1>Rami Alshembari</h1>
-          <p>Geophysical volcanologist interpreting volcano deformation with physics-based models, multidisciplinary datasets, and field-calibrated intuition.</p>
+          <p>Geophysical volcanologist interpreting volcano deformation with physics-based models and multidisciplinary datasets.</p>
           <div class="hero-cta">
             <button class="button-primary" onclick="location.href='mailto:R.Alshembari@exeter.ac.uk'">Get in Touch</button>
             <a class="link-cta" href="#publications">View Publications →</a>
