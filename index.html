@@ -147,6 +147,49 @@
       width: 100%;
     }
 
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--color-cta);
+      z-index: 2000;
+      transition: width 0.12s linear;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: clamp(1rem, 4vw, 2.5rem);
+      bottom: clamp(1rem, 4vw, 2.5rem);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border-subtle);
+      background: #ffffff;
+      color: var(--color-text-main);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-soft);
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .back-to-top.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .back-to-top:hover {
+      background: var(--color-bg-section);
+      border-color: var(--color-cta);
+      color: var(--color-cta);
+    }
+
     /* Dropdown menu */
     .nav-dropdown {
       position: relative;
@@ -874,6 +917,7 @@
   </style>
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <header id="header">
     <div class="page">
       <nav>
@@ -1086,6 +1130,8 @@
     </div>
   </footer>
 
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+
   <script>
     // Update year
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -1262,6 +1308,8 @@
 
     // Header scroll effect
     const header = document.getElementById('header');
+    const scrollProgress = document.getElementById('scrollProgress');
+    const backToTop = document.getElementById('backToTop');
     let lastScroll = 0;
 
     window.addEventListener('scroll', () => {
@@ -1272,9 +1320,30 @@
       } else {
         header.classList.remove('scrolled');
       }
+
+      if (scrollProgress) {
+        const doc = document.documentElement;
+        const scrollHeight = doc.scrollHeight - doc.clientHeight;
+        const progress = scrollHeight > 0 ? (currentScroll / scrollHeight) * 100 : 0;
+        scrollProgress.style.width = `${progress}%`;
+      }
+
+      if (backToTop) {
+        if (currentScroll > 400) {
+          backToTop.classList.add('show');
+        } else {
+          backToTop.classList.remove('show');
+        }
+      }
       
       lastScroll = currentScroll;
     });
+
+    if (backToTop) {
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
