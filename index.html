@@ -29,8 +29,8 @@
 
     * {
       box-sizing: border-box;
-      margin: 10;
-      padding: 0px;
+      margin: 0;
+      padding: 0;
     }
 
     html {
@@ -88,6 +88,7 @@
       justify-content: space-between;
       min-height: 72px;
       gap: 1rem;
+      position: relative;
     }
 
     .logo {
@@ -198,6 +199,7 @@
       cursor: pointer;
       transition: var(--transition);
       flex-shrink: 0;
+      z-index: 1002;
     }
 
     .menu-toggle:hover {
@@ -488,6 +490,64 @@
       margin-bottom: 1rem;
     }
 
+    .volcano-section .section-subhead {
+      margin-bottom: 1.75rem;
+    }
+
+    .volcano-panel {
+      background: linear-gradient(180deg, #eef6ff 0%, #f7fbff 60%, #ffffff 100%);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-large);
+      padding: clamp(1.75rem, 4vw, 2.75rem);
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .volcano-panel::after {
+      content: "";
+      position: absolute;
+      inset: auto -20% -40% -20%;
+      height: 60%;
+      background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.12) 0%, rgba(0, 113, 227, 0) 70%);
+      pointer-events: none;
+    }
+
+    .volcano-app {
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .volcano-hint {
+      margin-top: 0.75rem;
+      font-size: 0.92rem;
+      color: var(--color-text-secondary);
+    }
+
+    #volcano-svg {
+      width: min(520px, 92vw);
+      height: auto;
+      cursor: pointer;
+      filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.18));
+      transition: transform 0.5s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    #volcano-svg:hover {
+      transform: translateY(-6px) scale(1.01);
+    }
+
+    #volcano-svg .st0 { fill: #807063; }
+    #volcano-svg .st1 { fill: #4f3f32; }
+    #volcano-svg .st3 { fill: #ec9797; }
+    #volcano-svg .st4 { fill: none; stroke: #4f3f32; stroke-width: 0.75; stroke-miterlimit: 10; }
+    #volcano-svg .st6 { fill: #ffb444; }
+    #volcano-svg .st7 { fill: #fe8443; }
+    #volcano-svg .st8 { fill: #ff5345; }
+
     .timeline {
       display: grid;
       gap: 1.5rem;
@@ -614,6 +674,7 @@
       gap: 0.5rem;
       border-bottom: 1px solid var(--color-border-subtle);
       box-shadow: var(--shadow-medium);
+      z-index: 1001;
     }
 
     @media (max-width: 1024px) {
@@ -639,8 +700,22 @@
     }
 
     @media (max-width: 768px) {
+      nav {
+        position: relative;
+      }
+
       .nav-links {
         display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 1.25rem;
+        gap: 0.25rem;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: saturate(180%) blur(20px);
+        border-bottom: 1px solid var(--color-border-subtle);
+        box-shadow: var(--shadow-medium);
       }
 
       .nav-links.mobile-open {
@@ -648,7 +723,36 @@
       }
 
       .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-links a,
+      .nav-dropdown > a {
+        width: 100%;
+        padding: 0.8rem 0;
+      }
+
+      .nav-dropdown {
+        width: 100%;
+      }
+
+      .nav-dropdown .dropdown-content {
+        position: static;
         display: block;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+        padding: 0.25rem 0 0.5rem 1rem;
+      }
+
+      .volcano-panel {
+        padding: 1.75rem;
+      }
+
+      #volcano-svg {
+        width: min(460px, 96vw);
       }
 
       .hero {
@@ -698,6 +802,14 @@
 
       .hero-photo {
         max-width: 100%;
+      }
+
+      .volcano-panel {
+        padding: 1.35rem;
+      }
+
+      #volcano-svg {
+        width: min(380px, 98vw);
       }
     }
 
@@ -819,6 +931,55 @@
       </div>
     </section>
 
+    <section class="page volcano-section" id="volcano">
+      <h2 class="section-title">Interactive Volcano</h2>
+      <p class="section-subhead">A lightweight visualization inspired by volcano deformation dynamics. Click to toggle eruption.</p>
+      <div class="volcano-panel">
+        <div class="volcano-app">
+          <svg id="volcano-svg" viewBox="0 0 200 200" role="img" aria-label="Interactive volcano illustration. Click to toggle eruption.">
+            <defs id="volcanoFilters"></defs>
+            <g id="mountainGroup">
+              <path class="st0" d="M36.5,204.2c0,0,35.7-89.7,44-96.6c8.3-6.9,31.1-22.4,51.6,0c13.3,16.1,39.6,96.6,39.6,96.6H36.5z"></path>
+              <path class="st1" d="M86.4,111.9c7.2-15.1,31.9-10.1,31.9-10.1s3.3,5,3.6,11.1s-20.2,7-20.2,7S79.2,127,86.4,111.9z"></path>
+              <g id="faceHappy">
+                <ellipse class="st1" cx="104.7" cy="134" rx="1.2" ry="1.8"></ellipse>
+                <ellipse class="st1" cx="129.5" cy="131.3" rx="1.4" ry="2.1"></ellipse>
+                <g>
+                  <ellipse class="st1" cx="120.5" cy="143" rx="2.6" ry="2.9"></ellipse>
+                  <path class="st3" d="M117.9,143.5c0.2,1.4,1.3,2.4,2.6,2.4c0.5,0,1-0.2,1.4-0.5c-0.2-1.4-1.3-2.4-2.6-2.4C118.8,143,118.3,143.2,117.9,143.5z"></path>
+                </g>
+              </g>
+              <g id="faceCalm" style="display: none;">
+                <path class="st4" d="M101.3,134.3c0,0-0.3-3,3.1-3s3.1,3,3.1,3"></path>
+                <path class="st4" d="M126.4,133.8c0,0-0.3-3.4,3.1-3.4c3.5,0,3.1,3.4,3.1,3.4"></path>
+                <path class="st4" d="M124.9,141c0,0,0.6,5.5-6.5,5.5c-7.1,0-6.5-5.5-6.5-5.5"></path>
+              </g>
+            </g>
+            <g id="lavaGroup">
+              <path class="st6" d="M94,113.6c0,0-2.4-12.8-3-22.6C90.3,81.1,85-6,85-6h44.1c0,0-6.7,58.8-9.6,72.2c-2.9,13.4-3.4,45.6-3.4,45.6L94,113.6z"></path>
+              <path class="st7" d="M98.6,114.9c0,0-1.4-83.1-2.7-94.1S91.8-4,91.8-6s29.4,1.1,30.8-0.2c1.4-1.3-3.1,49.6-6.7,61.3c-3.6,11.7-2.9,58.1-2.9,58.1L98.6,114.9z"></path>
+              <path class="st8" d="M104.4,113.6c0,0,1.9-65.1-0.9-75.5c-2.8-10.4-1-44-1-44s10.3,0,12.8,0c2.5,0-6.3,117.8-6.3,117.8L104.4,113.6z"></path>
+              <g>
+                <path class="st6" d="M79,53.2c0,1.5-2.8,2.8-2.8,2.8s-2.8-1.2-2.8-2.8s1.2-2.8,2.8-2.8S79,51.7,79,53.2z"></path>
+                <circle class="st8" cx="80.6" cy="70.6" r="1.6"></circle>
+                <circle class="st7" cx="75.4" cy="83.9" r="1.9"></circle>
+                <path class="st7" d="M62,30.4c0,2.4-1.1,2.4-2.4,2.4s-2.4-1.1-2.4-2.4s1.1-2.4,2.4-2.4S62,28,62,30.4z"></path>
+                <ellipse class="st8" cx="133.2" cy="94" rx="2.3" ry="1.7"></ellipse>
+                <ellipse class="st6" cx="125.5" cy="79.7" rx="3.6" ry="4.2"></ellipse>
+                <circle class="st8" cx="131.4" cy="60" r="2.2"></circle>
+                <circle class="st7" cx="145.6" cy="54.1" r="1.9"></circle>
+                <circle class="st6" cx="142.6" cy="32.4" r="2.1"></circle>
+              </g>
+            </g>
+            <g id="maskGroup">
+              <path class="st0" d="M83.8,109.2c20.4,5.6,40.8-7.4,40.8-7.4s-0.6,20.6-4.6,21.6c-4,1-37.7,5.6-37.7,5.6"></path>
+            </g>
+          </svg>
+        </div>
+        <p class="volcano-hint">Click the volcano to toggle eruption.</p>
+      </div>
+    </section>
+
     <section class="page" id="education">
       <h2 class="section-title">Education</h2>
       <div class="timeline">
@@ -898,20 +1059,100 @@
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
-    
-    menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('mobile-open');
-      const isOpen = navLinks.classList.contains('mobile-open');
-      menuToggle.setAttribute('aria-expanded', isOpen);
-    });
 
-    // Close mobile menu when clicking a link
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('mobile-open');
-        menuToggle.setAttribute('aria-expanded', 'false');
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('mobile-open');
+        const isOpen = navLinks.classList.contains('mobile-open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
       });
-    });
+
+      // Close mobile menu when clicking a link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('mobile-open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Interactive volcano animation (no external libraries required)
+    const volcanoSvg = document.getElementById('volcano-svg');
+    const volcanoDefs = document.getElementById('volcanoFilters');
+    const mountainGroup = document.getElementById('mountainGroup');
+    const lavaGroup = document.getElementById('lavaGroup');
+    const faceHappy = document.getElementById('faceHappy');
+    const faceCalm = document.getElementById('faceCalm');
+
+    if (volcanoSvg && volcanoDefs && mountainGroup && lavaGroup && faceHappy && faceCalm) {
+      const svgNS = 'http://www.w3.org/2000/svg';
+      const filterCount = 10;
+
+      for (let i = 0; i < filterCount; i += 1) {
+        const filter = document.createElementNS(svgNS, 'filter');
+        filter.setAttribute('id', `squiggle-${i}`);
+
+        const turbulence = document.createElementNS(svgNS, 'feTurbulence');
+        turbulence.setAttribute('type', 'turbulence');
+        turbulence.setAttribute('baseFrequency', '0.02');
+        turbulence.setAttribute('numOctaves', '2');
+        turbulence.setAttribute('seed', String(i));
+        turbulence.setAttribute('result', 'noise');
+
+        const displacement = document.createElementNS(svgNS, 'feDisplacementMap');
+        displacement.setAttribute('in', 'SourceGraphic');
+        displacement.setAttribute('in2', 'noise');
+        displacement.setAttribute('scale', '3');
+        displacement.setAttribute('xChannelSelector', 'R');
+        displacement.setAttribute('yChannelSelector', 'G');
+
+        filter.appendChild(turbulence);
+        filter.appendChild(displacement);
+        volcanoDefs.appendChild(filter);
+      }
+
+      let eruption = true;
+      let filterIndex = 0;
+      let timerId = null;
+
+      const applyFilter = (index) => {
+        const filterUrl = `url(#squiggle-${index})`;
+        mountainGroup.style.filter = filterUrl;
+        if (eruption) {
+          lavaGroup.style.filter = filterUrl;
+        } else {
+          lavaGroup.style.filter = 'none';
+        }
+      };
+
+      const tick = () => {
+        filterIndex = (filterIndex + 1) % filterCount;
+        applyFilter(filterIndex);
+        const delay = eruption ? 55 : 140;
+        timerId = window.setTimeout(tick, delay);
+      };
+
+      const startLoop = () => {
+        if (timerId) {
+          window.clearTimeout(timerId);
+        }
+        tick();
+      };
+
+      const setEruption = (state) => {
+        eruption = state;
+        lavaGroup.style.display = eruption ? 'block' : 'none';
+        faceHappy.style.display = eruption ? 'block' : 'none';
+        faceCalm.style.display = eruption ? 'none' : 'block';
+        startLoop();
+      };
+
+      volcanoSvg.addEventListener('click', () => {
+        setEruption(!eruption);
+      });
+
+      setEruption(true);
+    }
 
     // Header scroll effect
     const header = document.getElementById('header');
