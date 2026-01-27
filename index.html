@@ -139,6 +139,14 @@
       width: 100%;
     }
 
+    .nav-links a.active {
+      color: var(--color-cta);
+    }
+
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
     /* Dropdown menu */
     .nav-dropdown {
       position: relative;
@@ -320,6 +328,12 @@
       height: 100%;
       object-fit: cover;
       display: block;
+    }
+
+    .parallax-image {
+      transform: translateY(0);
+      transition: transform 0.25s ease-out;
+      will-change: transform;
     }
 
     .pill-list {
@@ -888,7 +902,7 @@
     <section class="hero page" id="top">
       <div class="hero-grid">
         <div class="hero-photo">
-          <img src="portrait.jpg" alt="Portrait of Rami Alshembari" loading="eager" width="300" height="300" />
+          <img class="parallax-image" data-parallax="0.08" src="portrait.jpg" alt="Portrait of Rami Alshembari" loading="eager" width="300" height="300" />
         </div>
         <div class="hero-text">
           <h1>Rami Alshembari</h1>
@@ -1189,6 +1203,61 @@
       revealTargets.forEach(target => revealObserver.observe(target));
     } else {
       revealTargets.forEach(target => target.classList.add('is-visible'));
+    }
+
+    // Active nav link highlighting
+    const sectionIds = ['overview', 'research', 'education', 'publications'];
+    const navLinkMap = new Map();
+    sectionIds.forEach(id => {
+      const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+      const section = document.getElementById(id);
+      if (link && section) {
+        navLinkMap.set(id, link);
+      }
+    });
+
+    if ('IntersectionObserver' in window && navLinkMap.size) {
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const targetId = entry.target.getAttribute('id');
+          const link = navLinkMap.get(targetId);
+          if (!link) return;
+          if (entry.isIntersecting) {
+            navLinkMap.forEach(value => value.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      }, { threshold: 0.4 });
+
+      navLinkMap.forEach((_link, id) => {
+        const section = document.getElementById(id);
+        if (section) {
+          sectionObserver.observe(section);
+        }
+      });
+    }
+
+    // Subtle parallax for hero image
+    const parallaxTargets = document.querySelectorAll('[data-parallax]');
+    if (parallaxTargets.length) {
+      let rafId = null;
+
+      const updateParallax = () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        parallaxTargets.forEach(target => {
+          const speed = Number(target.dataset.parallax) || 0.05;
+          const offset = Math.min(scrollY * speed, 24);
+          target.style.transform = `translateY(${offset}px)`;
+        });
+        rafId = null;
+      };
+
+      window.addEventListener('scroll', () => {
+        if (rafId) return;
+        rafId = window.requestAnimationFrame(updateParallax);
+      });
+
+      updateParallax();
     }
 
     // Header scroll effect
