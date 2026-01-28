@@ -279,6 +279,25 @@
       background-clip: text;
     }
 
+    .name-letters {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .name-letter {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: nameRise 0.6s ease forwards;
+    }
+
+    @keyframes nameRise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .hero-text p {
       font-size: clamp(1.1rem, 2.5vw, 1.3rem);
       color: var(--color-text-secondary);
@@ -965,7 +984,7 @@
           <img class="parallax-image" data-parallax="0.08" src="portrait.jpg" alt="Portrait of Rami Alshembari" loading="eager" width="300" height="300" />
         </div>
         <div class="hero-text">
-          <h1>Rami Alshembari</h1>
+          <h1 data-animate-name="true">Rami Alshembari</h1>
           <p>Geophysical volcanologist interpreting volcano deformation with physics-based models and multidisciplinary datasets.</p>
           <div class="hero-cta">
             <button class="button-primary" onclick="location.href='mailto:R.Alshembari@exeter.ac.uk'">Get in Touch</button>
@@ -1151,6 +1170,24 @@
   <script>
     // Update year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Animate name on load
+    const nameHeading = document.querySelector('[data-animate-name="true"]');
+    if (nameHeading) {
+      const nameText = nameHeading.textContent.trim();
+      const letters = Array.from(nameText);
+      nameHeading.textContent = '';
+      const wrapper = document.createElement('span');
+      wrapper.className = 'name-letters';
+      letters.forEach((letter, index) => {
+        const span = document.createElement('span');
+        span.className = 'name-letter';
+        span.textContent = letter === ' ' ? '\u00A0' : letter;
+        span.style.animationDelay = `${index * 0.05}s`;
+        wrapper.appendChild(span);
+      });
+      nameHeading.appendChild(wrapper);
+    }
 
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
