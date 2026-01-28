@@ -302,6 +302,10 @@
       margin-bottom: 2rem;
     }
 
+    .typewriter {
+      display: inline-block;
+    }
+
     .hero-cta {
       display: flex;
       gap: 1rem;
@@ -375,10 +379,13 @@
       box-shadow: var(--shadow-medium);
       transition: var(--transition);
       margin: 0 auto;
+      transform: perspective(900px) translateY(var(--hover-lift, 0px)) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+      transform-style: preserve-3d;
+      will-change: transform;
     }
 
     .hero-photo:hover {
-      transform: translateY(-8px);
+      --hover-lift: -8px;
       box-shadow: var(--shadow-hover);
     }
 
@@ -563,21 +570,78 @@
       margin-bottom: 1rem;
     }
 
-    .volcano-base {
+    .volcano-combo {
       margin-top: clamp(3rem, 8vw, 5rem);
       padding-top: 0;
     }
 
     .volcano-base-inner {
       position: relative;
-      height: clamp(260px, 30vw, 38px);
-      border-top: 0.001px solid var(--color-border-light)  0 0;
+      height: clamp(260px, 36vw, 380px);
+      border-top: none;
       border-radius: var(--radius-large) var(--radius-large) 0 0;
       background: var(--color-bg-light);
       overflow: visible;
       display: flex;
       align-items: flex-end;
       justify-content: center;
+    }
+
+    .satellite-layer {
+      position: absolute;
+      top: -140px;
+      left: 50%;
+      width: min(520px, 92vw);
+      transform: translateX(-50%);
+      height: 220px;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .satellite {
+      position: absolute;
+      top: 40px;
+      width: 54px;
+      height: 20px;
+      background: #1d1d1f;
+      border-radius: 10px;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+      left: 50%;
+      transform: translate(-50%, 0);
+      animation: satelliteOrbit 10s linear infinite;
+    }
+
+    .satellite::before,
+    .satellite::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 30px;
+      height: 12px;
+      background: linear-gradient(135deg, #dbe6f5 0%, #b9c9e6 100%);
+      border-radius: 4px;
+      transform: translateY(-50%);
+    }
+
+    .satellite::before {
+      left: -34px;
+    }
+
+    .satellite::after {
+      right: -34px;
+    }
+
+    .satellite-beam {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      width: 160px;
+      height: 200px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(0, 113, 227, 0.22) 0%, rgba(0, 113, 227, 0) 85%);
+      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+      opacity: 0.7;
+      animation: beamPulse 2.6s ease-in-out infinite;
     }
 
     .volcano-base-inner::after {
@@ -621,6 +685,40 @@
     #volcano-svg .st6 { fill: #ffb444; }
     #volcano-svg .st7 { fill: #fe8443; }
     #volcano-svg .st8 { fill: #ff5345; }
+
+    @keyframes satelliteOrbit {
+      0% {
+        transform: translate(-50%, 0) translateX(-46%) translateY(6px) scale(0.9);
+        opacity: 0.1;
+      }
+      10% {
+        opacity: 1;
+      }
+      25% {
+        transform: translate(-50%, 0) translateX(-10%) translateY(-28px) scale(1.05);
+      }
+      50% {
+        transform: translate(-50%, 0) translateX(36%) translateY(6px) scale(0.98);
+        opacity: 0.95;
+      }
+      75% {
+        transform: translate(-50%, 0) translateX(-10%) translateY(58px) scale(0.9);
+        opacity: 0.65;
+      }
+      100% {
+        transform: translate(-50%, 0) translateX(-46%) translateY(6px) scale(0.9);
+        opacity: 0.1;
+      }
+    }
+
+    @keyframes beamPulse {
+      0%, 100% {
+        opacity: 0.45;
+      }
+      50% {
+        opacity: 0.9;
+      }
+    }
 
     .timeline {
       display: grid;
@@ -770,6 +868,11 @@
       .timeline-item {
         grid-template-columns: 1fr;
         gap: 1rem;
+      }
+
+      .satellite-layer {
+        top: -110px;
+        height: 160px;
       }
     }
 
@@ -982,7 +1085,7 @@
         </div>
         <div class="hero-text">
           <h1 data-animate-name="true">Rami Alshembari</h1>
-          <p>Geophysical volcanologist interpreting volcano deformation with physics-based models and multidisciplinary datasets.</p>
+          <p class="typewriter" data-typewriter="true">Geophysical volcanologist interpreting volcano deformation with physics-based models and multidisciplinary datasets.</p>
           <div class="hero-cta">
             <button class="button-primary" onclick="location.href='mailto:R.Alshembari@exeter.ac.uk'">Get in Touch</button>
             <a class="link-cta" href="#publications">View Publications →</a>
@@ -1109,8 +1212,13 @@
       </div>
     </section>
 
-    <section class="page volcano-base" aria-label="Interactive volcano">
+    <section class="page volcano-combo" aria-label="Volcano deformation satellite">
       <div class="volcano-base-inner reveal">
+        <div class="satellite-layer" aria-hidden="true">
+          <div class="satellite">
+            <span class="satellite-beam"></span>
+          </div>
+        </div>
         <div class="volcano-app">
           <svg id="volcano-svg" viewBox="0 -14 200 214" role="img" aria-label="Interactive volcano illustration">
             <defs id="volcanoFilters"></defs>
@@ -1185,6 +1293,37 @@
       });
       nameHeading.appendChild(wrapper);
     }
+
+    // Typewriter effect for subtitle
+    const typeTargets = document.querySelectorAll('[data-typewriter="true"]');
+    typeTargets.forEach(target => {
+      const text = target.textContent.trim();
+      if (!text) return;
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        target.textContent = text;
+        return;
+      }
+
+      const initialHeight = target.getBoundingClientRect().height;
+      if (initialHeight) {
+        target.style.minHeight = `${initialHeight}px`;
+      }
+
+      target.textContent = '';
+      let index = 0;
+      const speed = 22;
+
+      const tick = () => {
+        target.textContent += text[index];
+        index += 1;
+        if (index < text.length) {
+          window.setTimeout(tick, speed);
+        }
+      };
+
+      window.setTimeout(tick, 200);
+    });
 
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -1278,6 +1417,8 @@
         if (volcanoApp) {
           volcanoApp.classList.toggle('volcano-idle', !eruption);
         }
+        window.volcanoEruption = eruption;
+        document.dispatchEvent(new CustomEvent('volcanoEruption', { detail: { eruption } }));
         startLoop();
       };
 
@@ -1413,6 +1554,30 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
+
+    // Subtle 3D tilt for hero photo
+    const heroPhoto = document.querySelector('.hero-photo');
+    if (heroPhoto && window.matchMedia('(pointer: fine)').matches) {
+      const maxTilt = 8;
+
+      const handleMove = (event) => {
+        const rect = heroPhoto.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+        heroPhoto.style.setProperty('--tilt-x', `${(-y * maxTilt).toFixed(2)}deg`);
+        heroPhoto.style.setProperty('--tilt-y', `${(x * maxTilt).toFixed(2)}deg`);
+      };
+
+      const resetTilt = () => {
+        heroPhoto.style.setProperty('--tilt-x', '0deg');
+        heroPhoto.style.setProperty('--tilt-y', '0deg');
+      };
+
+      heroPhoto.addEventListener('mousemove', handleMove);
+      heroPhoto.addEventListener('mouseleave', resetTilt);
+      heroPhoto.addEventListener('touchstart', resetTilt, { passive: true });
+    }
+
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
