@@ -762,6 +762,105 @@
       justify-content: center;
     }
 
+    .deformation-rings {
+      position: absolute;
+      left: 50%;
+      bottom: 10px;
+      width: min(440px, 86vw);
+      height: 160px;
+      transform: translateX(-50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .deformation-rings .ring {
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      width: var(--ring-size, 36px);
+      height: var(--ring-size, 36px);
+      border-radius: 50%;
+      border: 2px solid rgba(0, 113, 227, 0.45);
+      transform: translateX(-50%) scale(0.2);
+      opacity: 0.9;
+      animation: ringPulse 3.8s ease-out forwards;
+      box-shadow: 0 0 16px rgba(0, 113, 227, 0.18);
+    }
+
+    @keyframes ringPulse {
+      0% {
+        transform: translateX(-50%) scale(0.2);
+        opacity: 0.9;
+      }
+      100% {
+        transform: translateX(-50%) scale(2.8);
+        opacity: 0;
+      }
+    }
+
+    .ash-plume {
+      position: absolute;
+      left: 50%;
+      bottom: 140px;
+      width: min(260px, 70vw);
+      height: 220px;
+      transform: translateX(-50%);
+      z-index: 2;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .ash-plume .ash {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: var(--ash-size, 12px);
+      height: var(--ash-size, 12px);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(70, 70, 70, 0.55), rgba(70, 70, 70, 0));
+      opacity: var(--ash-opacity, 0.4);
+      transform: translate3d(var(--ash-x, 0px), 0, 0) scale(0.6);
+      animation: ashRise var(--ash-duration, 7s) ease-out infinite;
+      animation-delay: var(--ash-delay, 0s);
+      filter: blur(0.2px);
+    }
+
+    .volcano-app.eruption-on .ash-plume .ash {
+      background: radial-gradient(circle, rgba(255, 122, 69, 0.6), rgba(255, 122, 69, 0));
+      opacity: 0.6;
+    }
+
+    .volcano-app.eruption-on .deformation-rings .ring {
+      border-color: rgba(255, 122, 69, 0.55);
+      box-shadow: 0 0 18px rgba(255, 122, 69, 0.3);
+    }
+
+    @keyframes ashRise {
+      0% {
+        transform: translate3d(var(--ash-x, 0px), 0, 0) scale(0.6);
+        opacity: 0;
+      }
+      20% {
+        opacity: var(--ash-opacity, 0.4);
+      }
+      100% {
+        transform: translate3d(calc(var(--ash-x, 0px) + var(--ash-drift, 16px)), -160px, 0) scale(1.55);
+        opacity: 0;
+      }
+    }
+
+    .seismo-canvas {
+      position: absolute;
+      left: 50%;
+      bottom: 12px;
+      width: min(560px, 90vw);
+      height: 120px;
+      transform: translateX(-50%);
+      z-index: 0;
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
     #volcano-svg {
       width: min(520px, 92vw);
       height: auto;
@@ -1156,6 +1255,12 @@
         animation: none;
       }
 
+      .deformation-rings .ring,
+      .ash-plume .ash {
+        animation: none;
+        opacity: 0.75;
+      }
+
       .reveal,
       .reveal.is-visible {
         opacity: 1;
@@ -1339,6 +1444,9 @@
           </div>
         </div>
         <div class="volcano-app">
+          <div class="deformation-rings" id="deformationRings" aria-hidden="true"></div>
+          <div class="ash-plume" id="ashPlume" aria-hidden="true"></div>
+          <canvas class="seismo-canvas" id="seismoCanvas" width="640" height="140" aria-hidden="true"></canvas>
           <svg id="volcano-svg" viewBox="0 -14 200 214" role="img" aria-label="Interactive volcano illustration">
             <defs id="volcanoFilters"></defs>
             <g id="mountainGroup">
@@ -1659,6 +1767,7 @@
         faceCalm.style.display = eruption ? 'none' : 'block';
         if (volcanoApp) {
           volcanoApp.classList.toggle('volcano-idle', !eruption);
+          volcanoApp.classList.toggle('eruption-on', eruption);
         }
         window.volcanoEruption = eruption;
         document.dispatchEvent(new CustomEvent('volcanoEruption', { detail: { eruption } }));
@@ -1670,6 +1779,191 @@
       });
 
       setEruption(false);
+    }
+
+    // Volcanic ash plume particles
+    const ashPlume = document.getElementById('ashPlume');
+    if (ashPlume) {
+      const ashCount = 20;
+      const randomBetween = (min, max) => min + Math.random() * (max - min);
+
+      const buildAsh = () => {
+        ashPlume.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+
+        for (let i = 0; i < ashCount; i += 1) {
+          const ash = document.createElement('span');
+          ash.className = 'ash';
+
+          const size = randomBetween(6, 16);
+          const duration = randomBetween(6.5, 12);
+          const delay = randomBetween(-duration, 0);
+          const xOffset = randomBetween(-70, 70);
+          const drift = randomBetween(-30, 30);
+          const opacity = randomBetween(0.25, 0.55);
+
+          ash.style.setProperty('--ash-size', `${size}px`);
+          ash.style.setProperty('--ash-duration', `${duration}s`);
+          ash.style.setProperty('--ash-delay', `${delay}s`);
+          ash.style.setProperty('--ash-x', `${xOffset}px`);
+          ash.style.setProperty('--ash-drift', `${drift}px`);
+          ash.style.setProperty('--ash-opacity', opacity.toFixed(2));
+
+          fragment.appendChild(ash);
+        }
+
+        ashPlume.appendChild(fragment);
+      };
+
+      buildAsh();
+
+      if (prefersReducedMotion) {
+        ashPlume.querySelectorAll('.ash').forEach((ash, index) => {
+          ash.style.animation = 'none';
+          ash.style.transform = `translate3d(${(index - 6) * 10}px, -40px, 0) scale(1)`;
+          ash.style.opacity = '0.5';
+        });
+      } else {
+        window.addEventListener('resize', () => buildAsh());
+      }
+    }
+
+    // Deformation rings around the volcano base
+    const deformationRings = document.getElementById('deformationRings');
+    if (deformationRings) {
+      const randomBetween = (min, max) => min + Math.random() * (max - min);
+      let ringTimer = null;
+
+      const spawnRing = () => {
+        const ring = document.createElement('span');
+        ring.className = 'ring';
+        ring.style.setProperty('--ring-size', `${randomBetween(26, 46)}px`);
+        ring.style.opacity = randomBetween(0.5, 0.9).toFixed(2);
+
+        ring.addEventListener('animationend', () => ring.remove());
+        deformationRings.appendChild(ring);
+      };
+
+      if (prefersReducedMotion) {
+        for (let i = 0; i < 2; i += 1) {
+          const ring = document.createElement('span');
+          ring.className = 'ring';
+          ring.style.setProperty('--ring-size', `${32 + i * 14}px`);
+          ring.style.animation = 'none';
+          ring.style.opacity = '0.55';
+          ring.style.transform = `translateX(-50%) scale(${0.9 + i * 0.35})`;
+          deformationRings.appendChild(ring);
+        }
+      } else {
+        const scheduleRing = () => {
+          spawnRing();
+          const nextDelay = window.volcanoEruption ? 1100 : 1500;
+          ringTimer = window.setTimeout(scheduleRing, nextDelay);
+        };
+        scheduleRing();
+        document.addEventListener('volcanoEruption', () => {
+          if (ringTimer) {
+            window.clearTimeout(ringTimer);
+          }
+          scheduleRing();
+        });
+      }
+    }
+
+    // Seismograph line animation
+    const seismoCanvas = document.getElementById('seismoCanvas');
+    if (seismoCanvas) {
+      const ctx = seismoCanvas.getContext('2d');
+      if (ctx) {
+        let width = 0;
+        let height = 0;
+        let dpr = window.devicePixelRatio || 1;
+        let lastTime = 0;
+        let quake = null;
+        let eruptionBoost = 1;
+
+        const randomBetween = (min, max) => min + Math.random() * (max - min);
+
+        const resizeSeismo = () => {
+          const rect = seismoCanvas.getBoundingClientRect();
+          width = rect.width;
+          height = rect.height;
+          dpr = window.devicePixelRatio || 1;
+          seismoCanvas.width = Math.max(1, width * dpr);
+          seismoCanvas.height = Math.max(1, height * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        };
+
+        const newQuake = (time) => ({
+          start: time,
+          duration: randomBetween(1400, 2400),
+          center: randomBetween(0.2, 0.8),
+          amplitude: randomBetween(12, 22)
+        });
+
+        const drawSeismo = (time) => {
+          if (!width || !height) {
+            resizeSeismo();
+          }
+
+          if (!prefersReducedMotion && time - lastTime < 40) {
+            window.requestAnimationFrame(drawSeismo);
+            return;
+          }
+
+          lastTime = time;
+          const mid = height * 0.52;
+          ctx.clearRect(0, 0, width, height);
+
+          ctx.lineWidth = 2;
+          ctx.strokeStyle = 'rgba(255, 122, 69, 0.85)';
+          ctx.shadowColor = 'rgba(255, 122, 69, 0.35)';
+          ctx.shadowBlur = 10;
+
+          if (!quake || time - quake.start > quake.duration + 800) {
+            quake = newQuake(time);
+          }
+
+          ctx.beginPath();
+          for (let x = 0; x <= width; x += 3) {
+            const baseWave = Math.sin(x * 0.045 + time * 0.002) * 4;
+            const fineWave = Math.sin(x * 0.12 - time * 0.0014) * 2.5;
+            let y = mid + baseWave + fineWave;
+
+            if (quake) {
+              const progress = Math.min(Math.max((time - quake.start) / quake.duration, 0), 1);
+              const envelope = Math.sin(progress * Math.PI);
+              const centerX = quake.center * width;
+              const spread = width * 0.08;
+              const distance = x - centerX;
+              const gaussian = Math.exp(-(distance * distance) / (2 * spread * spread));
+              const quakeWave = Math.sin(x * 0.3 + time * 0.02) * quake.amplitude * envelope;
+              y += gaussian * quakeWave * eruptionBoost;
+            }
+
+            if (x === 0) {
+              ctx.moveTo(x, y);
+            } else {
+              ctx.lineTo(x, y);
+            }
+          }
+
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+
+          if (!prefersReducedMotion) {
+            window.requestAnimationFrame(drawSeismo);
+          }
+        };
+
+        resizeSeismo();
+        window.addEventListener('resize', resizeSeismo);
+        document.addEventListener('volcanoEruption', (event) => {
+          eruptionBoost = event.detail.eruption ? 1.5 : 1;
+        });
+
+        drawSeismo(performance.now());
+      }
     }
 
     // Scroll reveal animations
