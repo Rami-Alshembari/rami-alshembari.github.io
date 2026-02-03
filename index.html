@@ -273,26 +273,28 @@
 
     .hero-orb {
       position: absolute;
-      width: 260px;
-      height: 260px;
+      width: 340px;
+      height: 340px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(0, 113, 227, 0.25), rgba(0, 113, 227, 0));
-      filter: blur(2px);
-      opacity: 0.6;
+      background: radial-gradient(circle at 30% 30%, rgba(0, 113, 227, 0.4), rgba(0, 113, 227, 0));
+      filter: blur(1px);
+      opacity: 0.75;
       top: -60px;
       left: -40px;
       will-change: transform;
+      box-shadow: 0 0 60px rgba(0, 113, 227, 0.2);
     }
 
     .hero-orb.orb-two {
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle at 70% 30%, rgba(255, 122, 69, 0.2), rgba(255, 122, 69, 0));
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle at 70% 30%, rgba(255, 122, 69, 0.3), rgba(255, 122, 69, 0));
       top: auto;
       bottom: -120px;
       left: auto;
       right: -80px;
-      opacity: 0.5;
+      opacity: 0.65;
+      box-shadow: 0 0 70px rgba(255, 122, 69, 0.2);
     }
 
     .hero-particles {
@@ -310,12 +312,13 @@
       left: var(--x, 50%);
       top: var(--y, 50%);
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0, 113, 227, 0.45), rgba(0, 113, 227, 0));
-      opacity: var(--opacity, 0.25);
+      background: radial-gradient(circle, rgba(0, 113, 227, 0.7), rgba(0, 113, 227, 0));
+      opacity: var(--opacity, 0.35);
       transform: translate3d(0, 0, 0);
-      animation: particleDrift var(--duration, 10s) ease-in-out infinite;
+      animation: particleDrift var(--duration, 14s) ease-in-out infinite;
       animation-delay: var(--delay, 0s);
       will-change: transform, opacity;
+      box-shadow: 0 0 12px rgba(0, 113, 227, 0.2);
     }
 
     .hero-grid {
@@ -359,7 +362,7 @@
         opacity: var(--opacity, 0.25);
       }
       100% {
-        transform: translate3d(var(--drift-x, 12px), var(--drift-y, -12px), 0) scale(1.35);
+        transform: translate3d(var(--drift-x, 10px), var(--drift-y, -10px), 0) scale(1.2);
         opacity: var(--opacity-to, 0.12);
       }
     }
@@ -1139,13 +1142,18 @@
         animation: none;
       }
 
-      .hero-ambient,
-      .hero-particles {
-        display: none;
-      }
-
       [data-magnetic="true"] {
         transform: none;
+      }
+
+      .hero-ambient,
+      .hero-particles {
+        opacity: 0.9;
+      }
+
+      .hero-orb,
+      .hero-particles .particle {
+        animation: none;
       }
 
       .reveal,
@@ -1448,14 +1456,14 @@
         const orbTwo = ambientOrbs[1];
 
         if (orbOne) {
-          const x = Math.sin(t * 0.35) * 18;
-          const y = Math.cos(t * 0.45) * 14;
+          const x = Math.sin(t * 0.18) * 14;
+          const y = Math.cos(t * 0.22) * 12;
           orbOne.style.transform = `translate3d(${x}px, ${y}px, 0)`;
         }
 
         if (orbTwo) {
-          const x = Math.sin(t * 0.28 + 1.4) * 20;
-          const y = Math.cos(t * 0.4 + 0.8) * 12;
+          const x = Math.sin(t * 0.16 + 1.4) * 16;
+          const y = Math.cos(t * 0.2 + 0.8) * 10;
           orbTwo.style.transform = `translate3d(${x}px, ${y}px, 0)`;
         }
 
@@ -1468,7 +1476,7 @@
     // Floating particles behind the hero
     const heroParticles = document.getElementById('heroParticles');
     if (heroParticles && !prefersReducedMotion) {
-      const particleCount = 18;
+      const particleCount = 24;
       let resizeTimeout;
 
       const randomBetween = (min, max) => min + Math.random() * (max - min);
@@ -1481,11 +1489,11 @@
           const particle = document.createElement('span');
           particle.className = 'particle';
 
-          const size = randomBetween(6, 14);
-          const duration = randomBetween(8, 16);
-          const driftX = randomBetween(-20, 20);
-          const driftY = randomBetween(-20, 20);
-          const opacity = randomBetween(0.12, 0.32);
+          const size = randomBetween(8, 18);
+          const duration = randomBetween(12, 22);
+          const driftX = randomBetween(-14, 14);
+          const driftY = randomBetween(-14, 14);
+          const opacity = randomBetween(0.22, 0.46);
 
           particle.style.setProperty('--x', `${randomBetween(5, 95)}%`);
           particle.style.setProperty('--y', `${randomBetween(5, 95)}%`);
