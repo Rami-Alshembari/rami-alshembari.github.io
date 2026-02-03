@@ -260,6 +260,62 @@
 
     .hero {
       padding: clamp(3rem, 8vw, 6rem) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-ambient {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-orb {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(0, 113, 227, 0.25), rgba(0, 113, 227, 0));
+      filter: blur(2px);
+      opacity: 0.6;
+      top: -60px;
+      left: -40px;
+      will-change: transform;
+    }
+
+    .hero-orb.orb-two {
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle at 70% 30%, rgba(255, 122, 69, 0.2), rgba(255, 122, 69, 0));
+      top: auto;
+      bottom: -120px;
+      left: auto;
+      right: -80px;
+      opacity: 0.5;
+    }
+
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .hero-particles .particle {
+      position: absolute;
+      width: var(--size, 8px);
+      height: var(--size, 8px);
+      left: var(--x, 50%);
+      top: var(--y, 50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 113, 227, 0.45), rgba(0, 113, 227, 0));
+      opacity: var(--opacity, 0.25);
+      transform: translate3d(0, 0, 0);
+      animation: particleDrift var(--duration, 10s) ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+      will-change: transform, opacity;
     }
 
     .hero-grid {
@@ -267,6 +323,8 @@
       grid-template-columns: 1fr 1fr;
       gap: clamp(3rem, 6vw, 5rem);
       align-items: center;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-text h1 {
@@ -292,6 +350,17 @@
       to {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    @keyframes particleDrift {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+        opacity: var(--opacity, 0.25);
+      }
+      100% {
+        transform: translate3d(var(--drift-x, 12px), var(--drift-y, -12px), 0) scale(1.35);
+        opacity: var(--opacity-to, 0.12);
       }
     }
 
@@ -351,6 +420,26 @@
 
     .button-primary:active {
       transform: translateY(0);
+    }
+
+    .button-primary[data-magnetic="true"],
+    .link-cta[data-magnetic="true"] {
+      --magnet-x: 0px;
+      --magnet-y: 0px;
+      transform: translate3d(var(--magnet-x), var(--magnet-y), 0);
+      will-change: transform;
+    }
+
+    .button-primary[data-magnetic="true"]:hover {
+      transform: translate3d(var(--magnet-x), calc(var(--magnet-y) - 2px), 0);
+    }
+
+    .button-primary[data-magnetic="true"]:active {
+      transform: translate3d(var(--magnet-x), var(--magnet-y), 0);
+    }
+
+    .link-cta[data-magnetic="true"]:hover {
+      transform: translate3d(var(--magnet-x), calc(var(--magnet-y) - 1px), 0);
     }
 
     .link-cta {
@@ -427,6 +516,14 @@
       color: var(--color-cta);
       transform: translateY(-2px);
       box-shadow: var(--shadow-soft);
+    }
+
+    .pill-list span.pill-pulse {
+      background: white;
+      border-color: rgba(0, 113, 227, 0.7);
+      color: var(--color-cta);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0, 113, 227, 0.2);
     }
 
     section {
@@ -1042,6 +1139,15 @@
         animation: none;
       }
 
+      .hero-ambient,
+      .hero-particles {
+        display: none;
+      }
+
+      [data-magnetic="true"] {
+        transform: none;
+      }
+
       .reveal,
       .reveal.is-visible {
         opacity: 1;
@@ -1079,6 +1185,11 @@
 
   <main>
     <section class="hero page" id="top">
+      <div class="hero-ambient" aria-hidden="true">
+        <div class="hero-orb orb-one"></div>
+        <div class="hero-orb orb-two"></div>
+      </div>
+      <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
       <div class="hero-grid">
         <div class="hero-photo">
           <img class="parallax-image" data-parallax="0.08" src="portrait.jpg" alt="Portrait of Rami Alshembari" loading="eager" width="300" height="300" />
@@ -1087,8 +1198,8 @@
           <h1 data-animate-name="true">Rami Alshembari</h1>
           <p class="typewriter" data-typewriter="true">Geophysical volcanologist interpreting volcano deformation with physics-based models and multidisciplinary datasets.</p>
           <div class="hero-cta">
-            <button class="button-primary" onclick="location.href='mailto:R.Alshembari@exeter.ac.uk'">Get in Touch</button>
-            <a class="link-cta" href="#publications">View Publications →</a>
+            <button class="button-primary" data-magnetic="true" data-magnet-strength="20" onclick="location.href='mailto:R.Alshembari@exeter.ac.uk'">Get in Touch</button>
+            <a class="link-cta" data-magnetic="true" data-magnet-strength="14" href="#publications">View Publications →</a>
           </div>
           <div class="pill-list">
             <span>Postdoctoral Fellow</span>
@@ -1276,6 +1387,8 @@
     // Update year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Animate name on load
     const nameHeading = document.querySelector('[data-animate-name="true"]');
     if (nameHeading) {
@@ -1300,7 +1413,7 @@
       const text = target.textContent.trim();
       if (!text) return;
 
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (prefersReducedMotion) {
         target.textContent = text;
         return;
       }
@@ -1324,6 +1437,128 @@
 
       window.setTimeout(tick, 200);
     });
+
+    // Ambient hero orbs motion
+    const ambientOrbs = document.querySelectorAll('.hero-orb');
+    if (ambientOrbs.length && !prefersReducedMotion) {
+      const startTime = performance.now();
+      const animateOrbs = (time) => {
+        const t = (time - startTime) / 1000;
+        const orbOne = ambientOrbs[0];
+        const orbTwo = ambientOrbs[1];
+
+        if (orbOne) {
+          const x = Math.sin(t * 0.35) * 18;
+          const y = Math.cos(t * 0.45) * 14;
+          orbOne.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        }
+
+        if (orbTwo) {
+          const x = Math.sin(t * 0.28 + 1.4) * 20;
+          const y = Math.cos(t * 0.4 + 0.8) * 12;
+          orbTwo.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        }
+
+        window.requestAnimationFrame(animateOrbs);
+      };
+
+      window.requestAnimationFrame(animateOrbs);
+    }
+
+    // Floating particles behind the hero
+    const heroParticles = document.getElementById('heroParticles');
+    if (heroParticles && !prefersReducedMotion) {
+      const particleCount = 18;
+      let resizeTimeout;
+
+      const randomBetween = (min, max) => min + Math.random() * (max - min);
+
+      const buildParticles = () => {
+        heroParticles.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+
+        for (let i = 0; i < particleCount; i += 1) {
+          const particle = document.createElement('span');
+          particle.className = 'particle';
+
+          const size = randomBetween(6, 14);
+          const duration = randomBetween(8, 16);
+          const driftX = randomBetween(-20, 20);
+          const driftY = randomBetween(-20, 20);
+          const opacity = randomBetween(0.12, 0.32);
+
+          particle.style.setProperty('--x', `${randomBetween(5, 95)}%`);
+          particle.style.setProperty('--y', `${randomBetween(5, 95)}%`);
+          particle.style.setProperty('--size', `${size}px`);
+          particle.style.setProperty('--duration', `${duration}s`);
+          particle.style.setProperty('--delay', `${randomBetween(-duration, 0)}s`);
+          particle.style.setProperty('--drift-x', `${driftX}px`);
+          particle.style.setProperty('--drift-y', `${driftY}px`);
+          particle.style.setProperty('--opacity', opacity.toFixed(2));
+          particle.style.setProperty('--opacity-to', Math.max(opacity - 0.12, 0.08).toFixed(2));
+
+          fragment.appendChild(particle);
+        }
+
+        heroParticles.appendChild(fragment);
+      };
+
+      buildParticles();
+
+      window.addEventListener('resize', () => {
+        window.clearTimeout(resizeTimeout);
+        resizeTimeout = window.setTimeout(buildParticles, 200);
+      });
+    }
+
+    // Gentle pulse for hero skills
+    const pillItems = document.querySelectorAll('.pill-list span');
+    if (pillItems.length && !prefersReducedMotion) {
+      let activeIndex = 0;
+      pillItems[activeIndex].classList.add('pill-pulse');
+
+      window.setInterval(() => {
+        pillItems[activeIndex].classList.remove('pill-pulse');
+        activeIndex = (activeIndex + 1) % pillItems.length;
+        pillItems[activeIndex].classList.add('pill-pulse');
+      }, 1600);
+    }
+
+    // Magnetic hover effect for call-to-action buttons
+    const magneticTargets = document.querySelectorAll('[data-magnetic="true"]');
+    if (magneticTargets.length && !prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
+      magneticTargets.forEach(target => {
+        const strength = Number(target.dataset.magnetStrength) || 16;
+        let bounds = null;
+
+        const setBounds = () => {
+          bounds = target.getBoundingClientRect();
+        };
+
+        const handleMove = (event) => {
+          if (!bounds) {
+            setBounds();
+          }
+          const offsetX = event.clientX - bounds.left - bounds.width / 2;
+          const offsetY = event.clientY - bounds.top - bounds.height / 2;
+          const translateX = (offsetX / bounds.width) * strength;
+          const translateY = (offsetY / bounds.height) * strength;
+
+          target.style.setProperty('--magnet-x', `${translateX.toFixed(2)}px`);
+          target.style.setProperty('--magnet-y', `${translateY.toFixed(2)}px`);
+        };
+
+        const reset = () => {
+          target.style.setProperty('--magnet-x', '0px');
+          target.style.setProperty('--magnet-y', '0px');
+        };
+
+        target.addEventListener('mouseenter', setBounds);
+        target.addEventListener('mousemove', handleMove);
+        target.addEventListener('mouseleave', reset);
+        window.addEventListener('resize', setBounds);
+      });
+    }
 
     // Mobile menu toggle
     const menuToggle = document.getElementById('menuToggle');
