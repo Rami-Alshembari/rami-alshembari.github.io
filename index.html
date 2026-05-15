@@ -1013,6 +1013,230 @@
       color: var(--color-text-secondary);
     }
 
+    /* News feed */
+    .news-list {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .news-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 1.75rem;
+      align-items: start;
+      background: white;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-card);
+      padding: 1.5rem 1.75rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .news-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--color-cta), #00a6ff);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.35s ease;
+    }
+    .news-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-medium);
+      border-color: var(--color-border-light);
+    }
+    .news-item:hover::before { transform: scaleY(1); }
+    .news-date {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-cta);
+    }
+    .news-body h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+    }
+    .news-body p {
+      font-size: 0.95rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Talks */
+    .talks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .talk-card {
+      background: white;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-card);
+      padding: 1.75rem;
+      transition: var(--transition);
+      position: relative;
+    }
+    .talk-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--color-cta);
+    }
+    .talk-type {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-cta);
+      background: rgba(0, 113, 227, 0.08);
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+    }
+    .talk-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+    .talk-venue {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .talk-date {
+      font-size: 0.82rem;
+      color: var(--color-text-secondary);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* Awards */
+    .awards-list {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .award-item {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 1.25rem;
+      align-items: center;
+      background: white;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-card);
+      padding: 1.25rem 1.75rem;
+      transition: var(--transition);
+    }
+    .award-item:hover {
+      transform: translateX(6px);
+      box-shadow: var(--shadow-soft);
+      border-color: var(--color-cta);
+    }
+    .award-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(0, 113, 227, 0.12), rgba(0, 166, 255, 0.18));
+      color: var(--color-cta);
+      font-size: 1.4rem;
+    }
+    .award-body h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.2rem;
+    }
+    .award-body p {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+    .award-year {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--color-cta);
+    }
+
+    /* Contact */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: clamp(2rem, 5vw, 3rem);
+      align-items: stretch;
+      margin-top: 1rem;
+    }
+    .contact-intro {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-card);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .contact-intro h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.85rem;
+    }
+    .contact-intro p {
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      color: var(--color-cta);
+      font-size: 1.05rem;
+    }
+    .contact-email:hover { color: var(--color-cta-hover); }
+    .contact-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      align-content: start;
+    }
+    .contact-link {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      background: white;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: var(--radius-card);
+      padding: 1.25rem 1.4rem;
+      transition: var(--transition);
+    }
+    .contact-link:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-medium);
+      border-color: var(--color-cta);
+    }
+    .contact-link-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+    }
+    .contact-link-name {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color-text-main);
+    }
+    .contact-link:hover .contact-link-name { color: var(--color-cta); }
+
+    @media (max-width: 1024px) {
+      .contact-wrap { grid-template-columns: 1fr; }
+      .news-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .award-item { grid-template-columns: 48px 1fr; }
+      .award-year { grid-column: 2; }
+    }
+
     footer {
       background: linear-gradient(180deg, #fafafa 0%, #f5f5f7 100%);
       margin-top: 4rem;
@@ -1287,7 +1511,10 @@
             </div>
           </div>
           <a href="#publications">Publications</a>
-          <a href="mailto:R.Alshembari@exeter.ac.uk">Contact</a>
+          <a href="#talks">Talks</a>
+          <a href="#awards">Awards</a>
+          <a href="#news">News</a>
+          <a href="#contact">Contact</a>
         </div>
         <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation">
           <span>Menu</span>
@@ -1432,6 +1659,141 @@
         <div class="publication-item reveal">
           <span>2020</span>
           <p><strong>Rami Alshembari</strong>, S. Parolai, T. Boxberger, D. Sandron, M. Pilz, N. Sylacheva. <a class="link-cta" href="https://doi.org/10.1785/0220190114" target="_blank" rel="noopener">Seasonality in site response: An example from two historical earthquakes in Kazakhstan.</a> <em>Seismological Research Letters</em>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="talks">
+      <h2 class="section-title">Talks & Presentations</h2>
+      <p class="section-subhead">Invited talks, conference presentations, and scientific seminars on volcano deformation and eruption forecasting.</p>
+      <div class="talks-grid">
+        <div class="talk-card reveal">
+          <span class="talk-type">Invited Talk</span>
+          <h3>Poroelastic dynamic magma mush models for volcano deformation</h3>
+          <p class="talk-venue">Sakurajima Volcano Observatory, Kyoto University</p>
+          <p class="talk-date">2025</p>
+        </div>
+        <div class="talk-card reveal">
+          <span class="talk-type">Conference</span>
+          <h3>Benchmarking poroelastic models of magma mush reservoirs</h3>
+          <p class="talk-venue">EGU General Assembly, Vienna, Austria</p>
+          <p class="talk-date">2024</p>
+        </div>
+        <div class="talk-card reveal">
+          <span class="talk-type">Seminar</span>
+          <h3>Magma supply dynamics at Soufrière Hills Volcano, Montserrat</h3>
+          <p class="talk-venue">Montserrat Volcano Observatory</p>
+          <p class="talk-date">2024</p>
+        </div>
+        <div class="talk-card reveal">
+          <span class="talk-type">Conference</span>
+          <h3>Rheological control of magmatic systems on volcano deformation</h3>
+          <p class="talk-venue">AGU Fall Meeting, San Francisco, USA</p>
+          <p class="talk-date">2023</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="awards">
+      <h2 class="section-title">Awards & Grants</h2>
+      <p class="section-subhead">Selected fellowships, awards, and research funding.</p>
+      <div class="awards-list">
+        <div class="award-item reveal">
+          <div class="award-icon">★</div>
+          <div class="award-body">
+            <h3>DV3M Postdoctoral Fellowship</h3>
+            <p>Dynamic Visco-elastic Volcano-Mush Modelling project, University of Exeter</p>
+          </div>
+          <div class="award-year">2023 – Present</div>
+        </div>
+        <div class="award-item reveal">
+          <div class="award-icon">✦</div>
+          <div class="award-body">
+            <h3>PhD Studentship in Volcano Geophysics</h3>
+            <p>Funded doctoral research at the University of Exeter, Penryn</p>
+          </div>
+          <div class="award-year">2019 – 2023</div>
+        </div>
+        <div class="award-item reveal">
+          <div class="award-icon">◆</div>
+          <div class="award-body">
+            <h3>ICTP Postgraduate Diploma Fellowship</h3>
+            <p>International Centre for Theoretical Physics, Trieste, Italy</p>
+          </div>
+          <div class="award-year">2017 – 2018</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="news">
+      <h2 class="section-title">News & Updates</h2>
+      <p class="section-subhead">Recent publications, fieldwork, and research milestones.</p>
+      <div class="news-list">
+        <div class="news-item reveal">
+          <div class="news-date">May 2025</div>
+          <div class="news-body">
+            <h3>New paper in JVGR</h3>
+            <p>Published "Benchmarking and testing poroelastic dynamic magma mush volcano deformation models" in the Journal of Volcanology and Geothermal Research.</p>
+          </div>
+        </div>
+        <div class="news-item reveal">
+          <div class="news-date">Mar 2025</div>
+          <div class="news-body">
+            <h3>Fieldwork at Sakurajima</h3>
+            <p>Field campaign at Sakurajima Volcano, Japan — collaborating with the Sakurajima Volcano Research Centre on deformation monitoring.</p>
+          </div>
+        </div>
+        <div class="news-item reveal">
+          <div class="news-date">Oct 2024</div>
+          <div class="news-body">
+            <h3>Fieldwork at Montserrat</h3>
+            <p>Visit to the Soufrière Hills Volcano with the Montserrat Volcano Observatory, supporting long-term unrest modelling.</p>
+          </div>
+        </div>
+        <div class="news-item reveal">
+          <div class="news-date">Aug 2024</div>
+          <div class="news-body">
+            <h3>EPSL publication</h3>
+            <p>"Declining magma supply to a poroelastic magma mush explains long-term deformation at Soufrière Hills Volcano" featured in Earth and Planetary Science Letters.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="contact">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-subhead">Open to collaborations on volcano deformation modelling, hazard forecasting, and multidisciplinary geophysics.</p>
+      <div class="contact-wrap">
+        <div class="contact-intro reveal">
+          <h3>Let's collaborate</h3>
+          <p>Whether you're working on a related research problem, exploring a joint field campaign, or interested in discussing volcano geodesy and poroelastic modelling, I'd be glad to hear from you.</p>
+          <a class="contact-email" data-magnetic="true" data-magnet-strength="14" href="mailto:R.Alshembari@exeter.ac.uk">R.Alshembari@exeter.ac.uk →</a>
+        </div>
+        <div class="contact-links">
+          <a class="contact-link reveal" href="https://scholar.google.com/citations?user=D3kNIOEAAAAJ&hl=en" target="_blank" rel="noopener">
+            <span class="contact-link-label">Profile</span>
+            <span class="contact-link-name">Google Scholar</span>
+          </a>
+          <a class="contact-link reveal" href="https://experts.exeter.ac.uk/36383-rami-alshembari/about" target="_blank" rel="noopener">
+            <span class="contact-link-label">Affiliation</span>
+            <span class="contact-link-name">University of Exeter</span>
+          </a>
+          <a class="contact-link reveal" href="https://orcid.org/" target="_blank" rel="noopener">
+            <span class="contact-link-label">Identifier</span>
+            <span class="contact-link-name">ORCID</span>
+          </a>
+          <a class="contact-link reveal" href="https://github.com/" target="_blank" rel="noopener">
+            <span class="contact-link-label">Code</span>
+            <span class="contact-link-name">GitHub</span>
+          </a>
+          <a class="contact-link reveal" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+            <span class="contact-link-label">Network</span>
+            <span class="contact-link-name">LinkedIn</span>
+          </a>
+          <a class="contact-link reveal" href="https://www.researchgate.net/" target="_blank" rel="noopener">
+            <span class="contact-link-label">Research</span>
+            <span class="contact-link-name">ResearchGate</span>
+          </a>
         </div>
       </div>
     </section>
