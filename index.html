@@ -6,6 +6,9 @@
   <meta name="description" content="Rami Alshembari - Geophysical volcanologist specializing in volcano deformation modeling and eruption forecasting" />
   <meta name="theme-color" content="#0071e3" />
   <title>Rami Alshembari, PhD | Geophysical Volcanologist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,400;1,9..144,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --color-bg-light: #ffffff;
@@ -25,6 +28,11 @@
       --shadow-medium: 0 12px 32px rgba(0, 0, 0, 0.08);
       --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.12);
       --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+      --font-serif: 'Fraunces', 'Iowan Old Style', 'Apple Garamond', Georgia, serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, "SF Mono", Menlo, monospace;
+      --color-accent: #ff7a45;
+      --color-deep: #0a2540;
     }
 
     * {
@@ -41,12 +49,32 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", 
-        system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: var(--font-sans);
       background: var(--color-bg-light);
       color: var(--color-text-main);
-      line-height: 1.6;
-      font-size: 16px;
+      line-height: 1.65;
+      font-size: 16.5px;
+      font-feature-settings: "ss01", "cv11", "cv02";
+      letter-spacing: -0.005em;
+    }
+
+    /* Animated mesh gradient that subtly drifts behind content */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -20% -20% -20% -20%;
+      z-index: -1;
+      background:
+        radial-gradient(40% 35% at 18% 22%, rgba(0, 113, 227, 0.10), transparent 70%),
+        radial-gradient(35% 30% at 82% 18%, rgba(255, 122, 69, 0.09), transparent 70%),
+        radial-gradient(45% 40% at 50% 88%, rgba(10, 37, 64, 0.06), transparent 70%);
+      animation: meshDrift 28s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes meshDrift {
+      0%   { transform: translate3d(0, 0, 0) scale(1); }
+      50%  { transform: translate3d(2%, -2%, 0) scale(1.05); }
+      100% { transform: translate3d(-2%, 2%, 0) scale(1.02); }
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -539,10 +567,45 @@
       padding-bottom: clamp(0em, 1vw, 1rem);
     }
 
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-cta);
+      margin-bottom: 1.1rem;
+    }
+    .section-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--color-cta), transparent);
+    }
+    .section-eyebrow .num {
+      color: var(--color-text-secondary);
+      font-weight: 600;
+    }
+
     .section-title {
-      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-size: clamp(2.1rem, 5vw, 3rem);
       font-weight: 700;
       margin-bottom: 1rem;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .section-title .accent {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      background: linear-gradient(135deg, var(--color-cta) 0%, #00a6ff 60%, var(--color-accent) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      padding-right: 0.05em;
     }
 
     .section-subhead {
@@ -1011,6 +1074,66 @@
 
     .publication-item em {
       color: var(--color-text-secondary);
+    }
+
+    /* Hero status badge + stats */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.4rem 0.95rem;
+      background: rgba(0, 113, 227, 0.06);
+      border: 1px solid rgba(0, 113, 227, 0.18);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--color-cta);
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #34c759;
+      box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.6);
+      animation: statusPulse 2s infinite;
+    }
+    @keyframes statusPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.55); }
+      70%  { box-shadow: 0 0 0 10px rgba(52, 199, 89, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(52, 199, 89, 0); }
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1rem, 3vw, 2rem);
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-border-light);
+    }
+    .hero-stat-num {
+      font-family: var(--font-serif);
+      font-weight: 500;
+      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--color-text-main);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .hero-stat-num .plus {
+      color: var(--color-cta);
+      font-style: italic;
+    }
+    .hero-stat-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      font-weight: 600;
     }
 
     /* News feed */
@@ -1535,6 +1658,7 @@
           <img class="parallax-image" data-parallax="0.08" src="portrait.jpg" alt="Portrait of Rami Alshembari" loading="eager" width="300" height="300" />
         </div>
         <div class="hero-text">
+          <div class="status-badge"><span class="status-dot"></span>Postdoctoral Fellow · University of Exeter</div>
           <h1 data-animate-name="true">Rami Alshembari</h1>
           <p class="typewriter" data-typewriter="true">Geophysical volcanologist interpreting volcano deformation with physics-based models and multidisciplinary datasets.</p>
           <div class="hero-cta">
@@ -1542,19 +1666,32 @@
             <a class="link-cta" data-magnetic="true" data-magnet-strength="14" href="#publications">View Publications →</a>
           </div>
           <div class="pill-list">
-            <span>Postdoctoral Fellow</span>
             <span>DV3M Project</span>
-            <span>University of Exeter</span>
             <span>Volcano Deformation</span>
             <span>Numerical Modelling</span>
             <span>Hazard Forecasting</span>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <span class="hero-stat-num" data-count-to="8"><span class="plus">+</span>8</span>
+              <span class="hero-stat-label">Publications</span>
+            </div>
+            <div>
+              <span class="hero-stat-num" data-count-to="6">6</span>
+              <span class="hero-stat-label">Years Research</span>
+            </div>
+            <div>
+              <span class="hero-stat-num" data-count-to="2">2</span>
+              <span class="hero-stat-label">Field Campaigns</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="page" id="overview">
-      <h2 class="section-title">Research Overview</h2>
+      <div class="section-eyebrow"><span class="num">01</span>Overview</div>
+      <h2 class="section-title">Research <span class="accent">overview</span></h2>
       <p class="section-subhead">I apply physics-based numerical models to interpret the dynamics of active volcanoes and reduce uncertainty in eruption forecasting.</p>
       <div class="info-grid">
         <div class="info-card reveal">
@@ -1573,7 +1710,8 @@
     </section>
 
     <section class="page" id="research">
-      <h2 class="section-title">Research Outputs</h2>
+      <div class="section-eyebrow"><span class="num">02</span>Outputs</div>
+      <h2 class="section-title">Research <span class="accent">outputs</span></h2>
       <p class="section-subhead">Explore publications and collaborations.</p>
       <div class="split">
         <div>
@@ -1599,7 +1737,8 @@
     </section>
 
     <section class="page" id="education">
-      <h2 class="section-title">Education</h2>
+      <div class="section-eyebrow"><span class="num">03</span>Background</div>
+      <h2 class="section-title">Education &amp; <span class="accent">training</span></h2>
       <div class="timeline">
         <div class="timeline-item reveal">
           <div class="timeline-year">2019 – 2023</div>
@@ -1626,7 +1765,8 @@
     </section>
 
     <section class="page" id="publications">
-      <h2 class="section-title">Selected Publications</h2>
+      <div class="section-eyebrow"><span class="num">04</span>Peer-Reviewed</div>
+      <h2 class="section-title">Selected <span class="accent">publications</span></h2>
       <div class="publication-list">
         <div class="publication-item reveal">
           <span>2025</span>
@@ -1664,7 +1804,8 @@
     </section>
 
     <section class="page" id="talks">
-      <h2 class="section-title">Talks & Presentations</h2>
+      <div class="section-eyebrow"><span class="num">05</span>Speaking</div>
+      <h2 class="section-title">Talks &amp; <span class="accent">presentations</span></h2>
       <p class="section-subhead">Invited talks, conference presentations, and scientific seminars on volcano deformation and eruption forecasting.</p>
       <div class="talks-grid">
         <div class="talk-card reveal">
@@ -1695,7 +1836,8 @@
     </section>
 
     <section class="page" id="awards">
-      <h2 class="section-title">Awards & Grants</h2>
+      <div class="section-eyebrow"><span class="num">06</span>Recognition</div>
+      <h2 class="section-title">Awards &amp; <span class="accent">grants</span></h2>
       <p class="section-subhead">Selected fellowships, awards, and research funding.</p>
       <div class="awards-list">
         <div class="award-item reveal">
@@ -1726,7 +1868,8 @@
     </section>
 
     <section class="page" id="news">
-      <h2 class="section-title">News & Updates</h2>
+      <div class="section-eyebrow"><span class="num">07</span>Latest</div>
+      <h2 class="section-title">News &amp; <span class="accent">updates</span></h2>
       <p class="section-subhead">Recent publications, fieldwork, and research milestones.</p>
       <div class="news-list">
         <div class="news-item reveal">
@@ -1761,7 +1904,8 @@
     </section>
 
     <section class="page" id="contact">
-      <h2 class="section-title">Get in Touch</h2>
+      <div class="section-eyebrow"><span class="num">08</span>Contact</div>
+      <h2 class="section-title">Get in <span class="accent">touch</span></h2>
       <p class="section-subhead">Open to collaborations on volcano deformation modelling, hazard forecasting, and multidisciplinary geophysics.</p>
       <div class="contact-wrap">
         <div class="contact-intro reveal">
@@ -1864,6 +2008,41 @@
   <script>
     // Update year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Animated count-up for hero stats
+    const countTargets = document.querySelectorAll('[data-count-to]');
+    if (countTargets.length) {
+      const animateCount = (el) => {
+        const target = parseInt(el.dataset.countTo, 10);
+        const prefix = el.querySelector('.plus') ? '+' : '';
+        const duration = 1400;
+        const start = performance.now();
+        const tick = (now) => {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          const value = Math.floor(eased * target);
+          el.textContent = '';
+          if (prefix) {
+            const span = document.createElement('span');
+            span.className = 'plus';
+            span.textContent = prefix;
+            el.appendChild(span);
+          }
+          el.appendChild(document.createTextNode(value));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+      const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            animateCount(e.target);
+            statObserver.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.6 });
+      countTargets.forEach((el) => statObserver.observe(el));
+    }
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
