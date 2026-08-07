@@ -1,2496 +1,441 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Rami Alshembari - Geophysical volcanologist specializing in volcano deformation modeling and eruption forecasting" />
-  <meta name="theme-color" content="#0071e3" />
-  <title>Rami Alshembari, PhD | Geophysical Volcanologist</title>
-  <style>
-    :root {
-      --color-bg-light: #ffffff;
-      --color-bg-section: #fafafa;
-      --color-text-main: #1d1d1f;
-      --color-text-secondary: #6e6e73;
-      --color-link: #0066cc;
-      --color-cta: #0071e3;
-      --color-cta-hover: #0077ed;
-      --color-border-subtle: #e5e5e7;
-      --color-border-light: #f0f0f2;
-      --container-width: 1200px;
-      --radius-large: 28px;
-      --radius-card: 20px;
-      --radius-button: 999px;
-      --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
-      --shadow-medium: 0 12px 32px rgba(0, 0, 0, 0.08);
-      --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.12);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", 
-        system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--color-bg-light);
-      color: var(--color-text-main);
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .page {
-      max-width: var(--container-width);
-      margin: 0 auto;
-      padding: 0 clamp(1rem, 5vw, 2rem);
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid var(--color-border-light);
-      transition: var(--transition);
-    }
-
-    header.scrolled {
-      box-shadow: var(--shadow-soft);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 72px;
-      gap: 1rem;
-      position: relative;
-    }
-
-    .logo {
-      font-size: clamp(1.1rem, 3vw, 1.3rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--color-text-main);
-      transition: var(--transition);
-      flex-shrink: 0;
-    }
-
-    .logo:hover {
-      color: var(--color-cta);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: clamp(1rem, 3vw, 2rem);
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      color: var(--color-text-secondary);
-      padding: 0.5rem 0;
-      position: relative;
-      white-space: nowrap;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--color-cta);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--color-cta);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-links a.active {
-      color: var(--color-cta);
-    }
-
-    .nav-links a.active::after {
-      width: 100%;
-    }
-
-    .scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 0%;
-      background: var(--color-cta);
-      z-index: 2000;
-      transition: width 0.12s linear;
-    }
-
-    .back-to-top {
-      position: fixed;
-      right: clamp(1rem, 4vw, 2.5rem);
-      bottom: clamp(1rem, 4vw, 2.5rem);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      border: 1px solid var(--color-border-subtle);
-      background: #ffffff;
-      color: var(--color-text-main);
-      display: grid;
-      place-items: center;
-      font-size: 1.1rem;
-      box-shadow: var(--shadow-soft);
-      opacity: 0;
-      transform: translateY(10px);
-      pointer-events: none;
-      transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-    }
-
-    .back-to-top.show {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: auto;
-    }
-
-    .back-to-top:hover {
-      background: var(--color-bg-section);
-      border-color: var(--color-cta);
-      color: var(--color-cta);
-    }
-
-    /* Dropdown menu */
-    .nav-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .nav-dropdown > a {
-      cursor: pointer;
-      pointer-events: auto;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: calc(100% + 0.5rem);
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      min-width: 200px;
-      box-shadow: var(--shadow-medium);
-      border: 1px solid var(--color-border-subtle);
-      border-radius: 12px;
-      padding: 0.5rem 0;
-      z-index: 1000;
-    }
-
-    .nav-dropdown:hover .dropdown-content,
-    .dropdown-content:hover {
-      display: block;
-    }
-
-    .dropdown-content a {
-      display: block;
-      padding: 0.75rem 1.25rem;
-      color: var(--color-text-secondary);
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-
-    .dropdown-content a::after {
-      display: none;
-    }
-
-    .dropdown-content a:hover {
-      background: var(--color-bg-section);
-      color: var(--color-cta);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: var(--color-bg-light);
-      border: 1px solid var(--color-border-subtle);
-      border-radius: 8px;
-      padding: 0.6rem 1rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--color-text-main);
-      cursor: pointer;
-      transition: var(--transition);
-      flex-shrink: 0;
-      z-index: 1002;
-    }
-
-    .menu-toggle:hover {
-      background: var(--color-bg-section);
-      border-color: var(--color-cta);
-    }
-
-    .hero {
-      padding: clamp(3rem, 8vw, 6rem) 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-ambient {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .hero-orb {
-      position: absolute;
-      width: 340px;
-      height: 340px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(0, 113, 227, 0.4), rgba(0, 113, 227, 0));
-      filter: blur(1px);
-      opacity: 0.75;
-      top: -60px;
-      left: -40px;
-      will-change: transform;
-      box-shadow: 0 0 60px rgba(0, 113, 227, 0.2);
-    }
-
-    .hero-orb.orb-two {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle at 70% 30%, rgba(255, 122, 69, 0.3), rgba(255, 122, 69, 0));
-      top: auto;
-      bottom: -120px;
-      left: auto;
-      right: -80px;
-      opacity: 0.65;
-      box-shadow: 0 0 70px rgba(255, 122, 69, 0.2);
-    }
-
-    .hero-particles {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .hero-particles .particle {
-      position: absolute;
-      width: var(--size, 8px);
-      height: var(--size, 8px);
-      left: var(--x, 50%);
-      top: var(--y, 50%);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0, 113, 227, 0.7), rgba(0, 113, 227, 0));
-      opacity: var(--opacity, 0.35);
-      transform: translate3d(0, 0, 0);
-      animation: particleDrift var(--duration, 14s) ease-in-out infinite;
-      animation-delay: var(--delay, 0s);
-      will-change: transform, opacity;
-      box-shadow: 0 0 12px rgba(0, 113, 227, 0.2);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(3rem, 6vw, 5rem);
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .hero-text h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-      color: var(--color-text-main);
-    }
-
-    .name-letter {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(12px);
-      animation: nameRise 0.6s ease forwards;
-      background: linear-gradient(135deg, var(--color-text-main) 0%, #4a4a4f 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: var(--color-text-main);
-    }
-
-    @keyframes nameRise {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes particleDrift {
-      0% {
-        transform: translate3d(0, 0, 0) scale(1);
-        opacity: var(--opacity, 0.25);
-      }
-      100% {
-        transform: translate3d(var(--drift-x, 10px), var(--drift-y, -10px), 0) scale(1.2);
-        opacity: var(--opacity-to, 0.12);
-      }
-    }
-
-    .hero-text p {
-      font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-      color: var(--color-text-secondary);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .typewriter {
-      display: inline-block;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 2rem;
-    }
-
-    .button-primary {
-      background: var(--color-cta);
-      color: white;
-      padding: 1rem 2.5rem;
-      border-radius: var(--radius-button);
-      border: none;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.25);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .button-primary::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s;
-    }
-
-    .button-primary:hover::before {
-      left: 100%;
-    }
-
-    .button-primary:hover {
-      background: var(--color-cta-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 113, 227, 0.35);
-    }
-
-    .button-primary:active {
-      transform: translateY(0);
-    }
-
-    .button-primary[data-magnetic="true"],
-    .link-cta[data-magnetic="true"] {
-      --magnet-x: 0px;
-      --magnet-y: 0px;
-      transform: translate3d(var(--magnet-x), var(--magnet-y), 0);
-      will-change: transform;
-    }
-
-    .button-primary[data-magnetic="true"]:hover {
-      transform: translate3d(var(--magnet-x), calc(var(--magnet-y) - 2px), 0);
-    }
-
-    .button-primary[data-magnetic="true"]:active {
-      transform: translate3d(var(--magnet-x), var(--magnet-y), 0);
-    }
-
-    .link-cta[data-magnetic="true"]:hover {
-      transform: translate3d(var(--magnet-x), calc(var(--magnet-y) - 1px), 0);
-    }
-
-    .link-cta {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--color-cta);
-      padding: 1rem 1.5rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: var(--transition);
-    }
-
-    .link-cta:hover {
-      color: var(--color-cta-hover);
-      gap: 0.8rem;
-    }
-
-    .hero-photo {
-      position: relative;
-      width: 100%;
-      max-width: 380px;
-      aspect-ratio: 1;
-      border-radius: var(--radius-large);
-      overflow: hidden;
-      box-shadow: var(--shadow-medium);
-      transition: var(--transition);
-      margin: 0 auto;
-      transform: perspective(900px) translateY(var(--hover-lift, 0px)) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
-      transform-style: preserve-3d;
-      will-change: transform;
-    }
-
-    .hero-photo:hover {
-      --hover-lift: -8px;
-      box-shadow: var(--shadow-hover);
-    }
-
-    .hero-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .parallax-image {
-      transform: translateY(0);
-      transition: transform 0.25s ease-out;
-      will-change: transform;
-    }
-
-    .pill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .pill-list span {
-      padding: 0.5rem 1rem;
-      background: var(--color-bg-section);
-      border: 1px solid var(--color-border-subtle);
-      border-radius: var(--radius-button);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--color-text-secondary);
-      transition: var(--transition);
-    }
-
-    .pill-list span:hover {
-      background: white;
-      border-color: var(--color-cta);
-      color: var(--color-cta);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .pill-list span.pill-pulse {
-      background: white;
-      border-color: rgba(0, 113, 227, 0.7);
-      color: var(--color-cta);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(0, 113, 227, 0.2);
-    }
-
-    section {
-      padding: clamp(4rem, 10vw, 7rem) 0;
-    }
-
-    section:not(:last-of-type) {
-      border-bottom: 1px solid var(--color-border-light);
-      margin-bottom: clamp(0rem, 0vw, 4rem);
-      padding-bottom: clamp(0em, 1vw, 1rem);
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 5vw, 2.75rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .section-subhead {
-      font-size: clamp(1.1rem, 2.5vw, 1.25rem);
-      color: var(--color-text-secondary);
-      line-height: 1.7;
-      margin-bottom: 3rem;
-      max-width: 800px;
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-      gap: 1.5rem;
-    }
-
-    .info-card {
-      background: white;
-      border: 1px solid var(--color-border-subtle);
-      border-radius: var(--radius-card);
-      padding: 2rem;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .info-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--color-cta), #00a6ff);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-
-    .info-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .info-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--color-border-light);
-    }
-
-    .info-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-      color: var(--color-text-main);
-    }
-
-    .info-card p {
-      color: var(--color-text-secondary);
-      line-height: 1.7;
-      font-size: 0.95rem;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: clamp(2rem, 5vw, 3rem);
-      align-items: start;
-    }
-
-    .scholar-card {
-      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-      border: 1px solid var(--color-border-subtle);
-      border-radius: var(--radius-card);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-soft);
-      transition: var(--transition);
-    }
-
-    .scholar-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-medium);
-    }
-
-    .scholar-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .scholar-card p {
-      color: var(--color-text-secondary);
-      margin-bottom: 1.5rem;
-      line-height: 1.7;
-    }
-
-    .resource-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
-      gap: 1.5rem;
-    }
-
-    .resource-card {
-      background: white;
-      border: 1px solid var(--color-border-subtle);
-      border-radius: var(--radius-card);
-      padding: 2rem;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .resource-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--color-cta);
-    }
-
-    .resource-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.75rem;
-      color: var(--color-text-main);
-    }
-
-    .resource-card p {
-      font-size: 0.9rem;
-      color: var(--color-text-secondary);
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-
-    .volcano-combo {
-      margin-top: clamp(3rem, 8vw, 5rem);
-      padding-top: 0;
-    }
-
-    .volcano-base-inner {
-      position: relative;
-      height: clamp(260px, 36vw, 380px);
-      border-top: none;
-      border-radius: var(--radius-large) var(--radius-large) 0 0;
-      background: var(--color-bg-light);
-      overflow: visible;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
-
-    .satellite-layer {
-      position: absolute;
-      top: -140px;
-      left: 50%;
-      width: min(520px, 92vw);
-      transform: translateX(-50%);
-      height: 220px;
-      pointer-events: none;
-      z-index: 3;
-    }
-
-    .satellite {
-      position: absolute;
-      top: 40px;
-      width: 54px;
-      height: 20px;
-      background: #1d1d1f;
-      border-radius: 10px;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
-      left: 50%;
-      transform: translate(-50%, 0);
-      animation: satelliteOrbit 10s linear infinite;
-    }
-
-    .satellite::before,
-    .satellite::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 30px;
-      height: 12px;
-      background: linear-gradient(135deg, #dbe6f5 0%, #b9c9e6 100%);
-      border-radius: 4px;
-      transform: translateY(-50%);
-    }
-
-    .satellite::before {
-      left: -34px;
-    }
-
-    .satellite::after {
-      right: -34px;
-    }
-
-    .satellite-beam {
-      position: absolute;
-      top: 16px;
-      left: 50%;
-      width: 160px;
-      height: 200px;
-      transform: translateX(-50%);
-      background: linear-gradient(180deg, rgba(0, 113, 227, 0.22) 0%, rgba(0, 113, 227, 0) 85%);
-      clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
-      opacity: 0.7;
-      animation: beamPulse 2.6s ease-in-out infinite;
-    }
-
-    .volcano-base-inner::after {
-      content: "";
-      position: absolute;
-      inset: auto -20% -45% -20%;
-      height: 70%;
-      background: radial-gradient(ellipse at center, rgba(0, 113, 227, 0.06) 0%, rgba(0, 113, 227, 0) 72%);
-      pointer-events: none;
-    }
-
-    .volcano-app {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-    }
-
-    .deformation-rings {
-      position: absolute;
-      left: 50%;
-      bottom: 10px;
-      width: min(440px, 86vw);
-      height: 160px;
-      transform: translateX(-50%);
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .deformation-rings .ring {
-      position: absolute;
-      left: 50%;
-      bottom: 14px;
-      width: var(--ring-size, 36px);
-      height: var(--ring-size, 36px);
-      border-radius: 50%;
-      border: 2px solid rgba(0, 113, 227, 0.45);
-      transform: translateX(-50%) scale(0.2);
-      opacity: 0.9;
-      animation: ringPulse 3.8s ease-out forwards;
-      box-shadow: 0 0 16px rgba(0, 113, 227, 0.18);
-    }
-
-    @keyframes ringPulse {
-      0% {
-        transform: translateX(-50%) scale(0.2);
-        opacity: 0.9;
-      }
-      100% {
-        transform: translateX(-50%) scale(2.8);
-        opacity: 0;
-      }
-    }
-
-    .ash-plume {
-      position: absolute;
-      left: 50%;
-      bottom: 140px;
-      width: min(260px, 70vw);
-      height: 220px;
-      transform: translateX(-50%);
-      z-index: 2;
-      pointer-events: none;
-      overflow: visible;
-    }
-
-    .ash-plume .ash {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: var(--ash-size, 12px);
-      height: var(--ash-size, 12px);
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(70, 70, 70, 0.55), rgba(70, 70, 70, 0));
-      opacity: var(--ash-opacity, 0.4);
-      transform: translate3d(var(--ash-x, 0px), 0, 0) scale(0.6);
-      animation: ashRise var(--ash-duration, 7s) ease-out infinite;
-      animation-delay: var(--ash-delay, 0s);
-      filter: blur(0.2px);
-    }
-
-    .volcano-app.eruption-on .ash-plume .ash {
-      background: radial-gradient(circle, rgba(255, 122, 69, 0.6), rgba(255, 122, 69, 0));
-      opacity: 0.6;
-    }
-
-    .volcano-app.eruption-on .deformation-rings .ring {
-      border-color: rgba(255, 122, 69, 0.55);
-      box-shadow: 0 0 18px rgba(255, 122, 69, 0.3);
-    }
-
-    @keyframes ashRise {
-      0% {
-        transform: translate3d(var(--ash-x, 0px), 0, 0) scale(0.6);
-        opacity: 0;
-      }
-      20% {
-        opacity: var(--ash-opacity, 0.4);
-      }
-      100% {
-        transform: translate3d(calc(var(--ash-x, 0px) + var(--ash-drift, 16px)), -160px, 0) scale(1.55);
-        opacity: 0;
-      }
-    }
-
-    .seismo-canvas {
-      position: absolute;
-      left: 50%;
-      bottom: 12px;
-      width: min(560px, 90vw);
-      height: 120px;
-      transform: translateX(-50%);
-      z-index: 0;
-      opacity: 0.75;
-      pointer-events: none;
-    }
-
-    #volcano-svg {
-      width: min(520px, 92vw);
-      height: auto;
-      cursor: pointer;
-      filter: drop-shadow(0 26px 42px rgba(0, 0, 0, 0.22));
-      transition: transform 0.5s ease;
-      position: absolute;
-      bottom: -65px;
-      z-index: 1;
-      touch-action: manipulation;
-    }
-
-    #volcano-svg:hover {
-      transform: translateY(-8px) scale(1.02);
-    }
-
-    #volcano-svg .st0 { fill: #807063; }
-    #volcano-svg .st1 { fill: #4f3f32; }
-    #volcano-svg .st3 { fill: #ec9797; }
-    #volcano-svg .st4 { fill: none; stroke: #4f3f32; stroke-width: 0.75; stroke-miterlimit: 10; }
-    #volcano-svg .st6 { fill: #ffb444; }
-    #volcano-svg .st7 { fill: #fe8443; }
-    #volcano-svg .st8 { fill: #ff5345; }
-
-    @keyframes satelliteOrbit {
-      0% {
-        transform: translate(-50%, 0) translateX(-46%) translateY(6px) scale(0.9);
-        opacity: 0.1;
-      }
-      10% {
-        opacity: 1;
-      }
-      25% {
-        transform: translate(-50%, 0) translateX(-10%) translateY(-28px) scale(1.05);
-      }
-      50% {
-        transform: translate(-50%, 0) translateX(36%) translateY(6px) scale(0.98);
-        opacity: 0.95;
-      }
-      75% {
-        transform: translate(-50%, 0) translateX(-10%) translateY(58px) scale(0.9);
-        opacity: 0.65;
-      }
-      100% {
-        transform: translate(-50%, 0) translateX(-46%) translateY(6px) scale(0.9);
-        opacity: 0.1;
-      }
-    }
-
-    @keyframes beamPulse {
-      0%, 100% {
-        opacity: 0.45;
-      }
-      50% {
-        opacity: 0.9;
-      }
-    }
-
-    .timeline {
-      display: grid;
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 180px 1fr;
-      gap: 2rem;
-      background: white;
-      border: 1px solid var(--color-border-subtle);
-      border-left: 4px solid var(--color-cta);
-      border-radius: var(--radius-card);
-      padding: 2rem;
-      transition: var(--transition);
-    }
-
-    .timeline-item:hover {
-      transform: translateX(8px);
-      box-shadow: var(--shadow-medium);
-      border-left-color: var(--color-cta-hover);
-    }
-
-    .timeline-year {
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
-      color: var(--color-cta);
-    }
-
-    .timeline-details {
-      flex: 1;
-    }
-
-    .timeline-details h3 {
-      font-size: 1.25rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .timeline-details p {
-      color: var(--color-text-secondary);
-      font-size: 0.95rem;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .publication-list {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .publication-item {
-      padding: 0rem 0;
-      border-bottom: 1px solid var(--color-border-light);
-      transition: var(--transition);
-    }
-
-    .publication-item:last-child {
-      border-bottom: none;
-    }
-
-    .publication-item:hover {
-      padding-left: 1rem;
-    }
-
-    .publication-item span {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-cta);
-      background: rgba(0, 113, 227, 0.1);
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-      margin-bottom: 0.75rem;
-    }
-
-    .publication-item p {
-      font-size: 1rem;
-      line-height: 1.7;
-      color: var(--color-text-main);
-    }
-
-    .publication-item strong {
-      color: var(--color-text-main);
-      font-weight: 600;
-    }
-
-    .publication-item em {
-      color: var(--color-text-secondary);
-    }
-
-    /* News feed */
-    .news-list {
-      display: grid;
-      gap: 1.25rem;
-      margin-top: 1rem;
-    }
-    .news-item {
-      display: grid;
-      grid-template-columns: 130px 1fr;
-      gap: 1.75rem;
-      align-items: start;
-      background: white;
-      border: 1px solid var(--color-border-subtle);
-      border-radius: var(--radius-card);
-      padding: 1.5rem 1.75rem;
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-    .news-item::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg, var(--color-cta), #00a6ff);
-      transform: scaleY(0);
-      transform-origin: top;
-      transition: transform 0.35s ease;
-    }
-    .news-item:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-medium);
-      border-color: var(--color-border-light);
-    }
-    .news-item:hover::before { transform: scaleY(1); }
-    .news-date {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-cta);
-    }
-    .news-body h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.35rem;
-    }
-    .news-body p {
-      font-size: 0.95rem;
-      color: var(--color-text-secondary);
-      line-height: 1.65;
-    }
-
-    /* Talks */
-    .talks-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-      gap: 1.25rem;
-      margin-top: 1rem;
-    }
-    .talk-card {
-      background: white;
-      border: 1px solid var(--color-border-subtle);
-      border-radius: var(--radius-card);
-      padding: 1.75rem;
-      transition: var(--transition);
-      position: relative;
-    }
-    .talk-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--color-cta);
-    }
-    .talk-type {
-      display: inline-block;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-cta);
-      background: rgba(0, 113, 227, 0.08);
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      margin-bottom: 0.85rem;
-    }
-    .talk-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      line-height: 1.35;
-    }
-    .talk-venue {
-      font-size: 0.9rem;
-      color: var(--color-text-secondary);
-      margin-bottom: 0.4rem;
-    }
-    .talk-date {
-      font-size: 0.82rem;
-      color: var(--color-text-secondary);
-      font-weight: 600;
-      letter-spacing: 0.04em;
-    }
-
-    /* Awards */
-    .awards-list {
-      display: grid;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .award-item {
-      display: grid;
-      grid-template-columns: 56px 1fr auto;
-      gap: 1.25rem;
-      align-items: center;
-      background: white;
-      border: 1px solid var(--color-border-subtle);
-      border-radius: var(--radius-card);
-      padding: 1.25rem 1.75rem;
-      transition: var(--transition);
-    }
-    .award-item:hover {
-      transform: translateX(6px);
-      box-shadow: var(--shadow-soft);
-      border-color: var(--color-cta);
-    }
-    .award-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, rgba(0, 113, 227, 0.12), rgba(0, 166, 255, 0.18));
-      color: var(--color-cta);
-      font-size: 1.4rem;
-    }
-    .award-body h3 {
-      font-size: 1.05rem;
-      margin-bottom: 0.2rem;
-    }
-    .award-body p {
-      font-size: 0.9rem;
-      color: var(--color-text-secondary);
-      margin: 0;
-    }
-    .award-year {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: var(--color-cta);
-    }
-
-    /* Contact */
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1.1fr 1fr;
-      gap: clamp(2rem, 5vw, 3rem);
-      align-items: stretch;
-      margin-top: 1rem;
-    }
-    .contact-intro {
-      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-      border: 1px solid var(--color-border-subtle);
-      border-radius: var(--radius-card);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-soft);
-    }
-    .contact-intro h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.85rem;
-    }
-    .contact-intro p {
-      color: var(--color-text-secondary);
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
-    }
-    .contact-email {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 600;
-      color: var(--color-cta);
-      font-size: 1.05rem;
-    }
-    .contact-email:hover { color: var(--color-cta-hover); }
-    .contact-links {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      align-content: start;
-    }
-    .contact-link {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      background: white;
-      border: 1px solid var(--color-border-subtle);
-      border-radius: var(--radius-card);
-      padding: 1.25rem 1.4rem;
-      transition: var(--transition);
-    }
-    .contact-link:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-medium);
-      border-color: var(--color-cta);
-    }
-    .contact-link-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-text-secondary);
-    }
-    .contact-link-name {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--color-text-main);
-    }
-    .contact-link:hover .contact-link-name { color: var(--color-cta); }
-
-    @media (max-width: 1024px) {
-      .contact-wrap { grid-template-columns: 1fr; }
-      .news-item { grid-template-columns: 1fr; gap: 0.5rem; }
-      .award-item { grid-template-columns: 48px 1fr; }
-      .award-year { grid-column: 2; }
-    }
-
-    footer {
-      background: linear-gradient(180deg, #fafafa 0%, #f5f5f7 100%);
-      margin-top: 4rem;
-      border-top: 1px solid var(--color-border-light);
-    }
-
-    .footer-inner {
-      max-width: var(--container-width);
-      margin: 0 auto;
-      padding: 3rem clamp(1rem, 5vw, 2rem);
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--color-text-secondary);
-    }
-
-    .footer-inner p {
-      line-height: 1.8;
-    }
-
-    .nav-links.mobile-open {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: saturate(180%) blur(20px);
-      padding: 1.5rem;
-      gap: 0.5rem;
-      border-bottom: 1px solid var(--color-border-subtle);
-      box-shadow: var(--shadow-medium);
-      z-index: 1001;
-    }
-
-    @media (max-width: 1024px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-
-      .hero-photo {
-        max-width: 400px;
-        margin: 0 auto;
-      }
-
-      .split {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .timeline-item {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-
-      .satellite-layer {
-        top: -110px;
-        height: 160px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        position: relative;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        padding: 1.25rem;
-        gap: 0.25rem;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: saturate(180%) blur(20px);
-        border-bottom: 1px solid var(--color-border-subtle);
-        box-shadow: var(--shadow-medium);
-      }
-
-      .nav-links.mobile-open {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .nav-links a,
-      .nav-dropdown > a {
-        width: 100%;
-        padding: 0.8rem 0;
-      }
-
-      .nav-dropdown {
-        width: 100%;
-      }
-
-      .nav-dropdown .dropdown-content {
-        position: static;
-        display: block;
-        background: transparent;
-        border: 0;
-        box-shadow: none;
-        padding: 0.25rem 0 0.5rem 1rem;
-      }
-
-      #volcano-svg {
-        width: min(460px, 96vw);
-        bottom: -36px;
-      }
-
-      .volcano-base-inner {
-        height: clamp(240px, 48vw, 340px);
-      }
-
-      .hero {
-        padding: 2.5rem 0;
-      }
-
-      .hero-text h1 {
-        font-size: 2.5rem;
-      }
-
-      .button-primary,
-      .link-cta {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .pill-list {
-        gap: 0.5rem;
-      }
-
-      .pill-list span {
-        font-size: 0.7rem;
-        padding: 0.4rem 0.8rem;
-      }
-
-      .info-card,
-      .resource-card,
-      .scholar-card {
-        padding: 1.5rem;
-      }
-
-      .timeline-item {
-        padding: 1.5rem;
-        border-left-width: 3px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-text h1 {
-        font-size: 2rem;
-      }
-
-      .section-title {
-        font-size: 1.75rem;
-      }
-
-      .hero-photo {
-        max-width: 100%;
-      }
-
-      #volcano-svg {
-        width: min(380px, 98vw);
-        bottom: -28px;
-      }
-
-      .volcano-base-inner {
-        height: clamp(220px, 64vw, 320px);
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes floatIdle {
-      0% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-8px);
-      }
-      100% {
-        transform: translateY(0);
-      }
-    }
-
-    .volcano-app.volcano-idle {
-      animation: floatIdle 6s ease-in-out infinite;
-    }
-
-    .hero-text,
-    .hero-photo {
-      animation: fadeInUp 0.6s ease-out;
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      will-change: opacity, transform;
-    }
-
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero-text,
-      .hero-photo {
-        animation: none;
-      }
-
-      [data-magnetic="true"] {
-        transform: none;
-      }
-
-      .hero-ambient,
-      .hero-particles {
-        opacity: 0.9;
-      }
-
-      .hero-orb,
-      .hero-particles .particle {
-        animation: none;
-      }
-
-      .deformation-rings .ring,
-      .ash-plume .ash {
-        animation: none;
-        opacity: 0.75;
-      }
-
-      .reveal,
-      .reveal.is-visible {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-    }
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Rami Alshembari is a geophysical volcanologist at the University of Exeter, specialising in volcano deformation, seismology, geodesy, and physics-based numerical modelling.">
+  <meta name="author" content="Rami Alshembari">
+  <meta name="theme-color" content="#dceaf6">
+  <meta property="og:title" content="Rami Alshembari — Geophysical Volcanologist">
+  <meta property="og:description" content="Research, publications, teaching, and fieldwork in volcano deformation, seismology, and numerical modelling.">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://rami-alshembari.github.io/">
+  <meta property="og:image" content="https://rami-alshembari.github.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Rami Alshembari — Geophysical Volcanologist, with volcano and seismic motifs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://rami-alshembari.github.io/og.png">
+  <title>Rami Alshembari | Geophysical Volcanologist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rami Alshembari",
+    "url": "https://rami-alshembari.github.io/",
+    "jobTitle": "Postdoctoral Research Fellow",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "University of Exeter"
+    },
+    "email": "mailto:R.Alshembari@exeter.ac.uk",
+    "sameAs": [
+      "https://experts.exeter.ac.uk/36383-rami-alshembari",
+      "https://scholar.google.com/citations?user=D3kNIOEAAAAJ&hl=en",
+      "https://orcid.org/0000-0002-4328-298X",
+      "https://github.com/Rami-Alshembari",
+      "https://uk.linkedin.com/in/rashemb",
+      "https://www.researchgate.net/profile/Rami-Alshembari"
+    ],
+    "knowsAbout": [
+      "Geophysics",
+      "Volcanology",
+      "Seismology",
+      "Volcano deformation",
+      "Numerical modelling",
+      "Geophysical data science"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-  <header id="header">
-    <div class="page">
-      <nav>
-        <a href="#top" class="logo">Rami Alshembari</a>
-        <div class="nav-links" id="navLinks">
-          <a href="#overview">Overview</a>
-          <a href="#research">Research</a>
-          <div class="nav-dropdown">
-            <a href="fieldtrip.html">Field Work</a>
-            <div class="dropdown-content">
-              <a href="montserrat-2024.html">Montserrat 2024</a>
-              <a href="sakurajima-2025.html">Sakurajima 2025</a>
-            </div>
-          </div>
-          <a href="#publications">Publications</a>
-          <a href="#talks">Talks</a>
-          <a href="#awards">Awards</a>
-          <a href="#news">News</a>
-          <a href="#contact">Contact</a>
+  <a class="skip-link" href="#main-content">Skip to CV</a>
+
+  <header class="masthead" id="top">
+    <div class="masthead-pattern" aria-hidden="true"></div>
+    <div class="container masthead-inner">
+      <div class="identity">
+        <p class="eyebrow">Research portfolio</p>
+        <h1>Rami Alshembari</h1>
+        <p class="professional-title">Geophysical volcanologist working at the intersection of volcano deformation, seismology, and numerical modelling.</p>
+        <ul class="discipline-list" aria-label="Research disciplines">
+          <li>Geophysics</li>
+          <li>Seismology</li>
+          <li>Volcanology</li>
+          <li>Geophysical data science</li>
+        </ul>
+      </div>
+
+      <div class="contact-panel" role="group" aria-label="Contact details">
+        <div class="contact-list">
+          <a href="mailto:R.Alshembari@exeter.ac.uk">
+            <span>Email</span>
+            <strong>R.Alshembari@exeter.ac.uk</strong>
+          </a>
+          <a href="https://experts.exeter.ac.uk/36383-rami-alshembari" target="_blank" rel="noopener noreferrer">
+            <span>Affiliation</span>
+            <strong>Earth &amp; Environmental Sciences · University of Exeter</strong>
+          </a>
+          <a href="https://scholar.google.com/citations?user=D3kNIOEAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">
+            <span>Research</span>
+            <strong>Google Scholar</strong>
+          </a>
+          <span class="contact-location">
+            <span>Based in</span>
+            <strong>Penryn, Cornwall, UK</strong>
+          </span>
         </div>
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation">
-          <span>Menu</span>
-        </button>
-      </nav>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section class="hero page" id="top">
-      <div class="hero-ambient" aria-hidden="true">
-        <div class="hero-orb orb-one"></div>
-        <div class="hero-orb orb-two"></div>
+  <nav class="site-nav" aria-label="CV sections">
+    <div class="container nav-inner">
+      <a class="nav-mark" href="#top" aria-label="Back to the top">RA</a>
+      <div class="nav-links">
+        <a href="#profile">Profile</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#publications">Publications</a>
+        <a href="fieldtrip.html">Fieldwork</a>
+        <a href="#contact">Contact</a>
       </div>
-      <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
-      <div class="hero-grid">
-        <div class="hero-photo">
-          <img class="parallax-image" data-parallax="0.08" src="portrait.jpg" alt="Portrait of Rami Alshembari" loading="eager" width="300" height="300" />
-        </div>
-        <div class="hero-text">
-          <h1 data-animate-name="true">Rami Alshembari</h1>
-          <p class="typewriter" data-typewriter="true">Geophysical volcanologist interpreting volcano deformation with physics-based models and multidisciplinary datasets.</p>
-          <div class="hero-cta">
-            <button class="button-primary" data-magnetic="true" data-magnet-strength="20" onclick="location.href='mailto:R.Alshembari@exeter.ac.uk'">Get in Touch</button>
-            <a class="link-cta" data-magnetic="true" data-magnet-strength="14" href="#publications">View Publications →</a>
-          </div>
-          <div class="pill-list">
-            <span>Postdoctoral Fellow</span>
-            <span>DV3M Project</span>
-            <span>University of Exeter</span>
-            <span>Volcano Deformation</span>
-            <span>Numerical Modelling</span>
-            <span>Hazard Forecasting</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    </div>
+  </nav>
 
-    <section class="page" id="overview">
-      <h2 class="section-title">Research Overview</h2>
-      <p class="section-subhead">I apply physics-based numerical models to interpret the dynamics of active volcanoes and reduce uncertainty in eruption forecasting.</p>
-      <div class="info-grid">
-        <div class="info-card reveal">
-          <h3>Research Focus</h3>
-          <p>Transcrustal magmatic systems, dynamic magma-mush rheology, and the interface between poroelastic reservoirs and deforming crust.</p>
+  <main class="container resume-layout" id="main-content">
+    <div class="resume-primary">
+      <section class="resume-section" id="profile" aria-labelledby="profile-heading">
+        <div class="section-heading">
+          <span class="section-number" aria-hidden="true">01</span>
+          <h2 id="profile-heading">Profile</h2>
         </div>
-        <div class="info-card reveal">
-          <h3>Methodology</h3>
-          <p>Integrate InSAR, GNSS, petrology, gas, and field observations with thermo-poroelastic simulations to model unrest signals.</p>
+        <div class="section-body profile-copy">
+          <p>I am a geophysicist with a PhD in Geology from the University of Exeter and research and teaching experience across geophysics, seismology, volcanology, and geophysical data science. My work centres on understanding Earth processes through physics-based numerical modelling, geodetic and seismic data analysis, and uncertainty-aware interpretation.</p>
+          <p>I develop coupled thermo-poroelastic and poroviscoelastic finite-element models, principally in COMSOL Multiphysics, to investigate volcanic unrest, magma-reservoir stability, melt migration, and eruptive transitions. Soufrière Hills Volcano, Montserrat, is my primary case study, with Sakurajima, Japan, as a comparative system. I integrate InSAR, GNSS, seismic, and petrological observations into these models.</p>
+          <p>My earlier research used seismic-array methods and joint inversions to study earthquake site response and liquefaction hazard in Kazakhstan. Alongside research, I have four years of university teaching and student-support experience, six first-author peer-reviewed publications, and a record of collaborative, reproducible computational work.</p>
         </div>
-        <div class="info-card reveal">
-          <h3>Field Campaigns</h3>
-          <p>Montserrat and Sakurajima.</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="page" id="research">
-      <h2 class="section-title">Research Outputs</h2>
-      <p class="section-subhead">Explore publications and collaborations.</p>
-      <div class="split">
-        <div>
-          <div class="scholar-card reveal">
-            <h3>Google Scholar Profile</h3>
-            <p>Peer-reviewed articles spanning volcano deformation, eruption forecasting, and earthquake site response.</p>
-            <a class="link-cta" href="https://scholar.google.com/citations?user=D3kNIOEAAAAJ&hl=en&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Open Profile →</a>
-          </div>
+      <section class="resume-section" id="experience" aria-labelledby="experience-heading">
+        <div class="section-heading">
+          <span class="section-number" aria-hidden="true">02</span>
+          <h2 id="experience-heading">Research &amp; professional experience</h2>
         </div>
-        <div class="resource-grid">
-          <div class="resource-card reveal">
-            <h3>University Profile</h3>
-            <p>Appointments, outreach, and cross-college collaborations at the University of Exeter.</p>
-            <a class="link-cta" href="https://experts.exeter.ac.uk/36383-rami-alshembari/about" target="_blank" rel="noopener">Visit →</a>
-          </div>
-          <div class="resource-card reveal">
-            <h3>Field Work</h3>
-            <p>Photos from Montserrat and Sakurajima.</p>
-            <a class="link-cta" href="fieldtrip.html">Explore →</a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="section-body timeline">
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="date-range">2023—Present</span>
+              <span>Penryn, UK</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Postdoctoral Research Fellow</h3>
+              <p class="organisation">NERC DV3M Project · University of Exeter</p>
+              <ul class="dash-list">
+                <li>Design and apply finite-element and analytical models of volcanic unrest, magma-reservoir stability, and eruptive transitions, translating physical theory into working numerical pipelines.</li>
+                <li>Integrate InSAR, GNSS, seismic, and petrological data from Soufrière Hills and Sakurajima to interpret transient deformation and stress evolution.</li>
+                <li>Test model outputs against observations and communicate results through peer-reviewed papers, conference contributions, and invited presentations for technical and non-technical audiences.</li>
+                <li>Collaborate across the University of Exeter, University of Bologna, GFZ Potsdam, and OGS Trieste to plan analyses and deliver interdisciplinary research.</li>
+              </ul>
+              <p class="keywords"><strong>Methods:</strong> thermo-poroelasticity, poroviscoelasticity, finite elements, geodesy, data integration</p>
+            </div>
+          </article>
 
-    <section class="page" id="education">
-      <h2 class="section-title">Education</h2>
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-year">2019 – 2023</div>
-          <div class="timeline-details">
-            <h3>PhD in Geology</h3>
-            <p>University of Exeter, Penryn, United Kingdom</p>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-year">2017 – 2018</div>
-          <div class="timeline-details">
-            <h3>Postgraduate Diploma, Solid Earth Physics</h3>
-            <p>International Centre for Theoretical Physics, Trieste, Italy</p>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-year">2013 – 2016</div>
-          <div class="timeline-details">
-            <h3>BSc in Physics</h3>
-            <p>Islamic University of Gaza, Palestinian Territory</p>
-          </div>
-        </div>
-      </div>
-    </section>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="date-range">2019—2023</span>
+              <span>Penryn, UK</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Teaching Assistant</h3>
+              <p class="organisation">University of Exeter</p>
+              <ul class="dash-list">
+                <li>Supported practical classes, one-to-one learning, and group teaching in Practical Geophysics, Practical Volcanology, Mathematics, and Electronics Laboratory modules.</li>
+                <li>Helped students develop confidence in quantitative methods and geophysical-data interpretation.</li>
+              </ul>
+            </div>
+          </article>
 
-    <section class="page" id="publications">
-      <h2 class="section-title">Selected Publications</h2>
-      <div class="publication-list">
-        <div class="publication-item reveal">
-          <span>2025</span>
-          <p><strong>Rami Alshembari</strong>, J. Hickey, L. Mantiloni. <a class="link-cta" href="https://doi.org/10.1016/j.jvolgeores.2025.108468" target="_blank" rel="noopener">Benchmarking and testing poroelastic dynamic magma mush volcano deformation models.</a> <em>Journal of Volcanology and Geothermal Research</em>.</p>
-        </div>
-        <div class="publication-item reveal">
-          <span>2025</span>
-          <p>L. Mantiloni, J. Hickey, <strong>Rami Alshembari</strong>. <a class="link-cta" href="https://doi.org/10.1093/gji/ggaf169" target="_blank" rel="noopener">The role of gravity in the state of stress and pore pressure of poroelastic rocks.</a> <em>Geophysical Journal International</em>.</p>
-        </div>
-        <div class="publication-item reveal">
-          <span>2024</span>
-          <p>J. Hickey, <strong>Rami Alshembari</strong>, et al. <a class="link-cta" href="https://doi.org/10.1029/2024GL108812" target="_blank" rel="noopener">Topographical effects on volcano deformation signal intensity: Implications for GPS network configuration.</a> <em>Geophysical Research Letters</em>.</p>
-        </div>
-        <div class="publication-item reveal">
-          <span>2024</span>
-          <p><strong>Rami Alshembari</strong>, J. Hickey, B. J. Williamson, K. Cashman. <a class="link-cta" href="https://doi.org/10.1016/j.epsl.2024.118624" target="_blank" rel="noopener">Declining magma supply to a poroelastic magma mush explains long-term deformation at Soufrière Hills Volcano.</a> <em>Earth and Planetary Science Letters</em>.</p>
-        </div>
-        <div class="publication-item reveal">
-          <span>2023</span>
-          <p><strong>Rami Alshembari</strong>, J. Hickey, K. Cashman, B. J. Williamson. <a class="link-cta" href="https://doi.org/10.1029/2023JB026625" target="_blank" rel="noopener">Unveiling the rheological control of magmatic systems on volcano deformation.</a> <em>Journal of Geophysical Research: Solid Earth</em>.</p>
-        </div>
-        <div class="publication-item reveal">
-          <span>2022</span>
-          <p><strong>Rami Alshembari</strong>, J. Hickey, B. J. Williamson, K. Cashman. <a class="link-cta" href="https://doi.org/10.1029/2022JB024332" target="_blank" rel="noopener">Poroelastic mechanical behavior of crystal mush reservoirs.</a> <em>Journal of Geophysical Research: Solid Earth</em>.</p>
-        </div>
-        <div class="publication-item reveal">
-          <span>2022</span>
-          <p><strong>Rami Alshembari</strong>, J. Hickey, B. J. Williamson, K. Cashman. <a class="link-cta" href="https://doi.org/10.1016/j.jvolgeores.2022.107535" target="_blank" rel="noopener">Exploring the role of fluid–solid interactions for modelling volcano deformation.</a> <em>Journal of Volcanology and Geothermal Research</em>.</p>
-        </div>
-        <div class="publication-item reveal">
-          <span>2020</span>
-          <p><strong>Rami Alshembari</strong>, S. Parolai, T. Boxberger, D. Sandron, M. Pilz, N. Sylacheva. <a class="link-cta" href="https://doi.org/10.1785/0220190114" target="_blank" rel="noopener">Seasonality in site response: An example from two historical earthquakes in Kazakhstan.</a> <em>Seismological Research Letters</em>.</p>
-        </div>
-      </div>
-    </section>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="date-range">2019—2023</span>
+              <span>Penryn, UK</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Maths &amp; Statistics Support Tutor</h3>
+              <p class="organisation">FX Plus · University of Exeter</p>
+              <ul class="dash-list">
+                <li>Delivered tutorials for Camborne School of Mines undergraduates from varied academic backgrounds.</li>
+                <li>Supported quantitative skill development and confidence in structured problem-solving.</li>
+              </ul>
+            </div>
+          </article>
 
-    <section class="page" id="talks">
-      <h2 class="section-title">Talks & Presentations</h2>
-      <p class="section-subhead">Invited talks, conference presentations, and scientific seminars on volcano deformation and eruption forecasting.</p>
-      <div class="talks-grid">
-        <div class="talk-card reveal">
-          <span class="talk-type">Invited Talk</span>
-          <h3>Poroelastic dynamic magma mush models for volcano deformation</h3>
-          <p class="talk-venue">Sakurajima Volcano Observatory, Kyoto University</p>
-          <p class="talk-date">2025</p>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="date-range">2018—2019</span>
+              <span>Trieste, Italy</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Research Grant in Earthquake Seismology</h3>
+              <p class="organisation">ICTP &amp; National Institute of Oceanography and Applied Geophysics (OGS)</p>
+              <ul class="dash-list">
+                <li>Investigated seasonal controls on earthquake site response and liquefaction potential in Almaty, Kazakhstan using strong-motion, ambient-noise, borehole, and temperature data.</li>
+                <li>Applied seismic-noise microarrays, extended SPAC, and joint inversion of Rayleigh-wave dispersion and H/V curves to derive shallow S-wave velocity structure.</li>
+                <li>Demonstrated how shallow frozen layers can inhibit pore-pressure drainage and promote liquefaction.</li>
+              </ul>
+              <p class="keywords"><strong>Methods:</strong> seismic arrays, extended SPAC, H/V analysis, joint inversion, site response</p>
+            </div>
+          </article>
         </div>
-        <div class="talk-card reveal">
-          <span class="talk-type">Conference</span>
-          <h3>Benchmarking poroelastic models of magma mush reservoirs</h3>
-          <p class="talk-venue">EGU General Assembly, Vienna, Austria</p>
-          <p class="talk-date">2024</p>
-        </div>
-        <div class="talk-card reveal">
-          <span class="talk-type">Seminar</span>
-          <h3>Magma supply dynamics at Soufrière Hills Volcano, Montserrat</h3>
-          <p class="talk-venue">Montserrat Volcano Observatory</p>
-          <p class="talk-date">2024</p>
-        </div>
-        <div class="talk-card reveal">
-          <span class="talk-type">Conference</span>
-          <h3>Rheological control of magmatic systems on volcano deformation</h3>
-          <p class="talk-venue">AGU Fall Meeting, San Francisco, USA</p>
-          <p class="talk-date">2023</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="page" id="awards">
-      <h2 class="section-title">Awards & Grants</h2>
-      <p class="section-subhead">Selected fellowships, awards, and research funding.</p>
-      <div class="awards-list">
-        <div class="award-item reveal">
-          <div class="award-icon">★</div>
-          <div class="award-body">
-            <h3>DV3M Postdoctoral Fellowship</h3>
-            <p>Dynamic Visco-elastic Volcano-Mush Modelling project, University of Exeter</p>
-          </div>
-          <div class="award-year">2023 – Present</div>
+      <section class="resume-section" id="education" aria-labelledby="education-heading">
+        <div class="section-heading">
+          <span class="section-number" aria-hidden="true">03</span>
+          <h2 id="education-heading">Education</h2>
         </div>
-        <div class="award-item reveal">
-          <div class="award-icon">✦</div>
-          <div class="award-body">
-            <h3>PhD Studentship in Volcano Geophysics</h3>
-            <p>Funded doctoral research at the University of Exeter, Penryn</p>
-          </div>
-          <div class="award-year">2019 – 2023</div>
-        </div>
-        <div class="award-item reveal">
-          <div class="award-icon">◆</div>
-          <div class="award-body">
-            <h3>ICTP Postgraduate Diploma Fellowship</h3>
-            <p>International Centre for Theoretical Physics, Trieste, Italy</p>
-          </div>
-          <div class="award-year">2017 – 2018</div>
-        </div>
-      </div>
-    </section>
+        <div class="section-body timeline education-timeline">
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="date-range">2019—2023</span>
+              <span>United Kingdom</span>
+            </div>
+            <div class="timeline-content">
+              <h3>PhD in Geology</h3>
+              <p class="organisation">University of Exeter</p>
+              <p><strong>Thesis:</strong> <em>Exploring the influence of trans-crustal magmatic systems on volcano deformation</em></p>
+              <p class="detail-line"><strong>Supervisors:</strong> Dr James Hickey, Prof Ben Williamson, and Prof Katharine Cashman</p>
+            </div>
+          </article>
 
-    <section class="page" id="news">
-      <h2 class="section-title">News & Updates</h2>
-      <p class="section-subhead">Recent publications, fieldwork, and research milestones.</p>
-      <div class="news-list">
-        <div class="news-item reveal">
-          <div class="news-date">May 2025</div>
-          <div class="news-body">
-            <h3>New paper in JVGR</h3>
-            <p>Published "Benchmarking and testing poroelastic dynamic magma mush volcano deformation models" in the Journal of Volcanology and Geothermal Research.</p>
-          </div>
-        </div>
-        <div class="news-item reveal">
-          <div class="news-date">Mar 2025</div>
-          <div class="news-body">
-            <h3>Fieldwork at Sakurajima</h3>
-            <p>Field campaign at Sakurajima Volcano, Japan — collaborating with the Sakurajima Volcano Research Centre on deformation monitoring.</p>
-          </div>
-        </div>
-        <div class="news-item reveal">
-          <div class="news-date">Oct 2024</div>
-          <div class="news-body">
-            <h3>Fieldwork at Montserrat</h3>
-            <p>Visit to the Soufrière Hills Volcano with the Montserrat Volcano Observatory, supporting long-term unrest modelling.</p>
-          </div>
-        </div>
-        <div class="news-item reveal">
-          <div class="news-date">Aug 2024</div>
-          <div class="news-body">
-            <h3>EPSL publication</h3>
-            <p>"Declining magma supply to a poroelastic magma mush explains long-term deformation at Soufrière Hills Volcano" featured in Earth and Planetary Science Letters.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="date-range">2017—2018</span>
+              <span>Italy</span>
+            </div>
+            <div class="timeline-content">
+              <h3>Postgraduate Diploma in Earth System Physics</h3>
+              <p class="organisation">International Centre for Theoretical Physics · Solid Earth pre-PhD programme</p>
+              <p><strong>Project:</strong> <em>Assessing the effects of a frozen surface soil layer on earthquake site response</em></p>
+              <p class="detail-line">Conducted 16-station broadband microarray surveys and jointly inverted Rayleigh-wave dispersion and H/V curves for near-surface velocity structure. Supervised by Prof Stefano Parolai and Dr Denis Sandron.</p>
+            </div>
+          </article>
 
-    <section class="page" id="contact">
-      <h2 class="section-title">Get in Touch</h2>
-      <p class="section-subhead">Open to collaborations on volcano deformation modelling, hazard forecasting, and multidisciplinary geophysics.</p>
-      <div class="contact-wrap">
-        <div class="contact-intro reveal">
-          <h3>Let's collaborate</h3>
-          <p>Whether you're working on a related research problem, exploring a joint field campaign, or interested in discussing volcano geodesy and poroelastic modelling, I'd be glad to hear from you.</p>
-          <a class="contact-email" data-magnetic="true" data-magnet-strength="14" href="mailto:R.Alshembari@exeter.ac.uk">R.Alshembari@exeter.ac.uk →</a>
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="date-range">2013—2017</span>
+              <span>Palestine</span>
+            </div>
+            <div class="timeline-content">
+              <h3>BSc in Physics</h3>
+              <p class="organisation">Islamic University of Gaza</p>
+              <p><strong>Project:</strong> <em>The impact of fluid substitution on the seismic AVO response</em></p>
+              <p class="detail-line"><strong>Supervisors:</strong> Dr Mosab Nasser and Prof Mohammed Shabat</p>
+            </div>
+          </article>
         </div>
-        <div class="contact-links">
-          <a class="contact-link reveal" href="https://scholar.google.com/citations?user=D3kNIOEAAAAJ&hl=en" target="_blank" rel="noopener">
-            <span class="contact-link-label">Profile</span>
-            <span class="contact-link-name">Google Scholar</span>
+      </section>
+
+      <section class="resume-section" id="publications" aria-labelledby="publications-heading">
+        <div class="section-heading section-heading-with-action">
+          <span class="section-number" aria-hidden="true">04</span>
+          <h2 id="publications-heading">Publications</h2>
+          <a class="section-action" href="https://scholar.google.com/citations?user=D3kNIOEAAAAJ&amp;hl=en&amp;view_op=list_works&amp;sortby=pubdate" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a>
+        </div>
+        <div class="section-body">
+          <ol class="publication-list">
+            <li>
+              <span class="publication-year">In preparation</span>
+              <p><strong>R. Alshembari</strong>, J. Hickey, and L. Mantiloni. <em>Channelization of eruptible magma via hot melt injection into a porous magma mush reservoir: a 3D thermo-poroelastic modelling approach.</em></p>
+            </li>
+            <li>
+              <span class="publication-year">2026</span>
+              <p>L. Mantiloni, J. Hickey, and <strong>R. Alshembari</strong>. <a href="https://doi.org/10.1029/2025JB032951" target="_blank" rel="noopener noreferrer">Stress and strain in magma-mush reservoirs: Implications for reservoir failure and magma propagation.</a> <em>Journal of Geophysical Research: Solid Earth.</em></p>
+            </li>
+            <li>
+              <span class="publication-year">2025</span>
+              <p><strong>R. Alshembari</strong>, J. Hickey, and L. Mantiloni. <a href="https://doi.org/10.1016/j.jvolgeores.2025.108468" target="_blank" rel="noopener noreferrer">Benchmarking and testing poroelastic dynamic magma mush volcano deformation models.</a> <em>Journal of Volcanology and Geothermal Research.</em></p>
+            </li>
+            <li>
+              <span class="publication-year">2025</span>
+              <p>L. Mantiloni, J. Hickey, and <strong>R. Alshembari</strong>. <a href="https://doi.org/10.1093/gji/ggaf169" target="_blank" rel="noopener noreferrer">The role of gravity in the state of stress and pore pressure of poroelastic rocks.</a> <em>Geophysical Journal International.</em></p>
+            </li>
+            <li>
+              <span class="publication-year">2024</span>
+              <p>J. Hickey, K. Pascal, R. Syers, and <strong>R. Alshembari</strong>. <a href="https://doi.org/10.1029/2024GL108812" target="_blank" rel="noopener noreferrer">Topographical effects on volcano deformation signal intensity: Implications for GPS network configuration.</a> <em>Geophysical Research Letters.</em></p>
+            </li>
+            <li>
+              <span class="publication-year">2024</span>
+              <p><strong>R. Alshembari</strong>, J. Hickey, K. Pascal, and R. Syers. <a href="https://doi.org/10.1016/j.epsl.2024.118624" target="_blank" rel="noopener noreferrer">Declining magma supply to a poroelastic magma mush explains long-term deformation at Soufrière Hills Volcano.</a> <em>Earth and Planetary Science Letters.</em></p>
+            </li>
+            <li>
+              <span class="publication-year">2023</span>
+              <p><strong>R. Alshembari</strong>, J. Hickey, B. J. Williamson, and K. Cashman. <a href="https://doi.org/10.1029/2023JB026625" target="_blank" rel="noopener noreferrer">Unveiling the rheological control of magmatic systems on volcano deformation: The interplay of poroviscoelastic magma mush and thermo-viscoelastic crust.</a> <em>Journal of Geophysical Research: Solid Earth.</em></p>
+            </li>
+            <li>
+              <span class="publication-year">2022</span>
+              <p><strong>R. Alshembari</strong>, J. Hickey, B. J. Williamson, and K. Cashman. <a href="https://doi.org/10.1029/2022JB024332" target="_blank" rel="noopener noreferrer">Poroelastic Mechanical Behavior of Crystal Mush Reservoirs: Insights Into the Spatio-Temporal Evolution of Volcano Surface Deformation.</a> <em>Journal of Geophysical Research: Solid Earth.</em></p>
+            </li>
+            <li>
+              <span class="publication-year">2022</span>
+              <p><strong>R. Alshembari</strong>, J. Hickey, B. J. Williamson, and K. Cashman. <a href="https://doi.org/10.1016/j.jvolgeores.2022.107535" target="_blank" rel="noopener noreferrer">Exploring the role of fluid-solid interactions for modelling volcano deformation.</a> <em>Journal of Volcanology and Geothermal Research.</em></p>
+            </li>
+            <li>
+              <span class="publication-year">2020</span>
+              <p><strong>R. Alshembari</strong>, S. Parolai, T. Boxberger, D. Sandron, M. Pilz, and N. Sylacheva. <a href="https://doi.org/10.1785/0220190114" target="_blank" rel="noopener noreferrer">Seasonality in site response: An example from two historical earthquakes in Kazakhstan.</a> <em>Seismological Research Letters.</em></p>
+            </li>
+          </ol>
+        </div>
+      </section>
+    </div>
+
+    <aside class="resume-sidebar" aria-label="Skills, fieldwork, talks, and awards">
+      <section class="sidebar-section" aria-labelledby="focus-heading">
+        <div class="sidebar-heading">
+          <span aria-hidden="true">A</span>
+          <h2 id="focus-heading">Research focus</h2>
+        </div>
+        <ul class="tag-list">
+          <li>Volcano deformation</li>
+          <li>Magma-mush dynamics</li>
+          <li>Eruption forecasting</li>
+          <li>Volcanic hazards</li>
+          <li>Earthquake site response</li>
+          <li>Liquefaction assessment</li>
+        </ul>
+      </section>
+
+      <section class="sidebar-section" aria-labelledby="skills-heading">
+        <div class="sidebar-heading">
+          <span aria-hidden="true">B</span>
+          <h2 id="skills-heading">Technical skills</h2>
+        </div>
+        <div class="skill-groups">
+          <div>
+            <h3>Geophysical methods</h3>
+            <p>Geodesy, InSAR, GNSS, seismic arrays, site response, inverse modelling, H/V analysis, and extended SPAC.</p>
+          </div>
+          <div>
+            <h3>Modelling &amp; simulation</h3>
+            <p>COMSOL Multiphysics, finite-element methods, structural mechanics, subsurface fluid flow, poroelasticity, and poroviscoelasticity.</p>
+          </div>
+          <div>
+            <h3>Programming &amp; data</h3>
+            <p>Python, MATLAB, Wolfram Mathematica, Unix/Linux, GMT, Git, and Python package management.</p>
+          </div>
+          <div>
+            <h3>Research practice</h3>
+            <p>FAIR data principles, LaTeX, Microsoft Office, Adobe Illustrator, and Adobe InDesign.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sidebar-section fieldwork-section" id="fieldwork" aria-labelledby="fieldwork-heading">
+        <div class="sidebar-heading">
+          <span aria-hidden="true">C</span>
+          <h2 id="fieldwork-heading">Fieldwork</h2>
+        </div>
+        <p class="sidebar-intro">Field campaigns connect the modelling to observatory practice and multidisciplinary observations.</p>
+        <div class="field-links">
+          <a href="montserrat-2024.html">
+            <span>Soufrière Hills</span>
+            <strong>Montserrat · 2024</strong>
+            <small>View field journal →</small>
           </a>
-          <a class="contact-link reveal" href="https://experts.exeter.ac.uk/36383-rami-alshembari/about" target="_blank" rel="noopener">
-            <span class="contact-link-label">Affiliation</span>
-            <span class="contact-link-name">University of Exeter</span>
+          <a href="sakurajima-2025.html">
+            <span>Sakurajima</span>
+            <strong>Japan · 2025</strong>
+            <small>View field journal →</small>
           </a>
-          <a class="contact-link reveal" href="https://orcid.org/" target="_blank" rel="noopener">
-            <span class="contact-link-label">Identifier</span>
-            <span class="contact-link-name">ORCID</span>
-          </a>
-          <a class="contact-link reveal" href="https://github.com/" target="_blank" rel="noopener">
-            <span class="contact-link-label">Code</span>
-            <span class="contact-link-name">GitHub</span>
-          </a>
-          <a class="contact-link reveal" href="https://www.linkedin.com/" target="_blank" rel="noopener">
-            <span class="contact-link-label">Network</span>
-            <span class="contact-link-name">LinkedIn</span>
-          </a>
-          <a class="contact-link reveal" href="https://www.researchgate.net/" target="_blank" rel="noopener">
-            <span class="contact-link-label">Research</span>
-            <span class="contact-link-name">ResearchGate</span>
-          </a>
+          <a class="all-fieldwork" href="fieldtrip.html">Explore all fieldwork →</a>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="page volcano-combo" aria-label="Volcano deformation satellite">
-      <div class="volcano-base-inner reveal">
-        <div class="satellite-layer" aria-hidden="true">
-          <div class="satellite">
-            <span class="satellite-beam"></span>
-          </div>
+      <section class="sidebar-section" aria-labelledby="talks-heading">
+        <div class="sidebar-heading">
+          <span aria-hidden="true">D</span>
+          <h2 id="talks-heading">Talks &amp; presentations</h2>
         </div>
-        <div class="volcano-app">
-          <div class="deformation-rings" id="deformationRings" aria-hidden="true"></div>
-          <div class="ash-plume" id="ashPlume" aria-hidden="true"></div>
-          <canvas class="seismo-canvas" id="seismoCanvas" width="640" height="140" aria-hidden="true"></canvas>
-          <svg id="volcano-svg" viewBox="0 -14 200 214" role="img" aria-label="Interactive volcano illustration">
-            <defs id="volcanoFilters"></defs>
-            <g id="mountainGroup">
-              <path class="st0" d="M36.5,204.2c0,0,35.7-89.7,44-96.6c8.3-6.9,31.1-22.4,51.6,0c13.3,16.1,39.6,96.6,39.6,96.6H36.5z"></path>
-              <path class="st1" d="M86.4,111.9c7.2-15.1,31.9-10.1,31.9-10.1s3.3,5,3.6,11.1s-20.2,7-20.2,7S79.2,127,86.4,111.9z"></path>
-              <g id="faceHappy">
-                <ellipse class="st1" cx="104.7" cy="134" rx="1.2" ry="1.8"></ellipse>
-                <ellipse class="st1" cx="129.5" cy="131.3" rx="1.4" ry="2.1"></ellipse>
-                <g>
-                  <ellipse class="st1" cx="120.5" cy="143" rx="2.6" ry="2.9"></ellipse>
-                  <path class="st3" d="M117.9,143.5c0.2,1.4,1.3,2.4,2.6,2.4c0.5,0,1-0.2,1.4-0.5c-0.2-1.4-1.3-2.4-2.6-2.4C118.8,143,118.3,143.2,117.9,143.5z"></path>
-                </g>
-              </g>
-              <g id="faceCalm" style="display: none;">
-                <path class="st4" d="M101.3,134.3c0,0-0.3-3,3.1-3s3.1,3,3.1,3"></path>
-                <path class="st4" d="M126.4,133.8c0,0-0.3-3.4,3.1-3.4c3.5,0,3.1,3.4,3.1,3.4"></path>
-                <path class="st4" d="M124.9,141c0,0,0.6,5.5-6.5,5.5c-7.1,0-6.5-5.5-6.5-5.5"></path>
-              </g>
-            </g>
-            <g id="lavaGroup">
-              <path class="st6" d="M94,113.6c0,0-2.4-12.8-3-22.6C90.3,81.1,85-6,85-6h44.1c0,0-6.7,58.8-9.6,72.2c-2.9,13.4-3.4,45.6-3.4,45.6L94,113.6z"></path>
-              <path class="st7" d="M98.6,114.9c0,0-1.4-83.1-2.7-94.1S91.8-4,91.8-6s29.4,1.1,30.8-0.2c1.4-1.3-3.1,49.6-6.7,61.3c-3.6,11.7-2.9,58.1-2.9,58.1L98.6,114.9z"></path>
-              <path class="st8" d="M104.4,113.6c0,0,1.9-65.1-0.9-75.5c-2.8-10.4-1-44-1-44s10.3,0,12.8,0c2.5,0-6.3,117.8-6.3,117.8L104.4,113.6z"></path>
-              <g>
-                <path class="st6" d="M79,53.2c0,1.5-2.8,2.8-2.8,2.8s-2.8-1.2-2.8-2.8s1.2-2.8,2.8-2.8S79,51.7,79,53.2z"></path>
-                <circle class="st8" cx="80.6" cy="70.6" r="1.6"></circle>
-                <circle class="st7" cx="75.4" cy="83.9" r="1.9"></circle>
-                <path class="st7" d="M62,30.4c0,2.4-1.1,2.4-2.4,2.4s-2.4-1.1-2.4-2.4s1.1-2.4,2.4-2.4S62,28,62,30.4z"></path>
-                <ellipse class="st8" cx="133.2" cy="94" rx="2.3" ry="1.7"></ellipse>
-                <ellipse class="st6" cx="125.5" cy="79.7" rx="3.6" ry="4.2"></ellipse>
-                <circle class="st8" cx="131.4" cy="60" r="2.2"></circle>
-                <circle class="st7" cx="145.6" cy="54.1" r="1.9"></circle>
-                <circle class="st6" cx="142.6" cy="32.4" r="2.1"></circle>
-              </g>
-            </g>
-            <g id="maskGroup">
-              <path class="st0" d="M83.8,109.2c20.4,5.6,40.8-7.4,40.8-7.4s-0.6,20.6-4.6,21.6c-4,1-37.7,5.6-37.7,5.6"></path>
-            </g>
-          </svg>
+        <ol class="compact-list">
+          <li><time datetime="2025">2025</time><strong>Sakurajima Volcano Observatory, Kyoto University</strong><span>Poroelastic dynamic magma-mush models for volcano deformation</span></li>
+          <li><time datetime="2024">2024</time><strong>EGU General Assembly, Vienna</strong><span>Benchmarking poroelastic models of magma-mush reservoirs</span></li>
+          <li><time datetime="2024">2024</time><strong>Montserrat Volcano Observatory</strong><span>Magma-supply dynamics at Soufrière Hills Volcano</span></li>
+          <li><time datetime="2023-02">Feb 2023</time><strong>Hotstuff Seminar</strong><span>University of Bristol · Poroelastic magma mush and Soufrière Hills deformation</span></li>
+          <li><time datetime="2022-09">Sep 2022</time><strong>Montserrat Volcano Observatory</strong><span>Long-term poroelastic surface deformation at Soufrière Hills</span></li>
+          <li><time datetime="2022-05">May 2022</time><strong>ICTP, Trieste</strong><span>Magma-mush poroelasticity and volcanic surface deformation</span></li>
+          <li><time datetime="2022-03">Mar 2022</time><strong>ESFRI 20th Anniversary, Paris</strong><span>Recent developments and future challenges in volcano-deformation modelling</span></li>
+        </ol>
+      </section>
+
+      <section class="sidebar-section" aria-labelledby="awards-heading">
+        <div class="sidebar-heading">
+          <span aria-hidden="true">E</span>
+          <h2 id="awards-heading">Awards &amp; funding</h2>
         </div>
-      </div>
-    </section>
+        <ul class="year-list">
+          <li><time>2022</time><span>VMSG postgraduate travel funding</span></li>
+          <li><time>2022</time><span>CSM global funding for Soufrière Hills fieldwork</span></li>
+          <li><time>2022</time><span>Invited seminar, ICTP</span></li>
+          <li><time>2022</time><span>Invited speaker, ESFRI 20th anniversary</span></li>
+          <li><time>2021</time><span>EUROVOLC transnational access, CSIC Barcelona</span></li>
+          <li><time>2019</time><span>One-year research grant, ICTP</span></li>
+          <li><time>2018</time><span>ICTP &amp; IAEA Diploma Programme scholarship</span></li>
+          <li><time>2017</time><span>Outstanding performance in BSc Physics</span></li>
+        </ul>
+      </section>
+
+      <section class="sidebar-section" aria-labelledby="development-heading">
+        <div class="sidebar-heading">
+          <span aria-hidden="true">F</span>
+          <h2 id="development-heading">Professional development</h2>
+        </div>
+        <ul class="dash-list compact-dashes">
+          <li>CODATA–RDA Research Data Science Summer School and Advanced Workshops · Abdus Salam International Centre for Theoretical Physics (ICTP)</li>
+          <li>Happiness in Leadership: Driving Team Success · HarvardX</li>
+          <li>Leadership and Communication · HarvardX</li>
+          <li>Building Personal Resilience: Managing Anxiety and Mental Health · edX</li>
+          <li>People and Power Skills · IBM</li>
+          <li>Soft Skills: Collaborate Effectively · edX</li>
+          <li>Clean Power · ImperialX</li>
+          <li>Creating a Pro-Renewables Environment · edX</li>
+          <li>Incorporating Renewable Energy in Electricity Grids · edX</li>
+        </ul>
+      </section>
+
+      <section class="sidebar-section profile-links" aria-labelledby="links-heading">
+        <div class="sidebar-heading">
+          <span aria-hidden="true">G</span>
+          <h2 id="links-heading">Profiles</h2>
+        </div>
+        <div class="profile-link-grid">
+          <a href="https://orcid.org/0000-0002-4328-298X" target="_blank" rel="noopener noreferrer">ORCID <span>↗</span></a>
+          <a href="https://github.com/Rami-Alshembari" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
+          <a href="https://uk.linkedin.com/in/rashemb" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a>
+          <a href="https://www.researchgate.net/profile/Rami-Alshembari" target="_blank" rel="noopener noreferrer">ResearchGate <span>↗</span></a>
+        </div>
+        <p class="availability"><strong>UK right to work:</strong> I have indefinite leave to remain (ILR).</p>
+      </section>
+    </aside>
   </main>
 
-  <footer>
-    <div class="footer-inner">
-      <p>© <span id="year"></span> Rami Alshembari — Advancing volcano deformation modelling for hazard forecasting.</p>
+  <footer class="site-footer" id="contact">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-title">Let’s discuss volcano deformation, geodesy, or multidisciplinary geophysics.</p>
+        <a class="footer-email" href="mailto:R.Alshembari@exeter.ac.uk">R.Alshembari@exeter.ac.uk →</a>
+      </div>
+      <div class="footer-meta">
+        <p>Rami Alshembari · <span data-year>2026</span></p>
+        <a href="#top">Back to top ↑</a>
+      </div>
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
-
-  <script>
-    // Update year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // Animate name on load
-    const nameHeading = document.querySelector('[data-animate-name="true"]');
-    if (nameHeading) {
-      const nameText = nameHeading.textContent.trim();
-      const letters = Array.from(nameText);
-      nameHeading.textContent = '';
-      const wrapper = document.createElement('span');
-      wrapper.className = 'name-letters';
-      letters.forEach((letter, index) => {
-        const span = document.createElement('span');
-        span.className = 'name-letter';
-        span.textContent = letter === ' ' ? '\u00A0' : letter;
-        span.style.animationDelay = `${index * 0.05}s`;
-        wrapper.appendChild(span);
-      });
-      nameHeading.appendChild(wrapper);
-    }
-
-    // Typewriter effect for subtitle
-    const typeTargets = document.querySelectorAll('[data-typewriter="true"]');
-    typeTargets.forEach(target => {
-      const text = target.textContent.trim();
-      if (!text) return;
-
-      if (prefersReducedMotion) {
-        target.textContent = text;
-        return;
-      }
-
-      const initialHeight = target.getBoundingClientRect().height;
-      if (initialHeight) {
-        target.style.minHeight = `${initialHeight}px`;
-      }
-
-      target.textContent = '';
-      let index = 0;
-      const speed = 22;
-
-      const tick = () => {
-        target.textContent += text[index];
-        index += 1;
-        if (index < text.length) {
-          window.setTimeout(tick, speed);
-        }
-      };
-
-      window.setTimeout(tick, 200);
-    });
-
-    // Ambient hero orbs motion
-    const ambientOrbs = document.querySelectorAll('.hero-orb');
-    if (ambientOrbs.length && !prefersReducedMotion) {
-      const startTime = performance.now();
-      const animateOrbs = (time) => {
-        const t = (time - startTime) / 1000;
-        const orbOne = ambientOrbs[0];
-        const orbTwo = ambientOrbs[1];
-
-        if (orbOne) {
-          const x = Math.sin(t * 0.18) * 14;
-          const y = Math.cos(t * 0.22) * 12;
-          orbOne.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        }
-
-        if (orbTwo) {
-          const x = Math.sin(t * 0.16 + 1.4) * 16;
-          const y = Math.cos(t * 0.2 + 0.8) * 10;
-          orbTwo.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        }
-
-        window.requestAnimationFrame(animateOrbs);
-      };
-
-      window.requestAnimationFrame(animateOrbs);
-    }
-
-    // Floating particles behind the hero
-    const heroParticles = document.getElementById('heroParticles');
-    if (heroParticles && !prefersReducedMotion) {
-      const particleCount = 24;
-      let resizeTimeout;
-
-      const randomBetween = (min, max) => min + Math.random() * (max - min);
-
-      const buildParticles = () => {
-        heroParticles.innerHTML = '';
-        const fragment = document.createDocumentFragment();
-
-        for (let i = 0; i < particleCount; i += 1) {
-          const particle = document.createElement('span');
-          particle.className = 'particle';
-
-          const size = randomBetween(8, 18);
-          const duration = randomBetween(12, 22);
-          const driftX = randomBetween(-14, 14);
-          const driftY = randomBetween(-14, 14);
-          const opacity = randomBetween(0.22, 0.46);
-
-          particle.style.setProperty('--x', `${randomBetween(5, 95)}%`);
-          particle.style.setProperty('--y', `${randomBetween(5, 95)}%`);
-          particle.style.setProperty('--size', `${size}px`);
-          particle.style.setProperty('--duration', `${duration}s`);
-          particle.style.setProperty('--delay', `${randomBetween(-duration, 0)}s`);
-          particle.style.setProperty('--drift-x', `${driftX}px`);
-          particle.style.setProperty('--drift-y', `${driftY}px`);
-          particle.style.setProperty('--opacity', opacity.toFixed(2));
-          particle.style.setProperty('--opacity-to', Math.max(opacity - 0.12, 0.08).toFixed(2));
-
-          fragment.appendChild(particle);
-        }
-
-        heroParticles.appendChild(fragment);
-      };
-
-      buildParticles();
-
-      window.addEventListener('resize', () => {
-        window.clearTimeout(resizeTimeout);
-        resizeTimeout = window.setTimeout(buildParticles, 200);
-      });
-    }
-
-    // Gentle pulse for hero skills
-    const pillItems = document.querySelectorAll('.pill-list span');
-    if (pillItems.length && !prefersReducedMotion) {
-      let activeIndex = 0;
-      pillItems[activeIndex].classList.add('pill-pulse');
-
-      window.setInterval(() => {
-        pillItems[activeIndex].classList.remove('pill-pulse');
-        activeIndex = (activeIndex + 1) % pillItems.length;
-        pillItems[activeIndex].classList.add('pill-pulse');
-      }, 1600);
-    }
-
-    // Magnetic hover effect for call-to-action buttons
-    const magneticTargets = document.querySelectorAll('[data-magnetic="true"]');
-    if (magneticTargets.length && !prefersReducedMotion && window.matchMedia('(pointer: fine)').matches) {
-      magneticTargets.forEach(target => {
-        const strength = Number(target.dataset.magnetStrength) || 16;
-        let bounds = null;
-
-        const setBounds = () => {
-          bounds = target.getBoundingClientRect();
-        };
-
-        const handleMove = (event) => {
-          if (!bounds) {
-            setBounds();
-          }
-          const offsetX = event.clientX - bounds.left - bounds.width / 2;
-          const offsetY = event.clientY - bounds.top - bounds.height / 2;
-          const translateX = (offsetX / bounds.width) * strength;
-          const translateY = (offsetY / bounds.height) * strength;
-
-          target.style.setProperty('--magnet-x', `${translateX.toFixed(2)}px`);
-          target.style.setProperty('--magnet-y', `${translateY.toFixed(2)}px`);
-        };
-
-        const reset = () => {
-          target.style.setProperty('--magnet-x', '0px');
-          target.style.setProperty('--magnet-y', '0px');
-        };
-
-        target.addEventListener('mouseenter', setBounds);
-        target.addEventListener('mousemove', handleMove);
-        target.addEventListener('mouseleave', reset);
-        window.addEventListener('resize', setBounds);
-      });
-    }
-
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('mobile-open');
-        const isOpen = navLinks.classList.contains('mobile-open');
-        menuToggle.setAttribute('aria-expanded', String(isOpen));
-      });
-
-      // Close mobile menu when clicking a link
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('mobile-open');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
-
-    // Interactive volcano animation (no external libraries required)
-    const volcanoSvg = document.getElementById('volcano-svg');
-    const volcanoDefs = document.getElementById('volcanoFilters');
-    const mountainGroup = document.getElementById('mountainGroup');
-    const lavaGroup = document.getElementById('lavaGroup');
-    const faceHappy = document.getElementById('faceHappy');
-    const faceCalm = document.getElementById('faceCalm');
-    const volcanoApp = document.querySelector('.volcano-app');
-
-    if (volcanoSvg && volcanoDefs && mountainGroup && lavaGroup && faceHappy && faceCalm) {
-      const svgNS = 'http://www.w3.org/2000/svg';
-      const filterCount = 10;
-
-      for (let i = 0; i < filterCount; i += 1) {
-        const filter = document.createElementNS(svgNS, 'filter');
-        filter.setAttribute('id', `squiggle-${i}`);
-
-        const turbulence = document.createElementNS(svgNS, 'feTurbulence');
-        turbulence.setAttribute('type', 'turbulence');
-        turbulence.setAttribute('baseFrequency', '0.02');
-        turbulence.setAttribute('numOctaves', '2');
-        turbulence.setAttribute('seed', String(i));
-        turbulence.setAttribute('result', 'noise');
-
-        const displacement = document.createElementNS(svgNS, 'feDisplacementMap');
-        displacement.setAttribute('in', 'SourceGraphic');
-        displacement.setAttribute('in2', 'noise');
-        displacement.setAttribute('scale', '3');
-        displacement.setAttribute('xChannelSelector', 'R');
-        displacement.setAttribute('yChannelSelector', 'G');
-
-        filter.appendChild(turbulence);
-        filter.appendChild(displacement);
-        volcanoDefs.appendChild(filter);
-      }
-
-      let eruption = true;
-      let filterIndex = 0;
-      let timerId = null;
-
-      const applyFilter = (index) => {
-        const filterUrl = `url(#squiggle-${index})`;
-        mountainGroup.style.filter = filterUrl;
-        if (eruption) {
-          lavaGroup.style.filter = filterUrl;
-        } else {
-          lavaGroup.style.filter = 'none';
-        }
-      };
-
-      const tick = () => {
-        filterIndex = (filterIndex + 1) % filterCount;
-        applyFilter(filterIndex);
-        const delay = eruption ? 55 : 140;
-        timerId = window.setTimeout(tick, delay);
-      };
-
-      const startLoop = () => {
-        if (timerId) {
-          window.clearTimeout(timerId);
-        }
-        tick();
-      };
-
-      const setEruption = (state) => {
-        eruption = state;
-        lavaGroup.style.display = eruption ? 'block' : 'none';
-        faceHappy.style.display = eruption ? 'block' : 'none';
-        faceCalm.style.display = eruption ? 'none' : 'block';
-        if (volcanoApp) {
-          volcanoApp.classList.toggle('volcano-idle', !eruption);
-          volcanoApp.classList.toggle('eruption-on', eruption);
-        }
-        window.volcanoEruption = eruption;
-        document.dispatchEvent(new CustomEvent('volcanoEruption', { detail: { eruption } }));
-        startLoop();
-      };
-
-      volcanoSvg.addEventListener('click', () => {
-        setEruption(!eruption);
-      });
-
-      setEruption(false);
-    }
-
-    // Volcanic ash plume particles
-    const ashPlume = document.getElementById('ashPlume');
-    if (ashPlume) {
-      const ashCount = 20;
-      const randomBetween = (min, max) => min + Math.random() * (max - min);
-
-      const buildAsh = () => {
-        ashPlume.innerHTML = '';
-        const fragment = document.createDocumentFragment();
-
-        for (let i = 0; i < ashCount; i += 1) {
-          const ash = document.createElement('span');
-          ash.className = 'ash';
-
-          const size = randomBetween(6, 16);
-          const duration = randomBetween(6.5, 12);
-          const delay = randomBetween(-duration, 0);
-          const xOffset = randomBetween(-70, 70);
-          const drift = randomBetween(-30, 30);
-          const opacity = randomBetween(0.25, 0.55);
-
-          ash.style.setProperty('--ash-size', `${size}px`);
-          ash.style.setProperty('--ash-duration', `${duration}s`);
-          ash.style.setProperty('--ash-delay', `${delay}s`);
-          ash.style.setProperty('--ash-x', `${xOffset}px`);
-          ash.style.setProperty('--ash-drift', `${drift}px`);
-          ash.style.setProperty('--ash-opacity', opacity.toFixed(2));
-
-          fragment.appendChild(ash);
-        }
-
-        ashPlume.appendChild(fragment);
-      };
-
-      buildAsh();
-
-      if (prefersReducedMotion) {
-        ashPlume.querySelectorAll('.ash').forEach((ash, index) => {
-          ash.style.animation = 'none';
-          ash.style.transform = `translate3d(${(index - 6) * 10}px, -40px, 0) scale(1)`;
-          ash.style.opacity = '0.5';
-        });
-      } else {
-        window.addEventListener('resize', () => buildAsh());
-      }
-    }
-
-    // Deformation rings around the volcano base
-    const deformationRings = document.getElementById('deformationRings');
-    if (deformationRings) {
-      const randomBetween = (min, max) => min + Math.random() * (max - min);
-      let ringTimer = null;
-
-      const spawnRing = () => {
-        const ring = document.createElement('span');
-        ring.className = 'ring';
-        ring.style.setProperty('--ring-size', `${randomBetween(26, 46)}px`);
-        ring.style.opacity = randomBetween(0.5, 0.9).toFixed(2);
-
-        ring.addEventListener('animationend', () => ring.remove());
-        deformationRings.appendChild(ring);
-      };
-
-      if (prefersReducedMotion) {
-        for (let i = 0; i < 2; i += 1) {
-          const ring = document.createElement('span');
-          ring.className = 'ring';
-          ring.style.setProperty('--ring-size', `${32 + i * 14}px`);
-          ring.style.animation = 'none';
-          ring.style.opacity = '0.55';
-          ring.style.transform = `translateX(-50%) scale(${0.9 + i * 0.35})`;
-          deformationRings.appendChild(ring);
-        }
-      } else {
-        const scheduleRing = () => {
-          spawnRing();
-          const nextDelay = window.volcanoEruption ? 1100 : 1500;
-          ringTimer = window.setTimeout(scheduleRing, nextDelay);
-        };
-        scheduleRing();
-        document.addEventListener('volcanoEruption', () => {
-          if (ringTimer) {
-            window.clearTimeout(ringTimer);
-          }
-          scheduleRing();
-        });
-      }
-    }
-
-    // Seismograph line animation
-    const seismoCanvas = document.getElementById('seismoCanvas');
-    if (seismoCanvas) {
-      const ctx = seismoCanvas.getContext('2d');
-      if (ctx) {
-        let width = 0;
-        let height = 0;
-        let dpr = window.devicePixelRatio || 1;
-        let lastTime = 0;
-        let quake = null;
-        let eruptionBoost = 1;
-
-        const randomBetween = (min, max) => min + Math.random() * (max - min);
-
-        const resizeSeismo = () => {
-          const rect = seismoCanvas.getBoundingClientRect();
-          width = rect.width;
-          height = rect.height;
-          dpr = window.devicePixelRatio || 1;
-          seismoCanvas.width = Math.max(1, width * dpr);
-          seismoCanvas.height = Math.max(1, height * dpr);
-          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        };
-
-        const newQuake = (time) => ({
-          start: time,
-          duration: randomBetween(1400, 2400),
-          center: randomBetween(0.2, 0.8),
-          amplitude: randomBetween(12, 22)
-        });
-
-        const drawSeismo = (time) => {
-          if (!width || !height) {
-            resizeSeismo();
-          }
-
-          if (!prefersReducedMotion && time - lastTime < 40) {
-            window.requestAnimationFrame(drawSeismo);
-            return;
-          }
-
-          lastTime = time;
-          const mid = height * 0.52;
-          ctx.clearRect(0, 0, width, height);
-
-          ctx.lineWidth = 2;
-          ctx.strokeStyle = 'rgba(255, 122, 69, 0.85)';
-          ctx.shadowColor = 'rgba(255, 122, 69, 0.35)';
-          ctx.shadowBlur = 10;
-
-          if (!quake || time - quake.start > quake.duration + 800) {
-            quake = newQuake(time);
-          }
-
-          ctx.beginPath();
-          for (let x = 0; x <= width; x += 3) {
-            const baseWave = Math.sin(x * 0.045 + time * 0.002) * 4;
-            const fineWave = Math.sin(x * 0.12 - time * 0.0014) * 2.5;
-            let y = mid + baseWave + fineWave;
-
-            if (quake) {
-              const progress = Math.min(Math.max((time - quake.start) / quake.duration, 0), 1);
-              const envelope = Math.sin(progress * Math.PI);
-              const centerX = quake.center * width;
-              const spread = width * 0.08;
-              const distance = x - centerX;
-              const gaussian = Math.exp(-(distance * distance) / (2 * spread * spread));
-              const quakeWave = Math.sin(x * 0.3 + time * 0.02) * quake.amplitude * envelope;
-              y += gaussian * quakeWave * eruptionBoost;
-            }
-
-            if (x === 0) {
-              ctx.moveTo(x, y);
-            } else {
-              ctx.lineTo(x, y);
-            }
-          }
-
-          ctx.stroke();
-          ctx.shadowBlur = 0;
-
-          if (!prefersReducedMotion) {
-            window.requestAnimationFrame(drawSeismo);
-          }
-        };
-
-        resizeSeismo();
-        window.addEventListener('resize', resizeSeismo);
-        document.addEventListener('volcanoEruption', (event) => {
-          eruptionBoost = event.detail.eruption ? 1.5 : 1;
-        });
-
-        drawSeismo(performance.now());
-      }
-    }
-
-    // Scroll reveal animations
-    const revealTargets = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window && revealTargets.length) {
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.18 });
-
-      revealTargets.forEach(target => revealObserver.observe(target));
-    } else {
-      revealTargets.forEach(target => target.classList.add('is-visible'));
-    }
-
-    // Staggered reveal timing for grouped content
-    const staggerGroups = [
-      { selector: '.info-grid .reveal', step: 0.08 },
-      { selector: '.resource-grid .reveal', step: 0.08 },
-      { selector: '.timeline .reveal', step: 0.06 },
-      { selector: '.publication-list .reveal', step: 0.04 }
-    ];
-
-    staggerGroups.forEach(group => {
-      const items = document.querySelectorAll(group.selector);
-      items.forEach((item, index) => {
-        item.style.transitionDelay = `${index * group.step}s`;
-      });
-    });
-
-    // Active nav link highlighting
-    const sectionIds = ['overview', 'research', 'education', 'publications'];
-    const navLinkMap = new Map();
-    sectionIds.forEach(id => {
-      const link = document.querySelector(`.nav-links a[href="#${id}"]`);
-      const section = document.getElementById(id);
-      if (link && section) {
-        navLinkMap.set(id, link);
-      }
-    });
-
-    if ('IntersectionObserver' in window && navLinkMap.size) {
-      const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          const targetId = entry.target.getAttribute('id');
-          const link = navLinkMap.get(targetId);
-          if (!link) return;
-          if (entry.isIntersecting) {
-            navLinkMap.forEach(value => value.classList.remove('active'));
-            link.classList.add('active');
-          }
-        });
-      }, { threshold: 0.4 });
-
-      navLinkMap.forEach((_link, id) => {
-        const section = document.getElementById(id);
-        if (section) {
-          sectionObserver.observe(section);
-        }
-      });
-    }
-
-    // Subtle parallax for hero image
-    const parallaxTargets = document.querySelectorAll('[data-parallax]');
-    if (parallaxTargets.length) {
-      let rafId = null;
-
-      const updateParallax = () => {
-        const scrollY = window.scrollY || window.pageYOffset;
-        parallaxTargets.forEach(target => {
-          const speed = Number(target.dataset.parallax) || 0.05;
-          const offset = Math.min(scrollY * speed, 24);
-          target.style.transform = `translateY(${offset}px)`;
-        });
-        rafId = null;
-      };
-
-      window.addEventListener('scroll', () => {
-        if (rafId) return;
-        rafId = window.requestAnimationFrame(updateParallax);
-      });
-
-      updateParallax();
-    }
-
-    // Header scroll effect
-    const header = document.getElementById('header');
-    const scrollProgress = document.getElementById('scrollProgress');
-    const backToTop = document.getElementById('backToTop');
-    let lastScroll = 0;
-
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-      
-      if (currentScroll > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-
-      if (scrollProgress) {
-        const doc = document.documentElement;
-        const scrollHeight = doc.scrollHeight - doc.clientHeight;
-        const progress = scrollHeight > 0 ? (currentScroll / scrollHeight) * 100 : 0;
-        scrollProgress.style.width = `${progress}%`;
-      }
-
-      if (backToTop) {
-        if (currentScroll > 400) {
-          backToTop.classList.add('show');
-        } else {
-          backToTop.classList.remove('show');
-        }
-      }
-      
-      lastScroll = currentScroll;
-    });
-
-    if (backToTop) {
-      backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
-    // Subtle 3D tilt for hero photo
-    const heroPhoto = document.querySelector('.hero-photo');
-    if (heroPhoto && window.matchMedia('(pointer: fine)').matches) {
-      const maxTilt = 8;
-
-      const handleMove = (event) => {
-        const rect = heroPhoto.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - 0.5;
-        const y = (event.clientY - rect.top) / rect.height - 0.5;
-        heroPhoto.style.setProperty('--tilt-x', `${(-y * maxTilt).toFixed(2)}deg`);
-        heroPhoto.style.setProperty('--tilt-y', `${(x * maxTilt).toFixed(2)}deg`);
-      };
-
-      const resetTilt = () => {
-        heroPhoto.style.setProperty('--tilt-x', '0deg');
-        heroPhoto.style.setProperty('--tilt-y', '0deg');
-      };
-
-      heroPhoto.addEventListener('mousemove', handleMove);
-      heroPhoto.addEventListener('mouseleave', resetTilt);
-      heroPhoto.addEventListener('touchstart', resetTilt, { passive: true });
-    }
-
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>
