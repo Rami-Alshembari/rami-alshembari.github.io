@@ -1,667 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Soufrière Hills Volcano field campaign 2024 - Montserrat fieldwork by Rami Alshembari" />
-  <meta name="theme-color" content="#0071e3" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Soufrière Hills Volcano field campaign in Montserrat in 2024, supporting GPS measurements, research collaboration, and volcano deformation studies.">
+  <meta name="author" content="Rami Alshembari">
+  <meta name="theme-color" content="#dceaf6">
+  <meta property="og:title" content="Montserrat 2024 | Rami Alshembari">
+  <meta property="og:description" content="Soufrière Hills Volcano field campaign in Montserrat in 2024, supporting GPS measurements, research collaboration, and volcano deformation studies.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rami-alshembari.github.io/montserrat-2024.html">
+  <meta property="og:image" content="https://rami-alshembari.github.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Rami Alshembari — Geophysical Volcanologist, with volcano and seismic motifs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://rami-alshembari.github.io/og.png">
   <title>Montserrat 2024 | Rami Alshembari</title>
-  <style>
-    :root {
-      --color-bg-light: #ffffff;
-      --color-bg-section: #fafafa;
-      --color-text-main: #1d1d1f;
-      --color-text-secondary: #6e6e73;
-      --color-link: #0066cc;
-      --color-cta: #0071e3;
-      --color-cta-hover: #0077ed;
-      --color-border-subtle: #e5e5e7;
-      --color-border-light: #f0f0f2;
-      --container-width: 1200px;
-      --radius-large: 28px;
-      --radius-card: 20px;
-      --radius-button: 999px;
-      --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
-      --shadow-medium: 0 12px 32px rgba(0, 0, 0, 0.08);
-      --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.12);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 80px;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", 
-        system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--color-bg-light);
-      color: var(--color-text-main);
-      line-height: 1.6;
-      font-size: 16px;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 600;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    .page {
-      max-width: var(--container-width);
-      margin: 0 auto;
-      padding: 0 clamp(1rem, 5vw, 2rem);
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 1px solid var(--color-border-light);
-      transition: var(--transition);
-    }
-
-    header.scrolled {
-      box-shadow: var(--shadow-soft);
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 72px;
-      gap: 1rem;
-      position: relative;
-    }
-
-    .logo {
-      font-size: clamp(1.1rem, 3vw, 1.3rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--color-text-main);
-      transition: var(--transition);
-      flex-shrink: 0;
-    }
-
-    .logo:hover {
-      color: var(--color-cta);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: clamp(1rem, 3vw, 2rem);
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      color: var(--color-text-secondary);
-      padding: 0.5rem 0;
-      position: relative;
-      white-space: nowrap;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--color-cta);
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--color-cta);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* Dropdown menu */
-    .nav-dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .nav-dropdown > a {
-      cursor: pointer;
-      pointer-events: auto;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      top: calc(100% + 0.5rem);
-      left: 50%;
-      transform: translateX(-50%);
-      background: white;
-      min-width: 200px;
-      box-shadow: var(--shadow-medium);
-      border: 1px solid var(--color-border-subtle);
-      border-radius: 12px;
-      padding: 0.5rem 0;
-      z-index: 1000;
-    }
-
-    .nav-dropdown:hover .dropdown-content,
-    .dropdown-content:hover {
-      display: block;
-    }
-
-    .dropdown-content a {
-      display: block;
-      padding: 0.75rem 1.25rem;
-      color: var(--color-text-secondary);
-      font-size: 0.9rem;
-      transition: var(--transition);
-    }
-
-    .dropdown-content a::after {
-      display: none;
-    }
-
-    .dropdown-content a:hover {
-      background: var(--color-bg-section);
-      color: var(--color-cta);
-    }
-
-    .hero {
-      padding: clamp(3rem, 8vw, 5rem) 0 clamp(2rem, 6vw, 4rem);
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(2rem, 6vw, 3rem);
-      font-weight: 700;
-      margin-bottom: 1.5rem;
-      background: linear-gradient(135deg, var(--color-text-main) 0%, #4a4a4f 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero p {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: var(--color-text-secondary);
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      line-height: 1.7;
-    }
-
-    .hero-tags {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .hero-tags span {
-      padding: 0.5rem 1rem;
-      background: var(--color-bg-section);
-      border: 1px solid var(--color-border-subtle);
-      border-radius: var(--radius-button);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--color-text-secondary);
-      transition: var(--transition);
-    }
-
-    .hero-tags span:hover {
-      background: white;
-      border-color: var(--color-cta);
-      color: var(--color-cta);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-soft);
-    }
-
-    section {
-      padding: clamp(3rem, 8vw, 5rem) 0;
-    }
-
-    section:not(:last-of-type) {
-      border-bottom: 1px solid var(--color-border-light);
-    }
-
-    .section-title {
-      font-size: clamp(1.75rem, 5vw, 2.25rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-    }
-
-    .section-body {
-      font-size: clamp(1rem, 2.5vw, 1.1rem);
-      color: var(--color-text-secondary);
-      margin-bottom: 2.5rem;
-      line-height: 1.7;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-      gap: 1.5rem;
-    }
-
-    figure {
-      margin: 0;
-      background: white;
-      border: 1px solid var(--color-border-subtle);
-      border-radius: var(--radius-card);
-      overflow: hidden;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    figure:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-hover);
-      border-color: var(--color-cta);
-    }
-
-    figure img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: var(--transition);
-    }
-
-    figure:hover img {
-      transform: scale(1.05);
-    }
-
-    figure figcaption {
-      padding: 0.8rem 1rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--color-text-secondary);
-      background: var(--color-bg-section);
-    }
-
-    footer {
-      background: linear-gradient(180deg, #fafafa 0%, #f5f5f7 100%);
-      margin-top: 4rem;
-      border-top: 1px solid var(--color-border-light);
-    }
-
-    .footer-inner {
-      max-width: var(--container-width);
-      margin: 0 auto;
-      padding: 3rem clamp(1rem, 5vw, 2rem);
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--color-text-secondary);
-    }
-
-    .footer-inner p {
-      line-height: 1.8;
-    }
-
-    .menu-toggle {
-      display: none;
-      background: var(--color-bg-light);
-      border: 1px solid var(--color-border-subtle);
-      border-radius: 8px;
-      padding: 0.6rem 1rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--color-text-main);
-      cursor: pointer;
-      transition: var(--transition);
-      flex-shrink: 0;
-      z-index: 1002;
-    }
-
-    .menu-toggle:hover {
-      background: var(--color-bg-section);
-      border-color: var(--color-cta);
-    }
-
-    .nav-links.mobile-open {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: saturate(180%) blur(20px);
-      padding: 1.5rem;
-      gap: 0.5rem;
-      border-bottom: 1px solid var(--color-border-subtle);
-      box-shadow: var(--shadow-medium);
-      z-index: 1001;
-    }
-
-    @media (max-width: 768px) {
-      nav {
-        position: relative;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        padding: 1.25rem;
-        gap: 0.25rem;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: saturate(180%) blur(20px);
-        border-bottom: 1px solid var(--color-border-subtle);
-        box-shadow: var(--shadow-medium);
-      }
-
-      .nav-links.mobile-open {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .nav-links a,
-      .nav-dropdown > a {
-        width: 100%;
-        padding: 0.8rem 0;
-      }
-
-      .nav-dropdown {
-        width: 100%;
-      }
-
-      .nav-dropdown .dropdown-content {
-        position: static;
-        display: block;
-        background: transparent;
-        border: 0;
-        box-shadow: none;
-        padding: 0.25rem 0 0.5rem 1rem;
-      }
-
-      .hero h1 {
-        font-size: 2rem;
-      }
-
-      .gallery-grid {
-        gap: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 1.75rem;
-      }
-
-      .hero-tags span {
-        font-size: 0.7rem;
-        padding: 0.4rem 0.8rem;
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero,
-    figure {
-      animation: fadeInUp 0.6s ease-out;
-    }
-
-    figure:nth-child(1) { animation-delay: 0.05s; }
-    figure:nth-child(2) { animation-delay: 0.1s; }
-    figure:nth-child(3) { animation-delay: 0.15s; }
-    figure:nth-child(4) { animation-delay: 0.2s; }
-    figure:nth-child(5) { animation-delay: 0.25s; }
-    figure:nth-child(6) { animation-delay: 0.3s; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fieldwork.css">
 </head>
-<body>
-  <header id="header">
-    <div class="page">
-      <nav>
-        <a href="index.html" class="logo">Rami Alshembari</a>
-        <div class="nav-links" id="navLinks">
-          <a href="index.html">Home</a>
-          <a href="index.html#overview">Overview</a>
-          <a href="index.html#research">Research</a>
-          <div class="nav-dropdown">
-            <a href="fieldtrip.html">Field Work</a>
-            <div class="dropdown-content">
-              <a href="montserrat-2024.html" aria-current="page">Montserrat 2024</a>
-              <a href="sakurajima-2025.html">Sakurajima 2025</a>
-            </div>
-          </div>
-          <a href="index.html#publications">Publications</a>
-          <a href="mailto:R.Alshembari@exeter.ac.uk">Contact</a>
-        </div>
-        <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation">
-          <span>Menu</span>
-        </button>
+<body class="field-page">
+  <a class="skip-link" href="#main-content">Skip to field journal</a>
+
+  <header class="field-masthead">
+    <div class="container field-masthead-inner">
+      <nav class="field-breadcrumb" aria-label="Breadcrumb">
+        <a href="fieldtrip.html">Fieldwork</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Montserrat · 2024</span>
       </nav>
+      <p class="field-kicker">Field journal · Montserrat · 2024</p>
+      <h1>Soufrière Hills · Field Campaign 2024</h1>
+      <p class="field-lede">I took part in a field trip to Soufrière Hills Volcano in Montserrat to support research collaboration and collect high-precision GPS data across the island for ongoing volcano-deformation studies.</p>
+      <ul class="field-meta-list" aria-label="Campaign topics">
+        <li>Montserrat</li>
+        <li>Deformation</li>
+        <li>Soufrière Hills Volcano</li>
+        <li>Montserrat Volcano Observatory</li>
+      </ul>
     </div>
   </header>
 
-  <main class="page">
-    <section class="hero">
-      <h1>Soufrière Hills · Field Campaign 2024</h1>
-      <p>I took part in a field trip to Soufrière Hills Volcano in Montserrat to support research collaboration and collect high-precision GPS data across the island for ongoing volcano deformation studies.</p>
-      <div class="hero-tags">
-        <span>Montserrat</span>
-        <span>Deformation</span>
-        <span>Soufrière Hills Volcano</span>
-        <span>Montserrat Volcano Observatory</span>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a class="nav-mark" href="index.html" aria-label="Rami Alshembari home">RA</a>
+      <div class="nav-links">
+        <a href="index.html#profile">Profile</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#education">Education</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="fieldtrip.html" aria-current="location">Fieldwork</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container field-main" id="main-content">
+    <section class="field-section" aria-labelledby="overview-heading">
+      <div class="section-heading">
+        <span class="section-number" aria-hidden="true">01</span>
+        <h2 id="overview-heading">Campaign overview</h2>
+      </div>
+      <div class="field-section-body">
+        <div class="expedition-overview">
+          <img src="Montserrat%202024/IMG_4751.jpg" alt="Aerial view across Montserrat during the 2024 Soufrière Hills field campaign" width="900" height="1200" loading="eager" decoding="async">
+          <div class="expedition-facts">
+            <h3>Campaign details</h3>
+            <dl>
+          <div>
+            <dt>Location</dt>
+            <dd>Montserrat, Caribbean</dd>
+          </div>
+          <div>
+            <dt>Research focus</dt>
+            <dd>High-precision GPS and volcano deformation</dd>
+          </div>
+          <div>
+            <dt>Collaboration</dt>
+            <dd>Montserrat Volcano Observatory</dd>
+          </div>
+            </dl>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section>
-      <h2 class="section-title">Photo Gallery</h2>
-      <p class="section-body">Captured frames direct from site teams. Each image opens the original resolution for closer inspection.</p>
+    <section class="field-section" id="gallery" aria-labelledby="gallery-heading">
+      <div class="gallery-heading-row">
+        <div class="section-heading">
+          <span class="section-number" aria-hidden="true">02</span>
+          <h2 id="gallery-heading">Photo gallery</h2>
+        </div>
+        <span class="gallery-count">21 photographs</span>
+      </div>
+      <p class="gallery-note">Captured frames from the field campaign and research visit. Each image opens at its original resolution in a new tab.</p>
       <div class="gallery-grid">
         <figure>
-          <a href="Montserrat%202024/IMG_4751.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_4751.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_4751.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_4751.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 01" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 4751.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>01</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_4752.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_4752.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_4752.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_4752.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 02" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 4752.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>02</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_4760.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_4760.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_4760.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_4760.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 03" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 4760.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>03</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_4771.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_4771.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_4771.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_4771.jpg" width="675" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 04" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 4771.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>04</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_4805.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_4805.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_4805.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_4805.jpg" width="1200" height="900" alt="Soufrière Hills field campaign in Montserrat — photograph 05" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 4805.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>05</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_4812-2.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_4812-2.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_4812-2.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_4812-2.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 06" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 4812-2.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>06</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_4814.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_4814.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_4814.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_4814.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 07" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 4814.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>07</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_4957.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_4957.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_4957.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_4957.jpg" width="675" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 08" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 4957.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>08</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_4961.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_4961.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_4961.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_4961.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 09" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 4961.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>09</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_4966.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_4966.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_4966.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_4966.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 10" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 4966.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>10</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_4990.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_4990.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_4990.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_4990.jpg" width="1200" height="900" alt="Soufrière Hills field campaign in Montserrat — photograph 11" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 4990.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>11</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_5055.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_5055.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_5055.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_5055.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 12" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 5055.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>12</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_5138.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_5138.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_5138.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_5138.jpg" width="881" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 13" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 5138.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>13</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_5290_jpg.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_5290_jpg.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_5290_jpg.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_5290_jpg.jpg" width="1200" height="900" alt="Soufrière Hills field campaign in Montserrat — photograph 14" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 5290_jpg.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>14</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_5294.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_5294.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_5294.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_5294.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 15" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 5294.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>15</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_5304.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_5304.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_5304.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_5304.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 16" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 5304.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>16</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_5307.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_5307.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_5307.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_5307.jpg" width="1200" height="900" alt="Soufrière Hills field campaign in Montserrat — photograph 17" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 5307.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>17</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_5377.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_5377.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_5377.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_5377.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 18" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 5377.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>18</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_5379.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_5379.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_5379.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_5379.jpg" width="1200" height="900" alt="Soufrière Hills field campaign in Montserrat — photograph 19" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 5379.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>19</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_5397_jpg.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_5397_jpg.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_5397_jpg.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_5397_jpg.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 20" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 5397_jpg.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>20</span></figcaption>
         </figure>
         <figure>
-          <a href="Montserrat%202024/IMG_5420.jpg" target="_blank" rel="noopener">
-            <img src="Montserrat%202024/IMG_5420.jpg" alt="Montserrat field photo" loading="lazy" />
+          <a href="Montserrat%202024/IMG_5420.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="Montserrat%202024/IMG_5420.jpg" width="900" height="1200" alt="Soufrière Hills field campaign in Montserrat — photograph 21" loading="lazy" decoding="async">
           </a>
-          <figcaption>IMG 5420.jpg</figcaption>
+          <figcaption><span>Field photograph</span><span>21</span></figcaption>
         </figure>
       </div>
+      <nav class="field-page-links" aria-label="Field journal navigation">
+        <a href="fieldtrip.html">← All fieldwork</a>
+        <a href="sakurajima-2025.html">Next campaign: Sakurajima 2025 →</a>
+      </nav>
     </section>
   </main>
 
-  <footer>
-    <div class="footer-inner">
-      <p>© <span id="year"></span> Rami Alshembari — Soufrière Hills Volcano field documentation.</p>
+  <footer class="site-footer field-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-title">Soufrière Hills Volcano field documentation.</p>
+        <a class="footer-email" href="mailto:R.Alshembari@exeter.ac.uk">R.Alshembari@exeter.ac.uk →</a>
+      </div>
+      <div class="footer-meta">
+        <p>Rami Alshembari · <span data-year>2026</span></p>
+        <a href="fieldtrip.html">All fieldwork →</a>
+      </div>
     </div>
   </footer>
 
-  <script>
-    // Update year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Mobile menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    
-    if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('mobile-open');
-        const isOpen = navLinks.classList.contains('mobile-open');
-        menuToggle.setAttribute('aria-expanded', isOpen);
-      });
-
-      // Close mobile menu when clicking a link
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('mobile-open');
-          menuToggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
-
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      const currentScroll = window.pageYOffset;
-      if (currentScroll > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-  </script>
+  <script src="script.js" defer></script>
 </body>
 </html>

@@ -178,20 +178,9 @@ ol {
 }
 
 .contact-panel {
-  display: grid;
-  grid-template-columns: 98px minmax(0, 1fr);
-  gap: 18px;
-  align-items: center;
-}
-
-.contact-panel > img {
-  width: 98px;
-  aspect-ratio: 1 / 1.15;
-  border: 4px solid rgba(255, 255, 255, 0.78);
-  border-radius: 5px;
-  box-shadow: var(--shadow);
-  object-fit: cover;
-  object-position: 32% center;
+  width: 100%;
+  max-width: 390px;
+  justify-self: end;
 }
 
 .contact-list {
@@ -855,11 +844,7 @@ ol {
   }
 
   .contact-panel {
-    grid-template-columns: 88px minmax(0, 390px);
-  }
-
-  .contact-panel > img {
-    width: 88px;
+    justify-self: start;
   }
 
   .resume-layout {
@@ -928,11 +913,22 @@ ol {
   .nav-links {
     gap: 18px;
     overflow-x: auto;
-    scrollbar-width: none;
+    padding-bottom: 2px;
+    scrollbar-color: var(--line) transparent;
+    scrollbar-width: thin;
   }
 
   .nav-links::-webkit-scrollbar {
-    display: none;
+    height: 3px;
+  }
+
+  .nav-links::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .nav-links::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: var(--line);
   }
 
   .nav-links a {
@@ -1001,16 +997,6 @@ ol {
 }
 
 @media (max-width: 480px) {
-  .contact-panel {
-    grid-template-columns: 74px minmax(0, 1fr);
-    gap: 13px;
-  }
-
-  .contact-panel > img {
-    width: 74px;
-    border-width: 3px;
-  }
-
   .contact-list > a,
   .contact-location {
     grid-template-columns: 1fr;
@@ -1124,16 +1110,6 @@ ol {
   .discipline-list li {
     padding: 2px 5px;
     font-size: 6.5pt;
-  }
-
-  .contact-panel {
-    grid-template-columns: 19mm 1fr;
-    gap: 4mm;
-  }
-
-  .contact-panel > img {
-    width: 19mm;
-    box-shadow: none;
   }
 
   .contact-list > a,

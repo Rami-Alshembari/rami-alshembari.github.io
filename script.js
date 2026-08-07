@@ -28,18 +28,23 @@ if (sectionTargets.length) {
   const updateCurrentSection = () => {
     const navHeight = document.querySelector('.site-nav')?.offsetHeight ?? 0;
     const marker = window.scrollY + navHeight + 32;
-    let current = sectionTargets[0];
+    const positionedTargets = sectionTargets
+      .map((section) => ({
+        section,
+        top: section.getBoundingClientRect().top + window.scrollY,
+      }))
+      .sort((a, b) => a.top - b.top);
+    let current = positionedTargets[0].section;
 
-    sectionTargets.forEach((section) => {
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      if (sectionTop <= marker) {
+    positionedTargets.forEach(({ section, top }) => {
+      if (top <= marker) {
         current = section;
       }
     });
 
     const atPageEnd = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
     if (atPageEnd) {
-      current = sectionTargets[sectionTargets.length - 1];
+      current = positionedTargets[positionedTargets.length - 1].section;
     }
 
     setCurrentLink(current.id);
