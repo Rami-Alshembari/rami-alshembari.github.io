@@ -1,12 +1,7 @@
-const printButton = document.querySelector('[data-print]');
 const year = document.querySelector('[data-year]');
 
 if (year) {
   year.textContent = new Date().getFullYear();
-}
-
-if (printButton) {
-  printButton.addEventListener('click', () => window.print());
 }
 
 const sectionLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];

@@ -304,26 +304,6 @@ ol {
   transform: scaleX(1);
 }
 
-.print-button {
-  margin-left: auto;
-  padding: 7px 11px;
-  border: 1px solid var(--line);
-  border-radius: 3px;
-  background: var(--surface);
-  color: var(--ink-soft);
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.73rem;
-  font-weight: 700;
-  letter-spacing: 0.035em;
-  white-space: nowrap;
-}
-
-.print-button:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
 .resume-layout {
   display: grid;
   grid-template-columns: minmax(0, 2.08fr) minmax(275px, 0.92fr);
@@ -933,11 +913,6 @@ ol {
 
   .nav-links a {
     padding-block: 14px 12px;
-  }
-
-  .print-button {
-    padding: 7px 9px;
-    font-size: 0.67rem;
   }
 
   .resume-layout {
