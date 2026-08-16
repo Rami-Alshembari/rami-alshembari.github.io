@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script>document.documentElement.classList.add('js');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Fieldwork highlights from Rami Alshembari's volcano research campaigns at Soufrière Hills Volcano and Sakurajima.">
   <meta name="author" content="Rami Alshembari">
@@ -11,12 +12,12 @@
   <meta property="og:description" content="Field documentation from volcano deformation campaigns in Montserrat and Japan.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rami-alshembari.github.io/fieldtrip.html">
-  <meta property="og:image" content="https://rami-alshembari.github.io/og.png">
+  <meta property="og:image" content="https://rami-alshembari.github.io/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Rami Alshembari — Geophysical Volcanologist, with volcano and seismic motifs">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://rami-alshembari.github.io/og.png">
+  <meta name="twitter:image" content="https://rami-alshembari.github.io/og.jpg">
   <title>Fieldwork | Rami Alshembari</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +61,7 @@
         <div class="campaign-grid">
           <a class="campaign-card" href="montserrat-2024.html">
             <div class="campaign-card-image">
-              <img src="Montserrat%202024/IMG_4751.jpg" alt="Aerial view across Montserrat during the 2024 field campaign" width="900" height="1200" loading="eager" decoding="async">
+              <img srcset="thumbs-sm/Montserrat%202024/IMG_4751.jpg 400w, thumbs/Montserrat%202024/IMG_4751.jpg 700w, Montserrat%202024/IMG_4751.jpg 900w" sizes="(max-width: 720px) 92vw, 46vw" src="thumbs/Montserrat%202024/IMG_4751.jpg" alt="Aerial view across Montserrat during the 2024 field campaign" width="525" height="700" loading="eager" decoding="async">
             </div>
             <div class="campaign-card-body">
               <p class="campaign-date">2024 · Montserrat</p>
@@ -72,7 +73,7 @@
 
           <a class="campaign-card" href="sakurajima-2025.html">
             <div class="campaign-card-image">
-              <img src="Sakurajima/IMG_7430.jpg" alt="Ash plume rising from Sakurajima during the 2025 field campaign" width="1200" height="900" loading="lazy" decoding="async">
+              <img srcset="thumbs-sm/Sakurajima/IMG_7430.jpg 400w, thumbs/Sakurajima/IMG_7430.jpg 700w, Sakurajima/IMG_7430.jpg 1200w" sizes="(max-width: 720px) 92vw, 46vw" src="thumbs/Sakurajima/IMG_7430.jpg" alt="Ash plume rising from Sakurajima during the 2025 field campaign" width="700" height="525" loading="lazy" decoding="async">
             </div>
             <div class="campaign-card-body">
               <p class="campaign-date">May 2025 · Japan</p>
@@ -87,7 +88,7 @@
   </main>
 
   <footer class="site-footer field-footer" id="contact">
-    <div class="container footer-inner">
+    <div class="container footer-inner" data-reveal>
       <div>
         <p class="footer-title">Field documentation and volcano-monitoring campaigns.</p>
         <a class="footer-email" href="mailto:R.Alshembari@exeter.ac.uk">R.Alshembari@exeter.ac.uk →</a>
