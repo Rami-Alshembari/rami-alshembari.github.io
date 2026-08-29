@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Between October 2023 and mid-2026 a large fraction of the Gaza Strip's built environment was physically destroyed. This work measures how much, where and when, using Sentinel-1 interferometric coherence, a physical measure of whether a patch of ground still scatters radar the way it did before the war.">
+  <meta name="author" content="Rami Alshembari">
+  <meta name="theme-color" content="#dceaf6">
+  <link rel="icon" type="image/png" href="RA__.png">
+  <link rel="canonical" href="https://rami-alshembari.github.io/research-gaza.html">
+  <meta property="og:title" content="Mapping the destruction of the Gaza Strip with satellite radar | Rami Alshembari">
+  <meta property="og:description" content="Sentinel-1 interferometric coherence, measured twice from independent viewing geometries, maps how much of the Gaza Strip was physically destroyed between October 2023 and mid-2026: how much, where, and when.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rami-alshembari.github.io/research-gaza.html">
+  <meta property="og:image" content="https://rami-alshembari.github.io/research/gaza/figures/population_ADE_web_2200.png">
+  <meta property="og:image:alt" content="Map of the Gaza Strip shading pre-war residents per hectare of ground later recorded as destroyed by satellite radar">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://rami-alshembari.github.io/research/gaza/figures/population_ADE_web_2200.png">
+  <title>Mapping the destruction of the Gaza Strip with satellite radar | Rami Alshembari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fieldwork.css">
+  <link rel="stylesheet" href="research.css">
+  <link rel="stylesheet" href="research-figures.css">
+</head>
+<body class="field-page">
+  <a class="skip-link" href="#main-content">Skip to the article</a>
+
+  <header class="field-masthead">
+    <div class="container field-masthead-inner">
+      <nav class="field-breadcrumb" aria-label="Breadcrumb">
+        <a href="research.html">Research highlights</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Gaza Strip · satellite radar</span>
+      </nav>
+      <p class="field-kicker">Research highlight · Remote sensing</p>
+      <h1>Mapping the destruction of the Gaza Strip with satellite radar</h1>
+      <p class="field-lede">Between October 2023 and mid-2026 a large fraction of the Gaza Strip's built environment was physically destroyed. This work measures <strong>how much, where and when</strong>, using <strong>Sentinel-1 interferometric coherence</strong>, a physical measure of whether a patch of ground still scatters radar the way it did before the war.</p>
+      <ul class="field-meta-list" aria-label="Topics">
+        <li>Remote Sensing</li>
+        <li>Gaza</li>
+        <li>SAR</li>
+      </ul>
+    </div>
+  </header>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a class="nav-mark" href="index.html" aria-label="Rami Alshembari home">RA</a>
+      <div class="nav-links">
+        <a href="index.html#profile">Profile</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#education">Education</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="research.html" aria-current="location">Research</a>
+        <a href="fieldtrip.html">Fieldwork</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container field-main" id="main-content">
+    <article class="research-article">
+
+      <div class="research-prose">
+        <p>The Gaza Strip is a sliver of land about <strong>41&nbsp;km long and 6–12&nbsp;km wide</strong>, roughly 365&nbsp;km² in all, pressed between Israel, Egypt, and the Mediterranean. Before the war, it held about <strong>2.2&nbsp;million people</strong>, making it one of the most densely populated territories on Earth. Very little of that area is actually town: dunes, the beach, citrus and olive groves, and a wide fenced buffer along the eastern perimeter take up most of it. The built environment (the houses, streets, shops, schools, and clinics people live in) covers about <strong>116&nbsp;km²</strong>, and it is packed toward the coast.</p>
+        <p>On 7&nbsp;October 2023, a war began. Over the following two and a half years, a large part of that built environment was physically levelled by Israeli strikes and a bulldozing campaign. The scale of the destruction is difficult to comprehend. This work sets out to measure how much of the built-up area was destroyed, in which sectors, and in what order, read directly off the satellite images.</p>
+      </div>
+
+      <div class="research-prose">
+        <h2>Why radar, and what it measures</h2>
+        <p>Optical "before and after" imagery is intuitive and might be misleading. Optical sensors see cloud and darkness on many days, and what they record is surface <em>brightness</em>, which shifts with season, soil moisture and sun angle. Sentinel-1 radar is free and openly licensed, with a complete pre-war archive; the high-resolution optical imagery a credible before-and-after would need is commercial, and for much of this period was neither free nor available. Radar also carries a physical quantity that measures structural change directly, which surface brightness cannot.</p>
+        <p>Radar provides its own illumination and its microwaves pass straight through cloud, so overcast days and darkness are no obstacle, and <strong>Copernicus Sentinel-1</strong> has imaged the region on a fixed 12-day repeat cycle since long before the war, which is what makes a pre-war baseline possible at all.</p>
+        <p>The specific quantity, the proxy used to measure the damage, is <strong>interferometric coherence</strong>: the correlation between two complex radar images of the same 40&nbsp;m patch of ground, acquired 12 days apart. Coherence measures whether the ground scattered radar the same way twice. Intact structures do, because their geometry is fixed: the same walls, roof edges and corners reflect the pulse back the same way on every pass. When a building collapses, the arrangement of reflecting surfaces inside the cell is rearranged and cannot be recovered, so coherence falls, and it falls for a reason specific to <strong>structural change</strong>.</p>
+      </div>
+
+      <figure class="coh-explainer" id="coh-explainer" data-reveal>
+        <div class="coh-stage">
+          <div class="coh-scene">
+            <img class="coh-before" src="research/gaza/figures/before.svg" alt="A radar satellite images an intact house: the echo returns to the sensor along regular, matching paths, giving high coherence." width="595" height="747" decoding="async">
+            <img class="coh-after" src="research/gaza/figures/after.svg" alt="The same scene after the house has collapsed: the radar echo is scattered and mostly lost, giving low coherence." width="595" height="747" decoding="async">
+          </div>
+          <div class="coh-plot"><canvas></canvas></div>
+        </div>
+        <figcaption>Destroyed ground loses its coherence at collapse and then returns close to its pre-war level within a year. Modified from a graphic by the Earth Observatory of Singapore at Nanyang Technological University, Singapore.</figcaption>
+      </figure>
+
+      <div class="research-prose">
+        <p>Destroyed ground loses about <strong>35&nbsp;%</strong> of its coherence<sup><a href="#ref-1">1</a></sup> at the moment of collapse, then returns close to its pre-war level within a year: rubble settles, debris stops moving, cleared ground stabilises, and the surface becomes a reproducible reflector again. The damage signal is therefore a <strong>transient</strong>, not a permanent state. A single interferogram taken in 2026 would have missed most of what happened in 2023. That is why a dense stack of roughly <strong>107 image pairs per geometry</strong> was needed rather than one before-and-after pair, and it is a result that generalises: any coherence-based damage study built on a single pair is undercounting. (Coherence recovery is re-coherence of settled rubble and cleared ground. It is not evidence of reconstruction.)</p>
+        <p>The raw input is <strong>Sentinel-1 SLC</strong> imagery (IW mode), pulled from the Alaska Satellite Facility's archive. Two tracks are used: <strong>track&nbsp;87, ascending</strong>, and <strong>track&nbsp;94, descending</strong>, with the satellite passing over Gaza on opposite sides of its orbit and looking at the ground from opposite directions. Each track supplies <strong>107 image pairs</strong>, spanning 9&nbsp;January&nbsp;2023 to 17&nbsp;July&nbsp;2026; the pre-war baseline is the 22 pairs whose second acquisition falls on or before 7&nbsp;October&nbsp;2023.</p>
+        <p>Interferograms come from ASF&nbsp;HyP3's GAMMA workflow: multilooked 10&nbsp;×&nbsp;2 to a <strong>40&nbsp;m ground pixel</strong>, temporal baseline held to 11–13 days, the Goldstein phase filter disabled because it saturates the coherence estimate, and no water mask. A built-up mask is derived separately from 13&nbsp;Sentinel-2 scenes using a multi-date maximum-NDVI, which separates permanently non-vegetated surface from seasonally fallow farmland; that gives 115.8&nbsp;km² of built-up land to assess.</p>
+        <p>Layover and shadow in dense urban terrain depend on the direction the radar looks from. Damage seen from one look direction and not the other cannot be told apart from a pure geometric artefact unless a second, independent geometry is processed. Tracks 87 and 94 were run through an identical pipeline and their results compared. They agree on <strong>60&nbsp;km²</strong> independently, with a Cohen's&nbsp;κ of <strong>0.535</strong>.</p>
+        <p>Across the 115.8&nbsp;km² of built-up land assessed, <strong>61 to 65&nbsp;%</strong> was recorded as destroyed: 71.1&nbsp;km² on track&nbsp;87, 74.8&nbsp;km² on track&nbsp;94, with <strong>60.4&nbsp;km²</strong> confirmed independently by both geometries. The destroyed share is <strong>low at the perimeter fence</strong>, about 22&nbsp;%, and <strong>rises to a plateau of ~70–75&nbsp;% from about 1.5&nbsp;km inland</strong>. That is the opposite of the intuitive expectation, that damage would concentrate along the militarised eastern edge.</p>
+      </div>
+
+      <div class="rfx" data-reveal>
+        <p class="rfx-head"><span class="figure-index">Figure 1</span><strong>The destruction map, and the gradient inland</strong></p>
+        <p class="rfx-intro">The Strip laid along its own axis, the Egyptian border at the left. Every 40&nbsp;m cell is coloured by what the two Sentinel-1 tracks agree on: <strong>dark red</strong> where both look directions independently record it as destroyed, <strong>pale red</strong> where only one does, tan where built-up ground shows no damage.</p>
+        <div class="dmg-viewer" id="damage-viewer" data-gov-toggle="off" data-hint="off">
+          <noscript><p class="fig-fallback">This map needs JavaScript.</p></noscript>
+        </div>
+
+        <p class="rfx-sub">Destroyed share against distance from the perimeter fence</p>
+        <p class="rfx-intro">The destroyed share of built-up area against distance inland from the land perimeter, and, below it, where that built-up land actually sits (only about 5&nbsp;% within 1&nbsp;km of the fence, shaded red). The right-hand panel repeats the curve inside each third of local built-up density: a detection artefact over sparse ground would vanish there, and it does not.</p>
+        <div class="fig-lab" id="fig-spatial">
+          <div class="fig-panels">
+            <div class="fig-panel" id="panel-A">
+              <h4>Damage rises with distance from the fence</h4>
+              <p class="fig-panel-sub">Destroyed share of built-up area against distance inland from the land perimeter. Below: where that built-up land sits, most of it 2–4&nbsp;km inland, toward the coast.</p>
+              <div class="fig-panel-plot" data-plot="A"></div>
+              <div class="fig-panel-plot" data-plot="A2"></div>
+            </div>
+            <div class="fig-panel" id="panel-B">
+              <h4>The rise holds inside every density class</h4>
+              <p class="fig-panel-sub">The curve on the left, re-tested inside each third of local built-up density. If the gradient were a detection artefact over sparse ground it would vanish here; it does not.</p>
+              <div class="fig-panel-plot" data-plot="B"></div>
+              <div class="fig-lab-legend" id="legend-B"></div>
+            </div>
+          </div>
+          <noscript><p class="fig-fallback">These panels need JavaScript.</p></noscript>
+        </div>
+      </div>
+
+      <div class="research-prose">
+        <p>Part of the reason is simply <strong>where Gazans live</strong>. The population is packed against the Mediterranean coast, so the built-up land itself sits toward the sea, well away from the eastern fence: only about <strong>5&nbsp;%</strong> of the Strip's built-up area lies within 1&nbsp;km of the perimeter. But the gradient is not just an exposure effect. Sparse built-up land near the fence is genuinely harder to score as destroyed (a 40&nbsp;m cell with two houses among fields keeps most of its coherence), so the rise is re-tested inside each third of local built-up density. It survives in all three: it is a real pattern, not a detection artefact.</p>
+        <p>By governorate the destroyed share runs <strong>North Gaza&nbsp;~74&nbsp;%, Gaza&nbsp;~73&nbsp;%, Rafah&nbsp;~66&nbsp;%, Khan&nbsp;Younis&nbsp;~58&nbsp;%, Deir&nbsp;al-Balah&nbsp;~41&nbsp;%</strong>. Around civilian sites (pharmacies, schools, bakeries, hospitals, mosques, clinics, water and sanitation assets) the built-up area <strong>within 250&nbsp;m</strong> of each site type that was destroyed sits between 60&nbsp;% and 79&nbsp;% for every class. The 100&nbsp;m and the 500&nbsp;m around a site come out almost the same, so the destruction is <strong>neighbourhood-scale</strong>; this is not a building-level assessment of the facilities themselves. Every one of these classes sits above the Strip-wide average of ~61&nbsp;%.</p>
+      </div>
+
+      <div class="rfx" data-reveal>
+        <p class="rfx-head"><span class="figure-index">Figure 2</span><strong>By governorate, and around civilian sites</strong></p>
+        <p class="rfx-intro">The destroyed share broken out two ways. In both charts the bar is the mid-estimate; the thin line is the two-track range (governorate) or the middle 50&nbsp;% of individual sites (civilian sites).</p>
+        <div class="fig-lab" id="fig-breakdown">
+          <div class="fig-panels">
+            <div class="fig-panel" id="panel-D">
+              <h4>Destroyed share by governorate</h4>
+              <p class="fig-panel-sub">Destroyed share of each governorate's built-up area. Bar = mid-estimate · thin line = two-track range.</p>
+              <div class="fig-panel-plot" data-plot="D"></div>
+            </div>
+            <div class="fig-panel" id="panel-E">
+              <h4>Around civilian sites</h4>
+              <p class="fig-panel-sub">Built-up area within 250&nbsp;m of each site type that was destroyed. Bar = mean · thin line = middle 50&nbsp;% of individual sites.</p>
+              <div class="fig-panel-plot" data-plot="E"></div>
+            </div>
+          </div>
+          <noscript><p class="fig-fallback">These charts need JavaScript.</p></noscript>
+        </div>
+      </div>
+
+      <div class="research-prose">
+        <h2>When it happened</h2>
+        <p>Half of the total destroyed area had been reached by <strong>28&nbsp;January&nbsp;2024</strong>, about four months in. The pace never returned to that winter-2023 peak. Because per-pixel timing does not replicate, nothing below is drawn at per-pixel time resolution: the maps show <em>roughly</em> when each patch fell, to within a kilometre and a 12-day window.</p>
+      </div>
+
+      <div class="rfx" data-reveal>
+        <p class="rfx-head"><span class="figure-index">Figure 3</span><strong>The pace of destruction</strong></p>
+        <p class="rfx-intro">Cumulative destroyed area over time, with the monthly rate below. The line is the mean of the two tracks; the shaded band is their spread.</p>
+        <div class="fig-lab" id="fig-pace">
+          <div class="fig-panels">
+            <div class="fig-panel span-2" id="panel-C">
+              <h4>Half the total by January 2024</h4>
+              <div class="fig-panel-plot" data-plot="C"></div>
+              <div class="fig-panel-plot" data-plot="C2"></div>
+            </div>
+          </div>
+          <noscript><p class="fig-fallback">This chart needs JavaScript.</p></noscript>
+        </div>
+
+        <p class="rfx-sub">Each 12-day window in turn</p>
+        <p class="rfx-intro">Each 12-day Sentinel-1 window is one frame. <strong>Red</strong> marks built-up ground that lost coherence <em>during that window</em> (destroyed or heavily damaged in those 12 days); it fades back to white in later frames as the rubble re-coheres.</p>
+        <div class="timeline-viewer" id="timeline-viewer">
+          <noscript><p class="fig-fallback">This player needs JavaScript.</p></noscript>
+        </div>
+
+        <p class="rfx-intro">Every 40&nbsp;m patch the radar records as destroyed, coloured by <strong>when</strong> it first lost coherence: blue for October&nbsp;2023, deepening to red for mid-2026. Move the slider forward to watch the damage spread across the Strip; hover any point for its onset date and how far it sits along the Strip.</p>
+        <div class="onset-viewer" id="onset-viewer">
+          <noscript><p class="fig-fallback">This map needs JavaScript.</p></noscript>
+        </div>
+        <figcaption>Per-window frames and the onset map: Sentinel-1 track 87 (ascending).</figcaption>
+      </div>
+
+      <div class="research-prose">
+        <p>Thirteen Israeli ground offensive operations were compiled from open reporting. Where a coloured destruction band sits directly below an operation bar in Figure&nbsp;4, a clear correlation appears between the offensive campaign and the destruction on the ground.</p>
+        <p>Read against the bars, most operations enter sectors where the destruction bands are <strong>already well developed above them</strong>: the levelling of a sector tends to precede the ground operation there, or run alongside it, rather than follow it.</p>
+      </div>
+
+      <div class="rfx" data-reveal>
+        <p class="rfx-head"><span class="figure-index">Figure 4</span><strong>The campaign in space and time</strong></p>
+        <p class="rfx-intro">Every column is a one-kilometre slice of the Strip, measured along its length from the Egyptian border; every row is a 12-day radar window, October&nbsp;2023 at the top. Colour is the built-up area that lost coherence (was destroyed) in that place and that window. The numbered bars are the 13 ground offensive operations.</p>
+        <div class="chrono-viewer" id="chrono-viewer">
+          <input type="checkbox" id="chrono-ops" checked hidden>
+          <div class="chrono-stage">
+            <div class="chrono-plot" data-chrono="heat"></div>
+            <div class="chrono-side">
+              <h4>Israeli ground operations</h4>
+              <div class="chrono-oplist" id="chrono-oplist"></div>
+            </div>
+          </div>
+          <noscript><p class="fig-fallback">This chart needs JavaScript.</p></noscript>
+        </div>
+      </div>
+
+      <div class="research-prose">
+        <h2>Who lived on the ground that was destroyed</h2>
+        <p>Crossing the coherence damage map with the pre-war resident population (<strong>WorldPop 2020</strong>, constrained, UN-adjusted, 100&nbsp;m, resampled to the 40&nbsp;m grid and renormalised so the Strip total is preserved) turns "area destroyed" into "homes destroyed". The dense cores stand out: Gaza City and Jabalia in the north, Khan Younis and Rafah in the south.</p>
+        <p>The homes of <strong>1.02–1.12&nbsp;million people</strong> stood on ground the radar records as destroyed. That is <strong>54–59&nbsp;%</strong> of the 1.9&nbsp;million WorldPop places inside the Strip in 2020; scaled forward to the mid-2023 population of about 2.2&nbsp;million it is roughly 1.1–1.2&nbsp;million. Because the destruction fell disproportionately on the <em>densest</em> ground, the population-weighted picture is worse than the area figure: <strong>65&nbsp;% of the built-up population lived somewhere now more than three-quarters destroyed</strong>, against 44&nbsp;% of the built-up area. And almost nobody lived near the fence: about <strong>29,000 people</strong>, 2&nbsp;% of the built-up population, within 1&nbsp;km of the perimeter.</p>
+        <p>This is the pre-war <em>resident</em> population of ground later destroyed, <strong>not a displacement count and not a casualty count</strong>. Most of Gaza had been displaced, often repeatedly, long before the ground they came from was hit.</p>
+      </div>
+
+      <div class="rfx" data-reveal>
+        <p class="rfx-head"><span class="figure-index">Figure 5</span><strong>Who lived on the ground that was destroyed</strong></p>
+        <p class="rfx-intro">The map shades each spot by <strong>how many people lived there before the war, per hectare, on ground that was later destroyed</strong>.</p>
+        <div class="pop-viewer" id="pop-viewer">
+          <div class="pop-legend" data-pop="legend"></div>
+          <div class="pop-map" data-pop="map"></div>
+          <div class="pop-charts">
+            <div class="pop-profile">
+              <h4>Along the Strip</h4>
+              <p class="fig-panel-sub">Pre-war residents per kilometre: everyone (line) versus those who lived on ground later destroyed (bars).</p>
+              <div class="pop-plot" data-pop="profile"></div>
+            </div>
+            <div class="pop-row">
+              <div class="pop-cell">
+                <h4>By governorate</h4>
+                <p class="fig-panel-sub">Thousands of pre-war residents of destroyed ground. Bar = mid-estimate · thin line = two-track range · label = share of that governorate's pre-war population.</p>
+                <div class="pop-plot" data-pop="gov"></div>
+              </div>
+              <div class="pop-cell">
+                <h4>Almost nobody lived near the perimeter</h4>
+                <p class="fig-panel-sub">Pre-war residents by distance from the land perimeter: everyone (pale) and those on destroyed ground (red).</p>
+                <div class="pop-plot" data-pop="peri"></div>
+              </div>
+            </div>
+          </div>
+          <noscript><p class="fig-fallback">This figure needs JavaScript.</p></noscript>
+        </div>
+      </div>
+
+      <div class="research-callout">
+        <h3>Read the results as</h3>
+        <ul>
+          <li>Destroyed <strong>area</strong> at 40&nbsp;m resolution: a 40&nbsp;m pixel is 1,600&nbsp;m² and holds a structure together with its surroundings. <strong>Not a building count.</strong></li>
+          <li>One class, "destroyed", with no distinction between total and partial damage. <strong>Not a damage grade.</strong></li>
+          <li>A description of the <strong>neighbourhood</strong> a civilian site stands in, reported at three radii. <strong>Not a facility-level assessment.</strong></li>
+          <li>The pre-war <strong>resident population of ground later destroyed</strong>. <strong>Not a displacement or casualty count.</strong></li>
+        </ul>
+      </div>
+
+      <div class="research-prose">
+        <h2>References</h2>
+        <ol class="research-refs">
+          <li id="ref-1">Reyes, R., and M. Nagai. "Coherence and Intensity Statistical Mapping of Earthquake Affected Areas using Sentinel-1 Images." <em>ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences</em> 10 (2024): 347–354.</li>
+        </ol>
+      </div>
+
+      <div class="research-prose">
+        <h2>Data sources</h2>
+        <p>Every input is from an open, citable source.</p>
+      </div>
+
+      <div class="research-table-wrap">
+        <table class="research-table">
+          <thead>
+            <tr><th scope="col">Purpose</th><th scope="col">Source</th><th scope="col">Detail</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Radar imagery</td>
+              <td>Copernicus Sentinel-1 SLC (IW mode), via the Alaska Satellite Facility DAAC</td>
+              <td>Tracks 87 (ascending) and 94 (descending); 107 image pairs each; acquisitions 9 Jan 2023 – 17 Jul 2026; pre-war baseline = 22 pairs ending on or before 7 Oct 2023</td>
+            </tr>
+            <tr>
+              <td>Interferograms</td>
+              <td>ASF HyP3, on-demand, GAMMA workflow</td>
+              <td>Multilooking 10 × 2 → 40 m ground pixel; temporal baseline 11–13 days; Goldstein phase filter disabled; no water mask</td>
+            </tr>
+            <tr>
+              <td>Built-up mask</td>
+              <td>Sentinel-2 L2A (Copernicus), 13 scenes 2023–2026, via AWS Earth Search</td>
+              <td>Multi-date maximum NDVI, separating permanent non-vegetated surface from seasonal fallow farmland → 115.8 km² built-up</td>
+            </tr>
+            <tr>
+              <td>Strip &amp; governorate outlines</td>
+              <td>geoBoundaries gbOpen, PSE ADM1 / ADM2</td>
+              <td>Strip area 364.8 km²</td>
+            </tr>
+            <tr>
+              <td>Population</td>
+              <td>WorldPop 2020, constrained, UN-adjusted, 100 m</td>
+              <td>1,900,522 inside the Strip; resampled to 40 m as a density and renormalised so the Strip total is preserved</td>
+            </tr>
+            <tr>
+              <td>Population total (2023)</td>
+              <td>PCBS (Palestinian Central Bureau of Statistics) mid-2023 projection</td>
+              <td>~2.2 million in the Strip; used only to scale the 2020 counts forward</td>
+            </tr>
+            <tr>
+              <td>Civilian facilities</td>
+              <td>oPt health-facility list; HOTOSM education and points-of-interest extracts</td>
+              <td>89 hospitals, 73 clinics, 1,241 schools, 647 places of worship, 198 water / sanitation assets, 69 bakeries, 477 pharmacies</td>
+            </tr>
+            <tr>
+              <td>Ground operations</td>
+              <td>Compiled record of 13 Israeli ground offensives from open reporting</td>
+              <td>Supplied independently of the radar processing; used only for the test in Figure 4</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="research-prose">
+        <h2>Credit and licensing</h2>
+        <p>Analysis and figures: <strong>Rami Alshembari, PhD</strong>. Contains modified Copernicus Sentinel data (2023–2026). Population data © WorldPop (University of Southampton), CC&nbsp;BY&nbsp;4.0. Facility and boundary data from OpenStreetMap contributors / HOTOSM and geoBoundaries. When reusing a figure, keep the credit line shown on it and link back to this page.</p>
+      </div>
+
+      <nav class="field-page-links" aria-label="Research highlight navigation">
+        <a href="research.html">← All research highlights</a>
+        <a href="index.html">Return to CV →</a>
+      </nav>
+
+    </article>
+  </main>
+
+  <footer class="site-footer field-footer" id="contact">
+    <div class="container footer-inner" data-reveal>
+      <div>
+        <p class="footer-title">Open, reproducible remote-sensing analysis.</p>
+        <a class="footer-email" href="mailto:R.Alshembari@exeter.ac.uk">R.Alshembari@exeter.ac.uk →</a>
+      </div>
+      <div class="footer-meta">
+        <p>Rami Alshembari · <span data-year>2026</span></p>
+        <a href="research.html">All research highlights →</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="research/vendor/d3.v7.min.js" defer></script>
+  <script src="research/vendor/plot.v0.6.umd.min.js" defer></script>
+  <script src="research/gaza/coherence-explainer.js" defer></script>
+  <script src="research/gaza/data/damagemap.js" defer></script>
+  <script src="research/gaza/damagemap-interactive.js" defer></script>
+  <script src="research/gaza/data/perpair.js" defer></script>
+  <script src="research/gaza/timeline-interactive.js" defer></script>
+  <script src="research/gaza/data/onset.js" defer></script>
+  <script src="research/gaza/onset-interactive.js" defer></script>
+  <script src="research/gaza/data/chronology.js" defer></script>
+  <script src="research/gaza/chronology-interactive.js" defer></script>
+  <script src="research/gaza/data/fig02.js" defer></script>
+  <script src="research/gaza/figures-panels.js" defer></script>
+  <script src="research/gaza/data/population.js" defer></script>
+  <script src="research/gaza/population-interactive.js" defer></script>
+</body>
+</html>

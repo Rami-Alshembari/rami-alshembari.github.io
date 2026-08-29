@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script>document.documentElement.classList.add('js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An interactive rebuild of Figure 3 from the Gaza destruction study, using Observable Plot and D3 — a prototype for evaluating an interactive figure direction.">
+  <meta name="author" content="Rami Alshembari">
+  <meta name="theme-color" content="#dceaf6">
+  <link rel="icon" type="image/png" href="RA__.png">
+  <meta property="og:title" content="Figure prototype — Observable Plot + D3 | Rami Alshembari">
+  <meta property="og:description" content="An interactive rebuild of Figure 3 from the Gaza destruction study, using Observable Plot and D3.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://rami-alshembari.github.io/research-gaza-figures.html">
+  <meta property="og:image" content="https://rami-alshembari.github.io/research/gaza/figures/fig02_web_2200.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://rami-alshembari.github.io/research/gaza/figures/fig02_web_2200.png">
+  <title>Figure prototype — Observable Plot + D3 | Rami Alshembari</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fieldwork.css">
+  <link rel="stylesheet" href="research.css">
+  <link rel="stylesheet" href="research-figures.css">
+</head>
+<body class="field-page">
+  <a class="skip-link" href="#main-content">Skip to the prototype</a>
+
+  <header class="field-masthead">
+    <div class="container field-masthead-inner">
+      <nav class="field-breadcrumb" aria-label="Breadcrumb">
+        <a href="research.html">Research highlights</a>
+        <span aria-hidden="true">/</span>
+        <a href="research-gaza.html">Gaza Strip</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Interactive figure prototypes</span>
+      </nav>
+      <p class="field-kicker">Prototypes · Canvas · Observable Plot + D3</p>
+      <h1>The Gaza figures, rebuilt as interactive pieces</h1>
+      <p class="field-lede">All four of the static figures, redrawn in the browser: <strong>Figure 1</strong> becomes a per-window player and an accumulating onset-date map you scrub through time, <strong>Figure 2</strong> a space-time heatmap you probe and cross-reference against the ground operations, <strong>Figure 3</strong> a set of responsive <a href="https://observablehq.com/plot/" target="_blank" rel="noopener noreferrer">Observable&nbsp;Plot</a> charts, and <strong>Figure 4</strong> a map with live population charts. A decision aid — to see whether an interactive figure pipeline is worth adopting for future write-ups.</p>
+      <ul class="field-meta-list" aria-label="Topics">
+        <li>Timeline player</li>
+        <li>Observable Plot 0.6</li>
+        <li>D3 v7</li>
+        <li>Self-hosted</li>
+      </ul>
+    </div>
+  </header>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a class="nav-mark" href="index.html" aria-label="Rami Alshembari home">RA</a>
+      <div class="nav-links">
+        <a href="index.html#profile">Profile</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#education">Education</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="research.html" aria-current="location">Research</a>
+        <a href="fieldtrip.html">Fieldwork</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container field-main" id="main-content">
+
+    <section class="field-section" aria-labelledby="timeline-heading">
+      <div class="section-heading">
+        <span class="section-number" aria-hidden="true">01</span>
+        <h2 id="timeline-heading">Figure 1 · the timing of destruction, as a player</h2>
+      </div>
+      <div class="field-section-body">
+        <p class="field-section-intro">The static figure is 24 small panels, one per 12-day radar window. Here it is one map instead — press play to run the sequence, or click any bar in the timeline to jump to that window. The bar heights are the Δ (Strip-wide coherence change) for each window.</p>
+
+        <div class="timeline-viewer" id="timeline-viewer">
+          <noscript><p class="fig-fallback">This player needs JavaScript. The static figure is below.</p></noscript>
+        </div>
+
+        <details class="fig-compare">
+          <summary>Show the original static figure for comparison</summary>
+          <a href="research/gaza/figures/gaza_s1_perpair_web.png" target="_blank" rel="noopener noreferrer">
+            <img src="research/gaza/figures/gaza_s1_perpair_web_2000.webp" alt="The original static 24-panel version of Figure 1" width="2000" height="2072" loading="lazy" decoding="async">
+          </a>
+        </details>
+
+        <h3 class="fig-subhead">The same data as one accumulating map</h3>
+        <p class="field-section-intro">Every 40&nbsp;m patch of ground the radar records as destroyed, coloured by <strong>when</strong> it happened. Drag the slider (or press play) to move the clock forward and watch the damage spread across the Strip. Hover any point for its onset date and how far along the Strip it sits.</p>
+
+        <div class="onset-viewer" id="onset-viewer">
+          <noscript><p class="fig-fallback">This map needs JavaScript. The static figures are above and below.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="field-section" aria-labelledby="chrono-heading">
+      <div class="section-heading">
+        <span class="section-number" aria-hidden="true">02</span>
+        <h2 id="chrono-heading">Figure 2 · the campaign in space and time</h2>
+      </div>
+      <div class="field-section-body">
+        <p class="field-section-intro">Every column is a one-kilometre slice of the Strip (the Egyptian border on the left), every row a 12-day radar window (October 2023 at the top). Colour is the built-up area destroyed <em>there, then</em>. The bars are the 13 recorded Israeli ground operations — hover one in the list to pick it out on the chart.</p>
+
+        <div class="chrono-viewer" id="chrono-viewer">
+          <div class="chrono-controls">
+            <label><input type="checkbox" id="chrono-ops" checked> Show the ground-operation overlay</label>
+            <span class="fig-lab-note">Hover the chart for the value under the pointer · hover a list row to locate it</span>
+          </div>
+          <div class="chrono-stage">
+            <div class="chrono-plot" data-chrono="heat"></div>
+            <div class="chrono-side">
+              <h4>Israeli ground operations</h4>
+              <div class="chrono-oplist" id="chrono-oplist"></div>
+              <p>Compiled independently of the radar, so the overlay is a test, not a description. A bar spans the sector an operation covered — not its front line.</p>
+            </div>
+          </div>
+          <noscript><p class="fig-fallback">This chart needs JavaScript. The static figure is below.</p></noscript>
+        </div>
+
+        <details class="fig-compare">
+          <summary>Show the original static figure for comparison</summary>
+          <a href="research/gaza/figures/chronology_A_web.png" target="_blank" rel="noopener noreferrer">
+            <img src="research/gaza/figures/chronology_A_web_2200.webp" alt="The original static version of Figure 2" width="2200" height="1445" loading="lazy" decoding="async">
+          </a>
+        </details>
+      </div>
+    </section>
+
+    <section class="field-section" aria-labelledby="prototype-heading">
+      <div class="section-heading">
+        <span class="section-number" aria-hidden="true">03</span>
+        <h2 id="prototype-heading">Figure 3 · how the destruction was distributed</h2>
+      </div>
+      <div class="field-section-body">
+        <p class="field-section-intro">Hover any series for the underlying values. The panels reflow to the width of the page, and the chart is vector SVG, so it stays sharp at any zoom or print size. Toggle the individual satellite tracks to see the spread that the shaded band summarises.</p>
+
+        <div class="fig-lab" id="fig-lab">
+          <div class="fig-lab-controls">
+            <label><input type="checkbox" id="toggle-tracks"> Show the two Sentinel-1 tracks individually</label>
+            <label><input type="checkbox" id="toggle-smooth" checked> Smooth the lines</label>
+            <span class="fig-lab-note">Line / dot = mean of the two tracks · shaded band = their spread</span>
+          </div>
+          <div class="fig-panels" id="fig-panels">
+            <div class="fig-panel" id="panel-A">
+              <h4>A · Damage rises with distance from the fence</h4>
+              <p class="fig-panel-sub">Destroyed share of built-up area against distance inland from the land perimeter. Below: where that built-up land actually sits — only about 5&nbsp;% of it lies within 1&nbsp;km of the fence (shaded red), most of it 2–4&nbsp;km inland.</p>
+              <div class="fig-panel-plot" data-plot="A"></div>
+              <div class="fig-panel-plot" data-plot="A2"></div>
+            </div>
+            <div class="fig-panel" id="panel-C">
+              <h4>C · Half the total by January 2024</h4>
+              <p class="fig-panel-sub">Cumulative destroyed area over time, with the monthly rate below.</p>
+              <div class="fig-panel-plot" data-plot="C"></div>
+              <div class="fig-panel-plot" data-plot="C2"></div>
+            </div>
+            <div class="fig-panel" id="panel-B">
+              <h4>B · The rise holds inside every density class</h4>
+              <p class="fig-panel-sub">Panel A re-tested inside each third of local built-up density. If the gradient were a detection artefact over sparse ground it would vanish here; it does not.</p>
+              <div class="fig-panel-plot" data-plot="B"></div>
+              <div class="fig-lab-legend" id="legend-B"></div>
+            </div>
+            <div class="fig-panel" id="panel-D">
+              <h4>D · By governorate</h4>
+              <p class="fig-panel-sub">Destroyed share of each governorate's built-up area. Bar = mid-estimate · line = two-track range.</p>
+              <div class="fig-panel-plot" data-plot="D"></div>
+            </div>
+            <div class="fig-panel" id="panel-E">
+              <h4>E · Around civilian sites</h4>
+              <p class="fig-panel-sub">Built-up area within 250&nbsp;m of each site type that was destroyed. Bar = mean · line = middle 50% of sites.</p>
+              <div class="fig-panel-plot" data-plot="E"></div>
+            </div>
+            <div class="fig-panel fig-panel-note" id="panel-F">
+              <h4>Reading D and E</h4>
+              <p>Every value is measured from <strong>two independent Sentinel-1 tracks</strong>. The bar is their mid-estimate; the thin line is the two-track range (D) or the middle 50&nbsp;% of individual sites (E).</p>
+              <p>Panel&nbsp;E describes the <em>neighbourhood</em> a site stands in, at 40&nbsp;m resolution — the areas within 100&nbsp;m and within 500&nbsp;m come out almost the same. It is not a building-level assessment of the facilities themselves.</p>
+              <p>Every class sits above the Strip-wide average of ~61&nbsp;% marked in panel&nbsp;A.</p>
+            </div>
+          </div>
+          <noscript>
+            <p class="fig-fallback">This prototype needs JavaScript. The static figure is below.</p>
+          </noscript>
+        </div>
+
+        <details class="fig-compare">
+          <summary>Show the original static figure for comparison</summary>
+          <a href="research/gaza/figures/fig02_web.png" target="_blank" rel="noopener noreferrer">
+            <img src="research/gaza/figures/fig02_web_2200.webp" alt="The original static matplotlib version of Figure 3" width="2200" height="1403" loading="lazy" decoding="async">
+          </a>
+        </details>
+      </div>
+    </section>
+
+    <section class="field-section" aria-labelledby="pop-heading">
+      <div class="section-heading">
+        <span class="section-number" aria-hidden="true">04</span>
+        <h2 id="pop-heading">Figure 4 · who lived on the ground that was destroyed</h2>
+      </div>
+      <div class="field-section-body">
+        <p class="field-section-intro">The pre-war resident population (WorldPop 2020) crossed with the coherence damage map. The colour of each spot is <strong>how many people lived there before the war, per hectare, on ground that was later destroyed</strong> — move the pointer over the map to read it off; the three charts below are inspectable on hover too. The homes of roughly <strong>1.0–1.1 million people — over half the pre-war Strip</strong> — stood on ground the radar records as destroyed. This is the pre-war resident population of that ground; it is <strong>not a displacement count and not a casualty count</strong>.</p>
+
+        <div class="pop-viewer" id="pop-viewer">
+          <div class="pop-legend" data-pop="legend"></div>
+          <div class="pop-map" data-pop="map"></div>
+          <div class="pop-charts">
+            <div class="pop-profile">
+              <h4>Along the Strip</h4>
+              <p class="fig-panel-sub">Pre-war residents per kilometre — everyone (line) versus those who lived on ground later destroyed (bars).</p>
+              <div class="pop-plot" data-pop="profile"></div>
+            </div>
+            <div class="pop-row">
+              <div class="pop-cell">
+                <h4>By governorate</h4>
+                <p class="fig-panel-sub">Thousands of pre-war residents of destroyed ground. Bar = mid-estimate · line = two-track range · label = share of that governorate's pre-war population.</p>
+                <div class="pop-plot" data-pop="gov"></div>
+              </div>
+              <div class="pop-cell">
+                <h4>Almost nobody lived near the perimeter</h4>
+                <p class="fig-panel-sub">Pre-war residents by distance from the land perimeter — everyone (pale) and those on destroyed ground (red). About 29,000 people, 2&nbsp;% of the built-up population, lived within 1&nbsp;km of the fence.</p>
+                <div class="pop-plot" data-pop="peri"></div>
+              </div>
+            </div>
+          </div>
+          <noscript><p class="fig-fallback">This figure needs JavaScript. The static version is below.</p></noscript>
+        </div>
+
+        <details class="fig-compare">
+          <summary>Show the original static figure for comparison</summary>
+          <a href="research/gaza/figures/population_ADE_web.png" target="_blank" rel="noopener noreferrer">
+            <img src="research/gaza/figures/population_ADE_web_2200.webp" alt="The original static version of Figure 4" width="2200" height="1841" loading="lazy" decoding="async">
+          </a>
+        </details>
+      </div>
+    </section>
+
+    <section class="field-section" aria-labelledby="tradeoffs-heading">
+      <div class="section-heading">
+        <span class="section-number" aria-hidden="true">05</span>
+        <h2 id="tradeoffs-heading">What this direction buys, and what it costs</h2>
+      </div>
+      <div class="field-section-body">
+        <div class="research-prose">
+          <h3>In favour</h3>
+          <ul>
+            <li><strong>One artefact does more.</strong> Twenty-four small panels you squint at become one readable map with a time control; the five-panel chart becomes inspectable on hover.</li>
+            <li><strong>Resolution-independent where it counts.</strong> The Figure&nbsp;3 charts are vector SVG — sharp on a phone, a 4K monitor, or in print, from one source.</li>
+            <li><strong>Responsive.</strong> Everything reflows to the column width instead of shipping a fixed-width raster.</li>
+            <li><strong>One styling system.</strong> Type, colour and spacing come from the site's own tokens, so figures and page always match — including dark mode.</li>
+            <li><strong>Manageable payload.</strong> The chart data for Figures&nbsp;2–4 is ~35&nbsp;KB combined, and Figure&nbsp;1's accumulating map is one 55&nbsp;KB encoded grid the browser re-composites live. The heavy part is the 24 Figure&nbsp;1 frames — ~5.5&nbsp;MB at 3× native resolution — but they load only when the reader engages with that figure, one at a time in the background. Figure&nbsp;4's map is ~250&nbsp;KB. The chart libraries are shared across pages.</li>
+          </ul>
+          <h3>Against</h3>
+          <ul>
+            <li><strong>Needs JavaScript</strong> and about 490&nbsp;KB of libraries (Plot + D3) for the charts, self-hosted here so there is no third-party dependency.</li>
+            <li><strong>Annotation is fiddlier</strong> than in matplotlib — leader lines, curved callouts and fine label placement take real effort.</li>
+            <li><strong>Imagery is still pre-rendered.</strong> The map frames are composited by the Python pipeline and shipped as pictures; the browser only swaps and labels them.</li>
+            <li><strong>Not the analysis tool.</strong> Python still produces the authoritative figures and the numbers behind them; this is a presentation layer built from an exported summary.</li>
+          </ul>
+          <p>A reasonable middle path: keep Python as the source of record — and as the renderer for anything image-based — then add a thin browser layer that makes those outputs interactive.</p>
+        </div>
+        <nav class="field-page-links" aria-label="Prototype navigation">
+          <a href="research-gaza.html">← Back to the write-up</a>
+          <a href="research.html">All research highlights →</a>
+        </nav>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer field-footer" id="contact">
+    <div class="container footer-inner" data-reveal>
+      <div>
+        <p class="footer-title">Prototype · your call on whether to adopt it.</p>
+        <a class="footer-email" href="mailto:R.Alshembari@exeter.ac.uk">R.Alshembari@exeter.ac.uk →</a>
+      </div>
+      <div class="footer-meta">
+        <p>Rami Alshembari · <span data-year>2026</span></p>
+        <a href="research-gaza.html">Back to the write-up →</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <script src="research/gaza/data/perpair.js" defer></script>
+  <script src="research/gaza/timeline-interactive.js" defer></script>
+  <script src="research/vendor/d3.v7.min.js" defer></script>
+  <script src="research/vendor/plot.v0.6.umd.min.js" defer></script>
+  <script src="research/gaza/data/fig02.js" defer></script>
+  <script src="research/gaza/figures-interactive.js" defer></script>
+  <script src="research/gaza/data/chronology.js" defer></script>
+  <script src="research/gaza/chronology-interactive.js" defer></script>
+  <script src="research/gaza/data/population.js" defer></script>
+  <script src="research/gaza/population-interactive.js" defer></script>
+  <script src="research/gaza/data/onset.js" defer></script>
+  <script src="research/gaza/onset-interactive.js" defer></script>
+</body>
+</html>
