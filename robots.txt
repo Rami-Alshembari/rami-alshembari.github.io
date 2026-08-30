@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rami-alshembari.github.io/sitemap.xml
